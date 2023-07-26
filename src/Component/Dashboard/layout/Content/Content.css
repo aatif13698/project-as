@@ -1,0 +1,24 @@
+.main-content {
+    /* background-color: var(--clr-secondary); */
+    background-color: #b9f7f9;
+    flex: 1;
+    /* padding: 10px 32px 32px 32px; */
+    height: 100vh;
+    /* overflow-y: scroll; */
+  }
+
+  @media screen and (max-width: 1400px) {
+    .main-content {
+      /* padding-left: 20px;
+      padding-right: 20px; */
+    }
+    
+  }
+  
+
+  @media screen and (max-width: 1200px) {
+    .main-content {
+      /* padding-right: 16px;
+      padding-left: 16px; */
+    }
+  }

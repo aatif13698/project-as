@@ -1,0 +1,14 @@
+
+
+input[type="file"]{
+    display: none;
+}
+
+
+#profile_form  {
+    border: 2px solid #3ce2ad;
+    padding: 10px 15px;
+    border-radius: 12px;
+    background: #5fb2b5;
+
+}

@@ -1,0 +1,17 @@
+
+
+
+  
+  .todoDoneStyle::-webkit-scrollbar {
+    width: 8px;
+    border: 1px solid white;
+    border-radius: 8px;
+    background: #5fb2b5;
+  }
+
+  
+.todoDoneStyle::-webkit-scrollbar-thumb {
+ background-color: #3ce2ad;
+  border-radius: 8px;
+  border: 1px solid white;
+}

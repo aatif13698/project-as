@@ -1,0 +1,20 @@
+/* This targets the checkbox when it's checked */
+
+/* 
+
+input[type="checkbox"]:checked::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #921919; 
+    border-radius: 2px; 
+  }
+
+
+ */
+
+  

@@ -1,0 +1,58 @@
+.date-picker-container input[type="date"]::-webkit-calendar-picker-indicator {
+    color: red; 
+    background-color: #3ce2ad;
+    font-size: 24px; 
+     /* border: 1px solid rgb(210, 202, 202);  */
+    padding: 4px; 
+    /* border-radius: 50%;  */
+  }
+
+
+  .listDivStyle {
+    max-height: 59vh;
+  overflow-y: auto;
+  }
+
+  
+  .listDivStyle::-webkit-scrollbar {
+    width: 8px;
+    border: 1px solid white;
+    border-radius: 8px;
+    background: #5fb2b5;
+  }
+
+  
+.listDivStyle::-webkit-scrollbar-thumb {
+ background-color: #3ce2ad;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+.todo-input{
+    padding: 6px 16px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid white;
+    box-shadow: 4px 4px 4px rgba(0 0 0 /50%);
+    color: white;
+}
+
+
+/* 
+
+/* This targets the checkbox when it's checked */
+/* input[type="checkbox"]:checked::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #921919; 
+  border-radius: 2px; 
+
+}
+
+
+/*  */
