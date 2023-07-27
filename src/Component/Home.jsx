@@ -7,11 +7,11 @@ const Home = () => {
 
    
   return (
-    <div className="container-fluid " style={{ height: "100vh" }}>
+    <div className="container-fluid " style={{ height: "100vh", color:"black" }}>
       <div
         className="row"
         style={{
-          color: "whitesmoke",
+          color: "black",
           height: "100vh",
           justifyContent: "space-around",
           alignItems: "center",
@@ -59,9 +59,9 @@ const Home = () => {
             data-aos-duration="1000"
             data-aos-delay={1000}
             style={{
-              color: "white",
+              color: "black",
               padding: "5px 16px",
-              border: "1px solid white",
+              border: "1px solid black",
             }}
             className="btn "
             onClick={() => navigate("/login")}
