@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { VerifyUserMail } from '../../ApiCalling/api';
+import './VerifyMail.css'
 
 const VerifyMail = () => {
 
@@ -30,14 +31,14 @@ function verifyUserMailCallBack(errorCode){
 
 
   return (
-    <div className="container-fluid" style={{ height: "100%" }}>
+    <div className="container-fluid verify_container" style={{ height: "100%" }}>
       <div
         className="row justify-content-center align-items-center"
         style={{ height: "100%" }}
       >
-        <div className="row my-3" style={{ color: "white" }}>
+        <div className="row my-3" >
           <div className="col-12 d-flex flex-column justify-content-center align-items-center">
-            <h3 className="text-center">
+            <h3 className="text-center" id='t'>
               Click The Below Button To Verify.
             </h3>
             <button  onClick={verifyFnc}

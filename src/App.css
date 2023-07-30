@@ -1,6 +1,5 @@
 .App{
-  background: rgb(60,226,173);
-background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52%);
+ 
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -8,6 +7,22 @@ background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52
   font-family: "math";
   
 }
+
+#dark {
+  background: #00fe93;
+  background: linear-gradient(26deg, rgb(70 163 134 / 99%) 22%, rgb(53 77 78 / 65%) 85%);
+  color: whitesmoke;
+  transition: all 1s ease-out;
+}
+
+#light{
+
+  background: rgb(60,226,173);
+  background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52%);
+  color: black;
+}
+
+
 
 
 
@@ -21,20 +36,20 @@ background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52
 }
 
 :root {
-  --clr-primary: #29221d;
-  --clr-primar-light: #473b33;
-  --clr-secondary: #1e1611;
-  --clr-white: #fff;
-  --clr-black: #000;
-  --clr-pumpkin: #fe6c00;
-  --clr-silver: #a8a5a6;
-  --clr-silver-v1: #bdbabb;
-  --clr-scarlet: #fe1e00;
-  --clr-scarlet-v1: rgb(254, 30, 0, 0.79);
-  --clr-green: #00fe93;
-  --clr-yellow: #fec80a;
-  --clr-jet: #302924;
-  --clr-peach: #ffc397;
+  --primary: #29221d;
+  --primar-light: #473b33;
+  --secondary: #1e1611;
+  --white: #fff;
+  --black: #000;
+  --pumpkin: #fe6c00;
+  --silver: #a8a5a6;
+  --silver-v1: #bdbabb;
+  --scarlet: #fe1e00;
+  --scarlet-v1: rgb(254, 30, 0, 0.79);
+  --green: #00fe93;
+  --yellow: #fec80a;
+  --jet: #302924;
+  --peach: #ffc397;
   --font-family-bai: "Bai Jamjuree", sans-serif;
   --transition-default: all 300ms ease-in-out;
 }
@@ -51,8 +66,9 @@ a {
   text-decoration: none;
   color: var(--clr-white);
 }
+
 button {
-  background-color: transparent;
+  /* background-color: transparent; */
   border: none;
   cursor: pointer;
 }
@@ -129,5 +145,28 @@ button {
   color: #b9f7f9;
   color: #d4fdfe;
   color: #3ce2ad;
+
+}
+
+
+.fordark{
+  color: #2a3a35;     /* for  card */
+
+ /* for  card buttons */
+  background: #5fb2b5;
+    box-shadow: 2px 6px 21px rgb(34 229 224 / 20%);
+
+/* for input type background */
+    background: #5fb2b5;
+
+
+    /* for sidebar card */
+    background: #4d8272;
+    color: white;
+
+    /* for sidebar and main section */
+
+    background: #0061645e;
+    color: white;
 
 }

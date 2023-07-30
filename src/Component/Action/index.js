@@ -58,3 +58,21 @@ export const removeProgress = (data) => {
 
 }
 
+
+
+// 
+
+export const callStartLoading = (data) => {
+
+  return { type : "CALLING_LOADING", payload : data}
+
+}
+
+
+export const removeStartLoading = (data) => {
+
+  return { type : "REMOVE_LOADING", payload : data}
+
+}
+
+

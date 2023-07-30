@@ -77,8 +77,11 @@ const SignUp = () => {
             /> */}
           </div>
           <div className="col d-flex flex-column align-items-center justify-content-center form_container ">
-            <h4 className="text-center pt-4" style={{ color: "white",fontSize:"30px"  }}>
-              Creact Account  K@Ta3033#
+            <h4
+              className="text-center pt-4"
+              style={{ color: "white", fontSize: "30px" }}
+            >
+              Creact Account K@Ta3033#
             </h4>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -206,20 +209,46 @@ const SignUp = () => {
                   </span>
                 )}
               </div>
+
+              <div
+                data-aos="fade-left"
+                data-aos-duration="500"
+                data-aos-delay={1400}
+                className="form-group mb-3"
+              >
+                <label id="login_label" htmlFor="userType">
+                  Select User Type
+                </label>
+                <select
+                  className="form-control"
+                  id="state"
+                  {...register("userType", { required: true })}
+                >
+                  <option value="">--- Select one ---</option>
+                  <option value="medicalOwner">Medical Owner</option>
+                  <option value="instituteOwner">Private Coaching</option>
+                  <option value="instituteOwner">Private School</option>
+                  <option value="shopOwne">Shop Owner</option>
+                  <option value="viewer">Viewner</option>
+                </select>
+                {errors.userType && errors.userType.type === "required" && (
+                  <span className="text-danger">This field is required</span>
+                )}
+              </div>
               <div
                 data-aos="fade-left"
                 data-aos-duration="500"
                 data-aos-delay={1600}
-                class="form-check mb-1"
+                className="form-check mb-1"
               >
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   value=""
                   id="flexCheckDefault"
                   {...register("tc", { required: true })}
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label className="form-check-label" htmlFor="flexCheckDefault">
                   I agree to{" "}
                   <a style={{ textDecoration: "none", color: "bule" }} href="">
                     Term of use
@@ -257,7 +286,7 @@ const SignUp = () => {
                   //   fontSize: "15px",
                   //   borderRadius: "20px",
                   // }}
-                 className="signUp_btn"
+                  className="signUp_btn"
                 >
                   Sign up
                 </button>

@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import Home from "./Component/Home";
 import Login from "./Component/Pages/Login";
@@ -21,8 +21,17 @@ import ContentMain from "./Component/Dashboard/ContentMain/ContentMain";
 import UserHome from "./Component/UserHome/UserHome";
 import ForgetPassword from "./Component/ForgetPassword/ForgetPassword";
 import ResetPassword from "./Component/ResetPassword/ResetPassword";
+import LoadingPage from "./Component/Common/LoadiingPage/LoadingPage";
+import { ThemeContext } from "./Component/context/ThemeContext";
 
 function App() {
+
+  const { theme } = useContext(ThemeContext);
+
+  console.log("apptheme", theme);
+
+
+
   useEffect(() => {
     Aos.init();
   }, []);
@@ -30,9 +39,12 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-    <div className="App">
+    <div className={`App `} id={theme}> 
       <ToastContainer />
       <BrowserRouter>
+
+        <LoadingPage/>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route index path="login" element={<Login />} />

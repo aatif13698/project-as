@@ -1,16 +1,59 @@
 
 
 .form_container{
-    background-color:  #3ce2ad;
     border-radius: 40px 40px 0px 0px;
     box-shadow: 0px -2px 20px rgba(0,0,0,0.4);;
  }
 
+ #light .form_container{
+  background-color:  #3ce2ad;
+    
+ }
+
+ #dark .form_container{
+  background-color: #2a3a35;
+ }
+
+
+ #dark .form_container input {
+  background: #5fb2b5;
+  border: none;
+ }
+
+ #dark .form_container input[ type = "checkbox"] {
+  background: #5fb2b5;
+  border: none;
+ }
+
+ #dark .form_container input[type="checkbox"]:checked {
+  background: #03f5fe; /* Change to your desired background color */
+}
+
+ #dark .form_container  select ,option {
+  background: #5fb2b5;
+  border: none;
+ }
+
+ #dark .form_container button{
+
+  background: #5fb2b5;
+    box-shadow: 2px 6px 21px rgb(34 229 224 / 20%);
+
+ }
+
+
+ #dark .form_container button:hover{
+  background-color: #3c6263;
+ }
+
+ #dark .login_image{
+  filter: brightness(.80);
+ }
  
 
 .signUp_Container {
-    background: rgb(60, 226, 173);
-    background: linear-gradient(36deg, rgba(60, 226, 173, 1) 0%, rgba(185, 247, 249, 1) 52%);
+    /* background: rgb(60, 226, 173);
+    background: linear-gradient(36deg, rgba(60, 226, 173, 1) 0%, rgba(185, 247, 249, 1) 52%); */
     display: flex;
     justify-content: center;
   }
@@ -63,8 +106,8 @@
 
 @media screen and (min-width: 768px) {
     .signUp_Container {
-      background: rgb(60, 226, 173);
-      background: linear-gradient(36deg, rgba(60, 226, 173, 1) 0%, rgba(185, 247, 249, 1) 52%);
+      /* background: rgb(60, 226, 173);
+      background: linear-gradient(36deg, rgba(60, 226, 173, 1) 0%, rgba(185, 247, 249, 1) 52%); */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -82,10 +125,6 @@
         margin-bottom: 0px;
        
     }
-
-
-
-    
 
 .form_container{
     background-color:  #3ce2ad;

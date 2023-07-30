@@ -80,6 +80,8 @@ const Sidebar = () => {
                     className="nav-link-icon"
                     alt={navigationLink.title}
                   />
+
+                  
                   <span className="nav-link-text">{navigationLink.title}</span>
                 </Link>
               </li>

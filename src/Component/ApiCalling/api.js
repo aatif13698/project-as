@@ -263,6 +263,7 @@ export async function getUser(getData) {
   } catch (err) {
     console.log(err);
   }
+  
 }
 
 // addTask in todo

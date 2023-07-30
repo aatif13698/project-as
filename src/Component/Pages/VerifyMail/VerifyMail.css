@@ -1,0 +1,14 @@
+.verify_container{
+  background: rgb(60,226,173);
+
+    background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52%);
+
+}
+
+
+#dark .verify_container{
+
+  background: linear-gradient(26deg, rgb(70 163 134 / 99%) 22%, rgb(53 77 78 / 65%) 85%);
+
+}
+

@@ -84,6 +84,7 @@ const ConfirmMail = () => {
                   className="form-control login_input"
                   type="text"
                   value={email}
+                  readOnly
                 />
               </div>
 

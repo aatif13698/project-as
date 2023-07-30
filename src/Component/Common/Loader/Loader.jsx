@@ -1,9 +1,9 @@
 import React from "react";
 import "./Loader.css"
 
-const Loader = () => {
+const Loader = ({marginBottom}) => {
   return (
-    <div class="spinner">
+    <div class="spinner" style={{marginBottom:marginBottom}}>
       <div></div>
       <div></div>
       <div></div>

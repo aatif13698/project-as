@@ -10,15 +10,15 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import getUserData from "./Component/Reducer/getUserData";
 import store from "./Component/Store/store";
-
+import ThemeContextProvider from "./Component/context/ThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  
-    <Provider store={store}>
+  <Provider store={store}>
+    <ThemeContextProvider>
       <App />
-    </Provider>
- 
+    </ThemeContextProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

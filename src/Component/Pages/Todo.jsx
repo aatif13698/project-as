@@ -224,10 +224,10 @@ const Todo = () => {
   // logOut User
 
   function logoutFnc() {
-    localStorage.setItem("token", null);
-    dispatch(deleteUserData);
-    dispatch(deleteUserTodo);
-    navigate("/login");
+    // localStorage.setItem("token", null);
+    // dispatch(deleteUserData);
+    // dispatch(deleteUserTodo);
+    // navigate("/login");
   }
 
   // profile 

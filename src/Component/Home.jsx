@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { ThemeContext } from './context/ThemeContext';
 
 const Home = () => {
     const navigate = useNavigate();
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
    
   return (
@@ -68,6 +70,8 @@ const Home = () => {
           >
             Login
           </button>
+
+          <button className='btn btn-success' onClick={toggleTheme}>theme</button>
         </div>
       </div>
     </div>

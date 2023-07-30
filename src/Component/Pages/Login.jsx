@@ -3,13 +3,15 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { getUser, loginUser } from "../ApiCalling/api";
 import { useDispatch } from "react-redux";
-import { getUserData } from "../Action";
+import { callStartLoading, getUserData, removeStartLoading } from "../Action";
 import loginImage from "../Assets/Images/imageLoginSignUp.jpg";
 import image from "../Assets/Images/imageLoginSignUp.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // const  [getUser, getData] = useFetchUserData()
 
   const {
     register,
@@ -21,10 +23,21 @@ const Login = () => {
     mode: "onChange",
   });
 
-  function loginCallBack(errorCode) {
+  function getData(data) {
+    dispatch(getUserData(data))
+    dispatch(removeStartLoading(false));
+    navigate('/dashboard')
+  }
+
+  function LoginCallBack(errorCode) {
     switch (errorCode) {
       case 200:
-        navigate("/dashboard");
+        dispatch(callStartLoading(true));
+
+        setTimeout(()=>{
+          getUser(getData)
+        },2000)
+
         break;
       case 401:
       case 402:
@@ -37,7 +50,7 @@ const Login = () => {
   }
 
   function onSubmit(data) {
-    loginUser(data, loginCallBack);
+    loginUser(data, LoginCallBack);
   }
 
   const styleLogin = {

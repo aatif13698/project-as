@@ -3,13 +3,13 @@ import { personsImgs } from "../../utils/images";
 
 export const navigationLinks = [
     { id: 1, title: 'Home', image: iconsImgs.home , to : "home"},
-    { id: 2, title: 'Budget', image: iconsImgs.budget, to : "home" },
-    { id: 3, title: 'Transactions', image: iconsImgs.plane, to : "home" },
-    { id: 4, title: 'Subscriptions', image: iconsImgs.wallet, to : "home" },
-    { id: 5, title: 'Loans', image: iconsImgs.bills, to : "home" },
+    { id: 2, title: 'Shop', image: iconsImgs.budget, to : "home" },
+    { id: 3, title: 'Add Doctor', image: iconsImgs.doctor, to : "home" },
+    { id: 4, title: 'Edit Doctor', image: iconsImgs.wallet, to : "home" },
+    { id: 5, title: 'Discount', image: iconsImgs.bills, to : "home" },
     { id: 6, title: 'Work List', image: iconsImgs.report, to : "/dashboard/todo" },
-    { id: 7, title: 'Savings', image: iconsImgs.wallet , to : "home"},
-    { id: 8, title: 'Financial Advice', image: iconsImgs.wealth, to : "home" },
+    { id: 7, title: 'Test facility', image: iconsImgs.wallet , to : "home"},
+    { id: 8, title: 'Profile', image: iconsImgs.wealth, to : "home" },
     { id: 9, title: 'Account', image: iconsImgs.user , to :"CreatProfile", to : "home"},
     { id: 10, title: 'Settings', image: iconsImgs.gears, to : "home" }
 ];
