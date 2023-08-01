@@ -364,46 +364,6 @@ export async function checkedOneTask(datas, checkedCallBack) {
 
 
 
-// uploadProfile
-
-
-export async function uploadProfile(datas, uploadProfileCallback){
-  try {
-    const { data : {errorCode, message}} = await axios.post(
-      "http://localhost:8080/api/user/uploadProfile",
-      datas
-    );
-    if(errorCode == 200){
-       toast.success(message);
-       uploadProfileCallback()
-    }else{
-      toast.warning(message, errorCode)
-      // uploadProfileCallback()
-    }
-  } catch (err) {
-    console.log("checkedERR", err);
-  }
-}
-
-
-
-// getProfile
-
-export async function getProfileData(getProfileCallBack) {
-  let token = localStorage.getItem("token");
-  try {
-    const {
-      data: { errorCode, message, profileImage },
-    } = await axios.get("http://localhost:8080/api/user/getProfile", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    console.log("image", profileImage );
-    getProfileCallBack(profileImage)
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 
 // sendforgetPasswordMail
 
@@ -450,3 +410,158 @@ export async function restPassword(data, resetCallback) {
 }
 
 
+
+
+// uploadProfile
+
+
+export async function uploadProfile(datas, uploadProfileCallback){
+  try {
+    const { data : {errorCode, message}} = await axios.post(
+      "http://localhost:8080/api/user/uploadProfile",
+      datas
+    );
+    if(errorCode == 200){
+       toast.success(message);
+       uploadProfileCallback()
+    }else{
+      toast.warning(message, errorCode)
+      // uploadProfileCallback()
+    }
+  } catch (err) {
+    console.log("checkedERR", err);
+  }
+}
+
+
+
+// getProfile
+
+export async function getProfileData(getProfileCallBack) {
+  let token = localStorage.getItem("token");
+  try {
+    const {
+      data: { errorCode, message, profileImage },
+    } = await axios.get("http://localhost:8080/api/user/getProfile", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log("image", profileImage );
+    getProfileCallBack(profileImage)
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+// uploadshopProfile
+
+export async function uploadshopProfile(datas, uploadShopProfileCallback){
+  try {
+    const { data : {errorCode, message}} = await axios.post(
+      "http://localhost:8080/api/user/uploadMedicalShopProfile",
+      datas
+    );
+    if(errorCode == 200){
+       toast.success(message);
+       uploadShopProfileCallback()
+    }else{
+      toast.warning( message)
+      // uploadProfileCallback()
+    }
+  } catch (err) {
+    console.log("checkedERR", err);
+  }
+}
+
+
+// getShopProfile
+
+export async function getShopProfile (getShopProfileCallBack) {
+  console.log("hhhhhhh");
+
+  let token = localStorage.getItem("token");
+
+  // console.log("token", token);
+  try {
+
+    const {
+      data: { errorCode, message, shopProfile },
+    } = await axios.get("http://localhost:8080/api/user/getMedicalShopProfile", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if(errorCode == 200){
+
+      // console.log("shopdata", shopProfile);
+
+    getShopProfileCallBack(shopProfile)
+
+
+    }
+
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+}
+
+
+// uploadInstituteProfile
+
+export async function uploadInstituteProfile(datas, uploadInstituteProfileCallback){
+  try {
+    const { data : {errorCode, message}} = await axios.post(
+      "http://localhost:8080/api/user/uploadInstituteProfile",
+      datas
+    );
+    if(errorCode == 200){
+       toast.success(message);
+       uploadInstituteProfileCallback()
+    }else{
+      
+      toast.warning( message)
+      // uploadProfileCallback()
+    }
+  } catch (err) {
+    console.log("checkedERR", err);
+  }
+}
+
+
+
+
+// getInstituteProfile
+
+export async function getInstituteProfile (getInstituteProfileCallBack) {
+  console.log("hhhhhhh");
+
+  let token = localStorage.getItem("token");
+
+  // console.log("token", token);
+  try {
+
+    const {
+      data: { errorCode, message, instituteProfile },
+    } = await axios.get("http://localhost:8080/api/user/getInstituteProfile", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if(errorCode == 200){
+
+      // console.log("shopdata", shopProfile);
+
+      getInstituteProfileCallBack(instituteProfile)
+
+
+    }
+
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+}

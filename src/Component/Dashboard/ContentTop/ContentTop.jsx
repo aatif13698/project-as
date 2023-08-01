@@ -25,16 +25,16 @@ const ContentTop = () => {
     <div className="main-content-top">
         <div className="content-top-left">
             <button type="button" className="sidebar-toggler" onClick={() => toggleSidebar() }>
-                <img src={ iconsImgs.menu1 } alt="" />
+                <img className="topBarIcons" src={ iconsImgs.menu1 } alt="" />
             </button>
             <h3 className="content-top-title" style={{margin:"0px"}}>Dashboard</h3>
         </div>
         <div className="content-top-btns">
             <button type="button" className="search-btn content-top-btn">
-                <img src={ iconsImgs.search } alt="" />
+                <img className="topBarIcons" src={ iconsImgs.search } alt="" />
             </button>
             <button className="notification-btn content-top-btn" onClick={logOutFunc}>
-                <img src={ iconsImgs.bell1 } />
+                <img className="topBarIcons" src={ iconsImgs.bell1 } />
                 <span className="notification-btn-dot"></span>
             </button>
         </div>

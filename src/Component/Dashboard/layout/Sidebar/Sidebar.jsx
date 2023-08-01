@@ -84,6 +84,7 @@ const Sidebar = () => {
   function logOutFunc  (){
 
     localStorage.removeItem("token");
+    localStorage.removeItem("reduxState")
     dispatch({ type : "GOT_ERROR"})
 
   }
@@ -163,7 +164,7 @@ function SettingMenu({ menu, display, toggleTheme, theme, hideMenu, logOutFunc }
       toggleTheme();
     }else if(ID == 2){
     
-      // logOutFunc()
+      logOutFunc()
     
     }
   }
@@ -210,7 +211,7 @@ function SettingMenu({ menu, display, toggleTheme, theme, hideMenu, logOutFunc }
                 
                 {val.id == 1 ? <div  style={{margin:"0px 10px"}}> {theme == "dark" ? <MdLightMode /> : <MdOutlineLightMode/>}</div>  : null}
 
-                {val.id == 2 ? <MdLogout onClick={ ()=> logOutFunc()} style={{margin:"0px 10px"}}/> : null}
+                {val.id == 2 ? <MdLogout  style={{margin:"0px 10px"}}/> : null}
 
                 {val.id == 1 ? <span>{theme == "dark" ? "Light" : "Dark"}</span> : <span>{val.title}</span> }
 

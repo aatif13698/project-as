@@ -26,6 +26,8 @@ import { ThemeContext } from "./Component/context/ThemeContext";
 import Private from "./Component/Common/Private";
 import CreactProfileForMedical from "./Component/CreactProfileForMedical/CreactProfileForMedical";
 import Public from "./Component/Common/Public";
+import CreatShopDetailsMedical from "./Component/CreateShopDetailsMedical/CreatShopDetailsMedical";
+import CreateInstituteDetail from "./Component/CreatInstituteDetail/CreateInstituteDetail";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -64,7 +66,9 @@ function App() {
               <Route path="todo" element={<Todo />} />
               <Route path="todo/doneTodo" element={<DoneTodo />} />
               <Route path="todo/notdonetodo" element={<NotDoneTodo />} />
-              <Route path="CreatProfileMedical" element={<CreactProfileForMedical />} />
+              <Route path="CreatProfile" element={<CreactProfileForMedical />} />
+              <Route path="CreatMedicalShop" element={<CreatShopDetailsMedical />} />
+              <Route path="CreatInstituteDetail" element={<CreateInstituteDetail/>} />
               
             </Route>
           </Route>

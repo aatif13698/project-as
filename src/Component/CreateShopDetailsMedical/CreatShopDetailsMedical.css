@@ -1,0 +1,36 @@
+.shopImage{
+    object-fit: cover;
+    width: 100%;
+    /* height: 45%; */
+    /* height: 339px; */
+    /* max-height: 271px; */
+    border-radius: 10px;
+    box-shadow: 1px 8px 14px rgba(0,0,0,0.2);
+}
+
+
+
+
+#ShopProfileContainer{
+
+
+
+    background: linear-gradient(-27deg, rgb(8 227 108 / 47%) 31%, rgb(115 191 194 / 65%) 29%);
+    /* height: 50vh; */
+    border-radius: 12px;
+    box-shadow: 1px 10px 10px rgba(0,0,0,0.2);
+    margin: 50px 0px;
+}
+
+
+#dark #ShopProfileContainer {
+    background: linear-gradient(-27deg, rgb(67 108 86 / 44%) 31%, rgb(18 149 155 / 65%) 29%);
+}
+
+
+
+
+
+#ShopProfileText p{
+    margin-bottom: 0px;
+}

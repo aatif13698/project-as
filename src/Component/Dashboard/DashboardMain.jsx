@@ -6,8 +6,8 @@ import { SidebarProvider } from "../context/sidebarContext";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useNavigate } from "react-router-dom";
-import { getUser } from "../ApiCalling/api";
-import { getUserData } from "../Action";
+import { getShopProfile, getUser } from "../ApiCalling/api";
+import { getShopData, getUserData } from "../Action";
 
 
 const DashboardMain = ({ children }) => {
@@ -35,6 +35,7 @@ const DashboardMain = ({ children }) => {
     }else{
       dispatch({ type : "NO_ERROR"})
       getUser(getData);
+      getShopProfile( getShopProfileCallBack )
     }
   },[])
 
@@ -43,6 +44,11 @@ const DashboardMain = ({ children }) => {
     dispatch(getUserData(data));
   }
   
+  function getShopProfileCallBack(data){
+
+    dispatch(getShopData(data))
+
+  }
 
   useEffect(()=>{
     if (STORE.getErrorPage.Err == true) {

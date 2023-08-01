@@ -60,7 +60,7 @@ export const removeProgress = (data) => {
 
 
 
-// 
+//  callStartLoading
 
 export const callStartLoading = (data) => {
 
@@ -68,11 +68,23 @@ export const callStartLoading = (data) => {
 
 }
 
+// removeStartLoading
 
 export const removeStartLoading = (data) => {
 
   return { type : "REMOVE_LOADING", payload : data}
 
 }
+
+// getShopData
+export  const getShopData = (data)=>{
+
+  return {type : "GET_SHOP_DATA", payload : data}
+
+}
+
+
+
+
 
 

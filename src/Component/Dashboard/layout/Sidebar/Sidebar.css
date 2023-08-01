@@ -98,7 +98,14 @@
 
   .nav-link-icon {
     width: 22px;
+    /* color: white; */
+    /* background-color: white; */
   }
+
+  #dark  .nav-link-icon{
+    filter: invert(1);
+  }
+
   .nav-link-text {
     text-transform: capitalize;
     margin-left: 15px;
