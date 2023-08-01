@@ -35,6 +35,7 @@ const Login = () => {
         dispatch(callStartLoading(true));
 
         setTimeout(()=>{
+          dispatch({ type : "NO_ERROR"})
           getUser(getData)
         },2000)
 

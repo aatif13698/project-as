@@ -12,11 +12,11 @@ const ContentTop = () => {
 
 
   function logOutFunc  (){
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
 
     // dispatch({ type : "GOT_ERROR"})
 
-    navigate("/signUp")
+    // navigate("/signUp")
   }
 
 
@@ -25,7 +25,7 @@ const ContentTop = () => {
     <div className="main-content-top">
         <div className="content-top-left">
             <button type="button" className="sidebar-toggler" onClick={() => toggleSidebar() }>
-                <img src={ iconsImgs.menu } alt="" />
+                <img src={ iconsImgs.menu1 } alt="" />
             </button>
             <h3 className="content-top-title" style={{margin:"0px"}}>Dashboard</h3>
         </div>
@@ -34,7 +34,7 @@ const ContentTop = () => {
                 <img src={ iconsImgs.search } alt="" />
             </button>
             <button className="notification-btn content-top-btn" onClick={logOutFunc}>
-                <img src={ iconsImgs.bell } />
+                <img src={ iconsImgs.bell1 } />
                 <span className="notification-btn-dot"></span>
             </button>
         </div>

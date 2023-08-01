@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 const ContentMain = ({children}) => {
   return (
-    <div className='mainContent'>
+    <div className='mainContent' style={{overflowX:"hidden"}}>
         
         {children}
 

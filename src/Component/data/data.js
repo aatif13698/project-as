@@ -1,18 +1,108 @@
 import { iconsImgs } from "../../utils/images";
 import { personsImgs } from "../../utils/images";
 
-export const navigationLinks = [
+export const navigationLinksForMedical = [
     { id: 1, title: 'Home', image: iconsImgs.home , to : "home"},
-    { id: 2, title: 'Shop', image: iconsImgs.budget, to : "home" },
-    { id: 3, title: 'Add Doctor', image: iconsImgs.doctor, to : "home" },
-    { id: 4, title: 'Edit Doctor', image: iconsImgs.wallet, to : "home" },
-    { id: 5, title: 'Discount', image: iconsImgs.bills, to : "home" },
-    { id: 6, title: 'Work List', image: iconsImgs.report, to : "/dashboard/todo" },
-    { id: 7, title: 'Test facility', image: iconsImgs.wallet , to : "home"},
-    { id: 8, title: 'Profile', image: iconsImgs.wealth, to : "home" },
-    { id: 9, title: 'Account', image: iconsImgs.user , to :"CreatProfile", to : "home"},
-    { id: 10, title: 'Settings', image: iconsImgs.gears, to : "home" }
+    { id: 2, title: 'Shop', image: iconsImgs.Shop, to : "home" },
+    { id: 3, title: 'Add Doctor', image: iconsImgs.doctor1, to : "home" },
+    { id: 4, title: 'Edit Doctor', image: iconsImgs.editProduct, to : "home" },
+    { id: 5, title: 'Discount', image: iconsImgs.discount, to : "home" },
+    { id: 6, title: 'Work List', image: iconsImgs.workList, to : "/dashboard/todo" },
+    { id: 7, title: 'Test facility', image: iconsImgs.testFacility , to : "home"},
+    { id: 8, title: 'Profile', image: iconsImgs.profile, to : "CreatProfileMedical" },
+    { id: 9, title: 'Account', image: iconsImgs.account , to : "home"},
+    { id: 0, title: 'Settings', image: iconsImgs.settings, subCategory : [
+        {
+            title : "Mode",
+            id : 1
+        },
+        {
+            title : "Logout",
+            id : 2
+        }
+    ] }
 ];
+
+
+export const navigationLinksForInstitute = [
+    { id: 1, title: 'Home', image: iconsImgs.home , to : "home"},
+    { id: 2, title: 'Institute', image: iconsImgs.institute, to : "home" },
+    { id: 3, title: 'Add Teacher', image: iconsImgs.teacher, to : "home" },
+    { id: 4, title: 'Edit Teacher', image: iconsImgs.editProduct, to : "home" },
+    { id: 5, title: 'New Batch', image: iconsImgs.batches, to : "home" },
+    { id: 6, title: 'Subjects', image: iconsImgs.subjects, to : "/dashboard/todo" },
+    { id: 7, title: 'Events', image: iconsImgs.event , to : "home"},
+    { id: 8, title: 'Memories', image: iconsImgs.memories, to : "home" },
+    { id: 9, title: 'Discount', image: iconsImgs.discount , to : "home"},
+    { id: 10, title: 'Profile', image: iconsImgs.account ,  to : "CreatProfileMedical"},
+    { id: 0, title: 'Settings', image: iconsImgs.settings,  subCategory : [
+        {
+            title : "Mode",
+            id : 1
+        },
+        {
+            title : "Logout",
+            id : 2
+        }
+    ] }
+];
+
+
+export const navigationLinksForShops = [
+    { id: 1, title: 'Home', image: iconsImgs.home , to : "home"},
+    { id: 2, title: 'Shop', image: iconsImgs.Shop, to : "home" },
+    { id: 3, title: 'Add Product', image: iconsImgs.addProducts, to : "home" },
+    { id: 4, title: 'Edit Product', image: iconsImgs.editProduct, to : "home" },
+    { id: 5, title: 'Discount', image: iconsImgs.discount, to : "home" },
+    { id: 6, title: 'Work List', image: iconsImgs.workList, to : "/dashboard/todo" },
+    { id: 7, title: 'Test facility', image: iconsImgs.testFacility , to : "home"},
+    { id: 8, title: 'Profile', image: iconsImgs.profile, to : "CreatProfileMedical" },
+    { id: 9, title: 'Account', image: iconsImgs.account ,  to : "home"},
+    { id: 0, title: 'Settings', image: iconsImgs.settings, subCategory : [
+        {
+            title : "Mode",
+            id : 1
+        },
+        {
+            title : "Logout",
+            id : 2
+        }
+    ] }
+];
+
+
+
+
+export const navigationLinksForPublic = [
+    { id: 1, title: 'Home', image: iconsImgs.home , to : "home"},
+    { id: 2, title: 'Doctors', image: iconsImgs.doctor1, to : "home" },
+    { id: 3, title: 'Medicals', image: iconsImgs.medical, to : "home" },
+    { id: 4, title: 'Coaching', image: iconsImgs.institute, to : "home" },
+    { id: 5, title: 'schools', image: iconsImgs.institute, to : "home" },
+    { id: 6, title: 'Teachers', image: iconsImgs.teacher, to : "/dashboard/todo" },
+    { id: 7, title: 'Shops', image: iconsImgs.Shop , to : "home"},
+    { id: 8, title: 'Profile', image: iconsImgs.profile, to : "CreatProfileMedical" },
+    { id: 9, title: 'Account', image: iconsImgs.account , to :"CreatProfile", to : "home"},
+    { id: 0, title: 'Settings', image: iconsImgs.settings, to : "home", subCategory : [
+        {
+            title : "Mode",
+            id : 1
+        },
+        {
+            title : "Logout",
+            id : 2
+        }
+    ] }
+];
+
+
+
+
+export const dataObj = {1 : navigationLinksForMedical, 2 : navigationLinksForInstitute, 3 : navigationLinksForShops, 4 : navigationLinksForPublic }
+
+
+
+
 
 export const transactions = [
     {

@@ -229,7 +229,7 @@ const SignUp = () => {
                   <option value="instituteOwner">Private Coaching</option>
                   <option value="instituteOwner">Private School</option>
                   <option value="shopOwne">Shop Owner</option>
-                  <option value="viewer">Viewner</option>
+                  <option value="viewer">Viewer</option>
                 </select>
                 {errors.userType && errors.userType.type === "required" && (
                   <span className="text-danger">This field is required</span>

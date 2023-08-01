@@ -1,22 +1,29 @@
 // icons svg images
-import alert from "../assets/icons/alert.svg";
-import bell from "../assets/icons/bell.svg";
-import bills from "../assets/icons/bills.svg";
-import budget from "../assets/icons/budget.svg";
-import card from "../assets/icons/card.svg";
-import check from "../assets/icons/check.svg";
-import empty_check from "../assets/icons/empty_check.svg";
-import gears from "../assets/icons/gears.svg";
-import home from "../assets/icons/home.svg";
-import menu from "../assets/icons/menu.svg";
-import plane from "../assets/icons/plane.svg";
-import plus from "../assets/icons/plus.svg";
-import report from "../assets/icons/report.svg";
-import search from "../assets/icons/search.svg";
-import user from "../assets/icons/user.svg";
-import wallet from "../assets/icons/wallet.svg";
-import wealth from "../assets/icons/wealth.svg";
-import doctor from '../assets/icons/doctor-284.svg'
+import Shop from '../assets/icons/store.svg'
+import doctor1 from '../assets/icons/doctor1.svg'
+import doctorEdit from '../assets/icons/doctor-edit.svg'
+import addProducts from '../assets/icons/addProducts.svg'
+import account from '../assets/icons/account.svg'
+import batches from '../assets/icons/batches.svg'
+import bell from '../assets/icons/bell.svg'
+import discount from '../assets/icons/discount.svg'
+import editProduct from '../assets/icons/editProduct.svg'
+import memories from '../assets/icons/memories.svg'
+import profile from '../assets/icons/profile.svg'
+import search from '../assets/icons/search.svg'
+import settings from '../assets/icons/settings.svg'
+import subjects from '../assets/icons/subjects.svg'
+import teacher from '../assets/icons/teacher.svg'
+import workList from '../assets/icons/workList.svg'
+import testFacility from '../assets/icons/testFacility.svg'
+import home from '../assets/icons/home.svg'
+import institute from '../assets/icons/institute.svg'
+import event from '../assets/icons/event.svg'
+import medical from '../assets/icons/medical.svg'
+import menu1 from '../assets/icons/menu1.svg'
+import menu2 from '../assets/icons/menu2.svg'
+import bell1 from '../assets/icons/bell1.svg'
+
 
 // person images
 import person_one from "../assets/images/person_one.jpg";
@@ -26,7 +33,7 @@ import person_four from "../assets/images/person_four.jpg";
 import avatar from "../assets/images/avtar.jpg";
 
 export const iconsImgs = {
-    alert, bell, bills, budget, card, check, empty_check, gears, home, menu, plane, plus, report, search, user, wallet, wealth, doctor
+      Shop, doctor1, doctorEdit, addProducts, account, batches, bell, discount, editProduct, memories, profile, search, settings, subjects, teacher, workList, testFacility, home, institute, event, medical, menu1, menu2, bell1
 }
 
 export const personsImgs = {

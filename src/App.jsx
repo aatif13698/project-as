@@ -23,14 +23,14 @@ import ForgetPassword from "./Component/ForgetPassword/ForgetPassword";
 import ResetPassword from "./Component/ResetPassword/ResetPassword";
 import LoadingPage from "./Component/Common/LoadiingPage/LoadingPage";
 import { ThemeContext } from "./Component/context/ThemeContext";
+import Private from "./Component/Common/Private";
+import CreactProfileForMedical from "./Component/CreactProfileForMedical/CreactProfileForMedical";
+import Public from "./Component/Common/Public";
 
 function App() {
-
   const { theme } = useContext(ThemeContext);
 
   console.log("apptheme", theme);
-
-
 
   useEffect(() => {
     Aos.init();
@@ -39,37 +39,35 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-    <div className={`App `} id={theme}> 
+    <div className={`App `} id={theme}>
       <ToastContainer />
       <BrowserRouter>
-
-        <LoadingPage/>
+        <LoadingPage />
 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route index path="login" element={<Login />} />
-          <Route path="signUp" element={<SignUp />} />
-          <Route path="ConfirmMail/:email/:token" element={<ConfirmMail />} />
-          <Route path="emailVerify/:id/:token" element={<VerifyMail />} />
-          <Route path="forgetPassword" element={<ForgetPassword />} />
-          <Route  path="resetPassword/:email" element={<ResetPassword/>}/>
-
-          <Route path="dashboard" element={<DashboardMain />}>
-
-            <Route index  element={<UserHome />} />
-            <Route path="home" element={<UserHome />} />
-            <Route path="CreatProfile" element={<CreatProfile />} />
-            <Route path="todo" element={<Todo />} />
-            <Route path="todo/doneTodo" element={<DoneTodo />} />
-            <Route path="todo/notdonetodo" element={<NotDoneTodo />} />
-
-           
+          
+          <Route element={<Public />}>
+            <Route path="/" element={<Home />} />
+            <Route index path="login" element={<Login />} />
+            <Route path="signUp" element={<SignUp />} />
+            <Route path="ConfirmMail/:email/:token" element={<ConfirmMail />} />
+            <Route path="emailVerify/:id/:token" element={<VerifyMail />} />
+            <Route path="forgetPassword" element={<ForgetPassword />} />
+            <Route path="resetPassword/:email" element={<ResetPassword />} />
           </Route>
 
-
-
-
-          
+          <Route element={<Private />}>
+            <Route path="dashboard" element={<DashboardMain />}>
+              <Route index element={<UserHome />} />
+              <Route path="home" element={<UserHome />} />
+              {/* <Route path="CreatProfile" element={<CreatProfile />} /> */}
+              <Route path="todo" element={<Todo />} />
+              <Route path="todo/doneTodo" element={<DoneTodo />} />
+              <Route path="todo/notdonetodo" element={<NotDoneTodo />} />
+              <Route path="CreatProfileMedical" element={<CreactProfileForMedical />} />
+              
+            </Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

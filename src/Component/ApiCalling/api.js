@@ -367,14 +367,18 @@ export async function checkedOneTask(datas, checkedCallBack) {
 // uploadProfile
 
 
-export async function uploadProfile(datas){
+export async function uploadProfile(datas, uploadProfileCallback){
   try {
     const { data : {errorCode, message}} = await axios.post(
       "http://localhost:8080/api/user/uploadProfile",
       datas
     );
     if(errorCode == 200){
-       toast.success(message)
+       toast.success(message);
+       uploadProfileCallback()
+    }else{
+      toast.warning(message, errorCode)
+      // uploadProfileCallback()
     }
   } catch (err) {
     console.log("checkedERR", err);

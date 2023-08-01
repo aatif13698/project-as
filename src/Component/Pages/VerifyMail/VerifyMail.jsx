@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { VerifyUserMail } from '../../ApiCalling/api';
 import './VerifyMail.css'
+import { ThemeContext } from '../../context/ThemeContext';
 
 const VerifyMail = () => {
 
     const navigate = useNavigate()
     const param = useParams();
     const {id, token} = param;
+
+    const {theme} = useContext(ThemeContext)
 
 function verifyFnc(){
 
@@ -31,7 +34,7 @@ function verifyUserMailCallBack(errorCode){
 
 
   return (
-    <div className="container-fluid verify_container" style={{ height: "100%" }}>
+    <div className="container-fluid verify_container" id="dark" >
       <div
         className="row justify-content-center align-items-center"
         style={{ height: "100%" }}
@@ -44,7 +47,6 @@ function verifyUserMailCallBack(errorCode){
             <button  onClick={verifyFnc}
                     type="submit"
                     className="btn"
-                    style={{ background: "#07f6ec", margin: "0px 6px" }}
                   >
                     Verify
                   </button>

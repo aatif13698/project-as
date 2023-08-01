@@ -1,0 +1,116 @@
+#creatProfile{
+    background-color: #c9e9e8;
+    box-shadow: 2px 8px 9px rgba(0,0,0,0.2);
+    padding: 12px 15px;
+    border-radius: 12px;
+}
+
+#dark #creatProfile{
+    background-color: #2a3a35;
+}
+
+#dark #creatProfile input{
+    background: #5fb2b5;
+  border: none;
+}
+
+#creatProfile label{
+    margin: 4px;
+}
+
+#about{
+    border: 1px solid #e4e0e0;
+    padding: 12px 10px;
+    border-radius: 12px;
+    font-size: 15px;
+} 
+
+#dark #about{
+    background: #5fb2b5;
+    border: none;
+}
+
+
+#profile_btn{
+    background:  #3ce2ad;
+    box-shadow: 2px 6px 21px rgba(0,0,0, 0.2);
+    padding: 10px 50px;
+    font-size: 15px;
+    border-radius: 20px;
+    color: white;
+}
+
+#dark #profile_btn {
+    background: #5fb2b5;
+    box-shadow: 2px 6px 21px rgb(34 229 224 / 20%);
+}
+
+#dark #profile_btn:hover{
+    background-color: #3c6263;
+}
+
+
+#profile_btn:hover{
+    background:  white;
+    color: black;
+    cursor: pointer;
+}
+
+
+#creatProfile h5{
+    color: #3ce2ad;
+}
+
+
+#profileContainer{
+    background: linear-gradient(26deg, rgb(24 223 115 / 44%) 34%, rgb(115 191 194 / 65%) 31%);
+    /* height: 50vh; */
+    border-radius: 12px;
+    box-shadow: 1px 10px 10px rgba(0,0,0,0.2);
+    margin: 50px 0px;
+}
+
+#dark #profileContainer {
+    background: linear-gradient(26deg, rgb(67 108 86 / 44%) 34%, rgb(18 149 155 / 65%) 31%);
+}
+
+
+#profileImage{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: -1px 7px 10px rgba(0,0,0,0.2);
+}
+
+
+#profileText p{
+    margin-bottom: 0px;
+}
+
+#profileEdit{
+    background:  #3ce2ad;
+    box-shadow: 2px 6px 21px rgba(0,0,0, 0.2);
+    padding: 10px 50px;
+    font-size: 15px;
+    border-radius: 20px;
+    color: white;
+    border: none;
+}
+
+#dark #profileEdit{
+
+    background: #5fb2b5;
+    box-shadow: 2px 6px 21px rgb(34 229 224 / 20%);
+
+}
+
+#profileEdit:hover{
+    background:  white;
+    color: black;
+    cursor: pointer;
+}
+
+#dark #profileEdit:hover{
+    background-color: #3c6263;
+}
+

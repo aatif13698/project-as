@@ -4,7 +4,12 @@
     flex: 1;
     /* padding: 10px 32px 32px 32px; */
     height: 100vh;
+    overflow-x: hidden;
     /* overflow-y: scroll; */
+  }
+
+  #dark .main-content{
+    background-color: #0061645e;
   }
 
   @media screen and (max-width: 1400px) {

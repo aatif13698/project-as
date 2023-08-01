@@ -6,6 +6,8 @@ import { SidebarProvider } from "../context/sidebarContext";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useNavigate } from "react-router-dom";
+import { getUser } from "../ApiCalling/api";
+import { getUserData } from "../Action";
 
 
 const DashboardMain = ({ children }) => {
@@ -14,29 +16,33 @@ const DashboardMain = ({ children }) => {
   const navigate = useNavigate()
 
   const STORE = useSelector((state) => state);
-  const err = useSelector((state) => state.getErrorPage.Err);
+  // const err = useSelector((state) => state.getErrorPage.Err);
   const dispatch = useDispatch()
 
   const token = localStorage.getItem("token");
+
+  // const STORE = useSelector((state)=> state?.getUserData?.userData?.user?.pdf)
   
-  console.log("tokne", token);
-  console.log("errrr", err);
-
-  console.log("pageERR", STORE.getErrorPage.Err);
-
-
-
-
-  console.log("DashErr", STORE );
+  // console.log("tokne", token);
+  // console.log("errrr", err);
+  // console.log("pageERR", STORE.getErrorPage.Err);
+  // console.log("DashErr", STORE );
+  // console.log("StoreDash", STORE);
 
   useEffect(()=>{
     if(token == null){
       dispatch({ type : "GOT_ERROR"})
     }else{
       dispatch({ type : "NO_ERROR"})
+      getUser(getData);
     }
   },[])
 
+
+  function getData(data) {
+    dispatch(getUserData(data));
+  }
+  
 
   useEffect(()=>{
     if (STORE.getErrorPage.Err == true) {

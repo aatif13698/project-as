@@ -11,6 +11,11 @@
      background-color: #3ce2ad;
   }
 
+
+  #dark .main-content-top{
+    background-color: #2a3a35;
+  }
+
   .sidebar-toggler {
     display: flex;
     align-items: center;
