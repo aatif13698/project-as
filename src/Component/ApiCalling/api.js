@@ -478,21 +478,28 @@ export async function uploadshopProfile(datas, uploadShopProfileCallback){
 // getShopProfile
 
 export async function getShopProfile (getShopProfileCallBack) {
-  console.log("hhhhhhh");
+  
+  toast.warning("go")
 
   let token = localStorage.getItem("token");
+
+  toast.error(token)
 
   // console.log("token", token);
   try {
 
+    toast.error("try")
     const {
       data: { errorCode, message, shopProfile },
     } = await axios.get("http://localhost:8080/api/user/getMedicalShopProfile", {
       headers: { Authorization: `Bearer ${token}` },
     });
 
+    toast.error("try Success")
+
     if(errorCode == 200){
 
+      toast.success("get shop success")
       // console.log("shopdata", shopProfile);
 
     getShopProfileCallBack(shopProfile)
@@ -536,7 +543,7 @@ export async function uploadInstituteProfile(datas, uploadInstituteProfileCallba
 // getInstituteProfile
 
 export async function getInstituteProfile (getInstituteProfileCallBack) {
-  console.log("hhhhhhh");
+  // console.log("hhhhhhh");
 
   let token = localStorage.getItem("token");
 

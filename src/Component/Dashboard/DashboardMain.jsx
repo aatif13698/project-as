@@ -6,7 +6,7 @@ import { SidebarProvider } from "../context/sidebarContext";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useNavigate } from "react-router-dom";
-import { getShopProfile, getUser } from "../ApiCalling/api";
+import { getInstituteProfile, getShopProfile, getUser } from "../ApiCalling/api";
 import { getShopData, getUserData } from "../Action";
 
 
@@ -21,7 +21,10 @@ const DashboardMain = ({ children }) => {
 
   const token = localStorage.getItem("token");
 
-  // const STORE = useSelector((state)=> state?.getUserData?.userData?.user?.pdf)
+  const user = useSelector((state)=> state?.getUserData?.userData?.user);
+
+
+  console.log("userDash", user);
   
   // console.log("tokne", token);
   // console.log("errrr", err);
@@ -35,9 +38,31 @@ const DashboardMain = ({ children }) => {
     }else{
       dispatch({ type : "NO_ERROR"})
       getUser(getData);
-      getShopProfile( getShopProfileCallBack )
+      
     }
   },[])
+
+  useEffect(()=>{
+    if(user?.userType == "instituteOwner"){
+
+      getInstituteProfile(getInstituteProfileCallBack);
+
+    }else if(user?.userType == "medicalOwner"){
+
+
+      getShopProfile( getShopProfileCallBack )
+      alert("yes")
+
+
+    }
+
+  },[user])
+
+
+  function getInstituteProfileCallBack(data) {
+    dispatch(getShopData(data));
+  }
+
 
 
   function getData(data) {

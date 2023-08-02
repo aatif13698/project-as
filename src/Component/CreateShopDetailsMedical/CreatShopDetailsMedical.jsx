@@ -10,8 +10,9 @@ import {
 } from "../ApiCalling/api";
 import shopImg from "../Assets/Images/medicalShopDemo3.png";
 import "./CreatShopDetailsMedical.css";
-
+import { Country, State, City } from "country-state-city";
 import Select from "react-dropdown-select";
+import { options } from "../data/data";
 
 const CreatShopDetailsMedical = () => {
   const [postImage, setPostImage] = useState(null);
@@ -27,105 +28,15 @@ const CreatShopDetailsMedical = () => {
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
 
-  const options = [
-    {
-      value: 1,
-      label: "General practitioner",
-    },
-    {
-      value: 2,
-      label: "Pediatrician",
-    },
-    {
-      value: 3,
-      label: "Otorhinolaryngology",
-    },
-    {
-      value: 4,
-      label: "Neurologist",
-    },
-    {
-      value: 5,
-      label: "Radiologist",
-    },
-    {
-      value: 6,
-      label: "Internal medicine",
-    },
-    {
-      value: 7,
-      label: "Psychiatrist",
-    },
-    {
-      value: 8,
-      label: "Surgeon",
-    },
-    {
-      value: 9,
-      label: "Dermatologist",
-    },
-    {
-      value: 10,
-      label: "Cardiologist",
-    },
-    {
-      value: 11,
-      label: "Oncologist",
-    },
-    {
-      value: 12,
-      label: "Orthopedic surgeon",
-    },
-    {
-      value: 13,
-      label: "Anesthesiologist",
-    },
-    {
-      value: 14,
-      label: "Ophthalmology",
-    },
-    {
-      value: 15,
-      label: "Pathologist",
-    },
-    {
-      value: 16,
-      label: "Dentist",
-    },
-    {
-      value: 17,
-      label: "Pulmonologist",
-    },
-    {
-      value: 18,
-      label: "Gastroenterologist",
-    },
-    {
-      value: 19,
-      label: "Urologist",
-    },
-    {
-      value: 20,
-      label: "Geriatrics",
-    },
-    {
-      value: 21,
-      label: "Neurology",
-    },
-    {
-      value: 22,
-      label: "Rheumatologist",
-    },
-    
-  ];
+  // count / state / city management start
 
-  // console.log("emailssss", email);
-  // console.log("shop", shop);
-  // console.log("shopExist", shopExist);
-  // console.log("user", user);
-  // console.log("existProfile", profileExist);
+  let countryData = Country.getAllCountries();
+  const [stateData, setStateData] = useState();
+  const [cityData, setCityData] = useState();
 
-  const dispatch = useDispatch();
+  const [country, setCountry] = useState(countryData[0]);
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
 
   const {
     register,
@@ -138,6 +49,58 @@ const CreatShopDetailsMedical = () => {
     mode: "onChange",
   });
 
+  useEffect(() => {
+    setStateData(State.getStatesOfCountry(country?.isoCode));
+  }, [country]);
+
+  useEffect(() => {
+    setCityData(City.getCitiesOfState(country?.isoCode, state?.isoCode));
+  }, [state]);
+
+  useEffect(() => {
+    stateData && setState(stateData[0]);
+  }, [stateData]);
+
+  useEffect(() => {
+    cityData && setCity(cityData[0]);
+  }, [cityData]);
+
+  // select
+  const handleCountryChange = (selected) => {
+    setCountry(selected[0]);
+    setValue("country", selected[0]?.name);
+  };
+
+  const handleStateChange = (selected) => {
+    setState(selected[0]);
+    setValue("state", selected[0]?.name);
+  };
+
+  const handleCityChange = (selected) => {
+    setCity(selected[0]);
+    setValue("city", selected[0]?.name);
+
+  };
+
+  const handleDoctorCategories = (selected) => {
+
+    // console.log("doctor", selected);
+
+    setValue("doctorCategories", selected )
+
+  }
+
+  // console.log("countryData", country);
+  // console.log("stateData", stateData);
+  // console.log("cityData", cityData);
+  // console.log("country", country);
+  // console.log("state", state);
+  // console.log("city", city);
+
+  // count / state / city management end
+
+  const dispatch = useDispatch();
+
   function onSubmit(data) {
     const {
       aboutShop,
@@ -148,11 +111,20 @@ const CreatShopDetailsMedical = () => {
       shopName,
       shopTime,
       state,
+      country,
       street,
       totalDoctor,
       zipCode,
+      doctorCategories
     } = data;
-    console.log("12", data);
+
+    const doctorCategories1 =  JSON.stringify(doctorCategories);
+
+    // console.log("12", data);
+    // console.log("13", doctorCategories);
+    // console.log("14", country);
+    // console.log("15", state);
+    // console.log("16", city);
 
     const formData = new FormData();
     formData.append("img", selectedImage);
@@ -167,7 +139,10 @@ const CreatShopDetailsMedical = () => {
     formData.append("street", street);
     formData.append("city", city);
     formData.append("state", state);
+    formData.append("country", country);
     formData.append("zipCode", zipCode);
+    formData.append("doctorCategories", doctorCategories1);
+
     // console.log("data", formData);
     uploadshopProfile(formData, uploadShopProfileCallback);
   }
@@ -176,21 +151,19 @@ const CreatShopDetailsMedical = () => {
     reset();
     setPostImage(null);
     setShopExist(true);
-    getUser(getData);
+    // getUser(getData);
     getShopProfile(getShopProfileCallBack);
   }
 
-  function getshop() {
-    getShopProfile(getShopProfileCallBack);
-  }
+  
 
   function getShopProfileCallBack(data) {
     dispatch(getShopData(data));
   }
 
-  function getData(data) {
-    dispatch(getUserData(data));
-  }
+  // function getData(data) {
+  //   dispatch(getUserData(data));
+  // }
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -211,11 +184,14 @@ const CreatShopDetailsMedical = () => {
     setValue("aboutShop", shop?.aboutShop);
     setValue("totalDoctor", shop?.totalDoctor);
     setValue("phoneNumber", shop?.phone);
+    setValue("country", shop?.country);
     setValue("street", shop?.street);
     setValue("city", shop?.city);
     setValue("state", shop?.state);
     setValue("zipCode", shop?.zipCode);
     setValue("email3", shop?.email3);
+    // setCity(shop?.city)
+    setValue("doctorCategories", shop?.doctorCategories)
   }
 
   useEffect(() => {
@@ -526,41 +502,154 @@ const CreatShopDetailsMedical = () => {
                     )}
                   </div>
                 </div>
-
-                <div className="row flex-md-row flex-column mb-3">
-                  <div className="col d-flex flex-column">
-                    <label htmlFor="aboutShop">About Shop:</label>
-                    <textarea
-                      id="about"
-                      name="aboutShop"
-                      placeholder="Enter between 20 to 30 words...."
-                      rows="4"
-                      cols="45"
-                      {...register("aboutShop", {
-                        required: true,
-                      })}
-                    ></textarea>
-                    {errors.aboutShop &&
-                      errors.aboutShop.type === "required" && (
-                        <span className="text-danger">
-                          This field is required
-                        </span>
-                      )}
-                  </div>
-                  <div style={{margin:"12px 0px"}}>
-                    <Select options={options} multi placeholder="Select Doctors" style={{ borderRadius:"6px", fontSize:"20px", color:"black"}} />
-                  </div>
-                </div>
-
-                <h5>Shop Address</h5>
-
                 <div
-                  // data-aos="fade-left"
-                  // data-aos-duration="500"
-                  // data-aos-delay={1200}
                   className="row flex-md-row flex-column mb-3"
                 >
                   <div className="col">
+                    {/* <label id="login_label" htmlFor="name">
+                      Street
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control login_input"
+                      placeholder="Street"
+                      {...register("street", {
+                        required: true,
+                      })}
+                    />
+                    {errors.street && errors.street.type === "required" && (
+                      <span className="text-danger">
+                        This field is required
+                      </span>
+                    )} */}
+
+                    <label htmlFor="">Country</label>
+                    <Select
+                      options={countryData}
+                      value={country}
+                      {...register("country", {
+                        required: true,
+                      })}
+                      onChange={(selected) => handleCountryChange(selected)}
+                      labelField="name"
+                      valueField="isoCode"
+                      searchable={true}
+                      placeholder="Select Country Name"
+                      style={{
+                        borderRadius: "6px",
+                        fontSize: "20px",
+                        color: "black",
+                      }}
+                    />
+                    {errors.country && errors.country.type === "required" && (
+                      <span className="text-danger">
+                        This field is required
+                      </span>
+                    )}
+                  </div>
+                  <div className="col">
+                    {/* <label id="login_label" htmlFor="name">
+                      City
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control login_input"
+                      placeholder="City"
+                      {...register("city", {
+                        required: true,
+                      })}
+                    />
+                    {errors.city && errors.city.type === "required" && (
+                      <span className="text-danger">
+                        This field is required
+                      </span>
+                    )} */}
+
+                    <label htmlFor="">State</label>
+                    <Select
+                      options={stateData}
+                      value={state}
+                      {...register("state", {
+                        required: true,
+                      })}
+                      onChange={(selected) => handleStateChange(selected)}
+                      labelField="name"
+                      valueField="isoCode"
+                      placeholder="Select State Name"
+                      style={{
+                        borderRadius: "6px",
+                        fontSize: "20px",
+                        color: "black",
+                      }}
+                    />
+                    {errors.state && errors.state.type === "required" && (
+                      <span className="text-danger">
+                        This field is required
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row flex-md-row flex-column mb-3">
+                  <div className="col">
+                    {/* <label id="login_label" htmlFor="name">
+                      State
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control login_input"
+                      placeholder="State"
+                      {...register("state", {
+                        required: true,
+                      })}
+                    />
+                    {errors.state && errors.state.type === "required" && (
+                      <span className="text-danger">
+                        This field is required
+                      </span>
+                    )} */}
+
+                    <label htmlFor="">City</label>
+                    <Select
+                      options={cityData}
+                      value={city}
+                      {...register("city", {
+                        required: true,
+                      })}
+                      onChange={(selected) => handleCityChange(selected)}
+                      labelField="name"
+                      valueField="name"
+                      placeholder="Select Citry Name"
+                      style={{
+                        borderRadius: "6px",
+                        fontSize: "20px",
+                        color: "black",
+                      }}
+                    />
+                    {errors.city && errors.city.type === "required" && (
+                      <span className="text-danger">
+                        This field is required
+                      </span>
+                    )}
+                  </div>
+                  <div className="col">
+                    {/* <label id="login_label" htmlFor="name">
+                      Zip Code
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control login_input"
+                      placeholder="Zip code"
+                      {...register("zipCode", {
+                        required: true,
+                      })}
+                    />
+                    {errors.zipCode && errors.zipCode.type === "required" && (
+                      <span className="text-danger">
+                        This field is required
+                      </span>
+                    )} */}
+
                     <label id="login_label" htmlFor="name">
                       Street
                     </label>
@@ -578,50 +667,9 @@ const CreatShopDetailsMedical = () => {
                       </span>
                     )}
                   </div>
-                  <div className="col">
-                    <label id="login_label" htmlFor="name">
-                      City
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control login_input"
-                      placeholder="City"
-                      {...register("city", {
-                        required: true,
-                      })}
-                    />
-                    {errors.city && errors.city.type === "required" && (
-                      <span className="text-danger">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
                 </div>
 
-                <div
-                  // data-aos="fade-left"
-                  // data-aos-duration="500"
-                  // data-aos-delay={1400}
-                  className="row flex-md-row flex-column mb-3"
-                >
-                  <div className="col">
-                    <label id="login_label" htmlFor="name">
-                      State
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control login_input"
-                      placeholder="State"
-                      {...register("state", {
-                        required: true,
-                      })}
-                    />
-                    {errors.state && errors.state.type === "required" && (
-                      <span className="text-danger">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
+                <div className="row flex-md-row flex-column mb-3">
                   <div className="col">
                     <label id="login_label" htmlFor="name">
                       Zip Code
@@ -640,9 +688,44 @@ const CreatShopDetailsMedical = () => {
                       </span>
                     )}
                   </div>
-
-                  
+                  <div className="col d-flex flex-column">
+                    <label htmlFor="">Categories</label>
+                    <Select
+                      options={options}
+                      multi
+                      placeholder="Select Doctors"
+                      style={{
+                        borderRadius: "6px",
+                        fontSize: "20px",
+                        color: "black",
+                      }}
+                      {...register("doctorCategories", {
+                        required: true,
+                      })}
+                      onChange={(selected) => handleDoctorCategories(selected)}
+                    />
+                  </div>
+                 
                 </div>
+                <div className="row flex-md-row flex-column mb-3" style={{margin:"0px"}}>
+                    <label htmlFor="aboutShop">About Shop:</label>
+                    <textarea
+                      id="about"
+                      name="aboutShop"
+                      placeholder="Enter between 20 to 30 words...."
+                      rows="4"
+                      cols="45"
+                      {...register("aboutShop", {
+                        required: true,
+                      })}
+                    ></textarea>
+                    {errors.aboutShop &&
+                      errors.aboutShop.type === "required" && (
+                        <span className="text-danger">
+                          This field is required
+                        </span>
+                      )}
+                  </div>
 
                 <div className="text-center">
                   <button
