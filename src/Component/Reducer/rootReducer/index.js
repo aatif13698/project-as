@@ -6,9 +6,10 @@ import progress from "../progress";
 import startLoading from "../StartLoading";
 import getErrorPage from "../getErrorPage";
 import getShopDetailsM from "../getShopDetailsM";
+import getUserProfile from "../getUserProfile";
 
 
 
-const rootReducer = combineReducers({getUserData,getUserTodo, getDoneList, progress, startLoading, getErrorPage, getShopDetailsM});
+const rootReducer = combineReducers({getUserData,getUserTodo, getDoneList, progress, startLoading, getErrorPage, getShopDetailsM, getUserProfile});
 
 export default rootReducer;

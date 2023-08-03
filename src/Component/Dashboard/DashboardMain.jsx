@@ -6,8 +6,8 @@ import { SidebarProvider } from "../context/sidebarContext";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useNavigate } from "react-router-dom";
-import { getInstituteProfile, getShopProfile, getUser } from "../ApiCalling/api";
-import { getShopData, getUserData } from "../Action";
+import { getInstituteProfile, getProfileData, getShopProfile, getUser } from "../ApiCalling/api";
+import { getShopData, getUserData, getUserProfile } from "../Action";
 
 
 const DashboardMain = ({ children }) => {
@@ -24,13 +24,13 @@ const DashboardMain = ({ children }) => {
   const user = useSelector((state)=> state?.getUserData?.userData?.user);
 
 
-  console.log("userDash", user);
+  // console.log("userDash", user);
   
   // console.log("tokne", token);
   // console.log("errrr", err);
   // console.log("pageERR", STORE.getErrorPage.Err);
   // console.log("DashErr", STORE );
-  // console.log("StoreDash", STORE);
+  console.log("StoreDash", STORE);
 
   useEffect(()=>{
     if(token == null){
@@ -38,25 +38,45 @@ const DashboardMain = ({ children }) => {
     }else{
       dispatch({ type : "NO_ERROR"})
       getUser(getData);
+      getInstituteProfile(getInstituteProfileCallBack);
+      getShopProfile( getShopProfileCallBack )
+      getProfileData(getProfileCallBack)
       
     }
   },[])
 
-  useEffect(()=>{
-    if(user?.userType == "instituteOwner"){
-
-      getInstituteProfile(getInstituteProfileCallBack);
-
-    }else if(user?.userType == "medicalOwner"){
-
-
-      getShopProfile( getShopProfileCallBack )
-      alert("yes")
+  
+  function getData(data) {
+    dispatch(getUserData(data));
+  }
+  
 
 
-    }
+  function  getProfileCallBack(data) {
 
-  },[user])
+    dispatch(getUserProfile(data))    
+    
+  }
+
+
+
+
+
+
+  // useEffect(()=>{
+  //   if(user?.userType == "instituteOwner"){
+
+
+  //     console.log("222");
+  //     getInstituteProfile(getInstituteProfileCallBack);
+
+  //   }else if(user?.userType == "medicalOwner"){
+
+  //     getShopProfile( getShopProfileCallBack )
+
+  //   }
+
+  // },[user])
 
 
   function getInstituteProfileCallBack(data) {
@@ -65,10 +85,6 @@ const DashboardMain = ({ children }) => {
 
 
 
-  function getData(data) {
-    dispatch(getUserData(data));
-  }
-  
   function getShopProfileCallBack(data){
 
     dispatch(getShopData(data))

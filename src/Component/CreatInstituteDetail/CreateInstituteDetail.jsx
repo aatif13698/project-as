@@ -215,6 +215,11 @@ const CreateInstituteDetail = () => {
     }
   }, [shop]);
 
+
+  // useEffect(()=>{
+  //   getInstituteProfile(getInstituteProfileCallBack);
+  // },[])
+
   return (
     <div className="container-fluid" style={{ padding: "0px", position:"relative" }} >
 
@@ -448,7 +453,7 @@ const CreateInstituteDetail = () => {
                       className="form-control login_input"
                       placeholder="from ___ to ___"
                       {...register("Timming", {
-                        required: true,
+                        // required: true,
                       })}
                     />
                     {errors.Timming && errors.Timming.type === "required" && (
@@ -466,7 +471,7 @@ const CreateInstituteDetail = () => {
                       className="form-control login_input"
                       placeholder="Number of Teachers Available"
                       {...register("totalTeachers", {
-                        required: true,
+                        // required: true,
                       })}
                     />
                     {errors.totalTeachers &&
@@ -487,13 +492,13 @@ const CreateInstituteDetail = () => {
                       type="number"
                       className="form-control login_input"
                       placeholder="Phone Number"
-                      {...register("phoneNumber", {
-                        required: true,
-                        pattern: {
-                          value: /^[0-9]{10}$/i,
-                          message: "Please enter a valid 10-digit phone number",
-                        },
-                      })}
+                      // {...register("phoneNumber", {
+                      //   required: true,
+                      //   pattern: {
+                      //     value: /^[0-9]{10}$/i,
+                      //     message: "Please enter a valid 10-digit phone number",
+                      //   },
+                      // })}
                     />
                     {errors.phoneNumber &&
                       errors.phoneNumber.type === "required" && (
@@ -517,7 +522,7 @@ const CreateInstituteDetail = () => {
                       className="form-control login_input"
                       placeholder="Enter Email"
                       {...register("email4", {
-                        required: true,
+                        // required: true,
                       })}
                     />
                     {errors.email4 && errors.email4.type === "required" && (
@@ -682,7 +687,7 @@ const CreateInstituteDetail = () => {
                       className="form-control login_input"
                       placeholder="Street"
                       {...register("street", {
-                        required: true,
+                        // required: true,
                       })}
                     />
                     {errors.street && errors.street.type === "required" && (
@@ -703,7 +708,7 @@ const CreateInstituteDetail = () => {
                       className="form-control login_input"
                       placeholder="Zip code"
                       {...register("zipCode", {
-                        required: true,
+                        // required: true,
                       })}
                     />
                     {errors.zipCode && errors.zipCode.type === "required" && (
@@ -726,7 +731,7 @@ const CreateInstituteDetail = () => {
                       color: "black",
                     }}
                     {...register("teacherCategories", {
-                      required: true,
+                      // required: true,
                     })}
                     onChange={(selected) => handleTeacherCategories(selected)}
                   />
@@ -748,7 +753,7 @@ const CreateInstituteDetail = () => {
                       rows="4"
                       cols="20"
                       {...register("aboutInstitute", {
-                        required: true,
+                        // required: true,
                       })}
                     ></textarea>
                     {errors.aboutInstitute &&
@@ -767,7 +772,7 @@ const CreateInstituteDetail = () => {
                       className="form-control login_input"
                       placeholder="Enter From class to class"
                       {...register("fromTo", {
-                        required: true,
+                        // required: true,
                       })}
                     />
                     {errors.fromTo && errors.fromTo.type === "required" && (

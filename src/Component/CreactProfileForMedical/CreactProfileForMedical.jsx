@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, uploadProfile } from "../ApiCalling/api";
-import { getUserData } from "../Action";
+import { getProfileData, getUser, uploadProfile } from "../ApiCalling/api";
+import { getUserData, getUserProfile } from "../Action";
 import avatar from "../Assets/Images/profile.png";
 import "./CreatProfileForMedical.css";
 
@@ -16,7 +16,7 @@ const CreactProfileForMedical = () => {
     (state) => state?.getUserData?.userData?.user?.email
   );
   const profile = useSelector(
-    (state) => state?.getUserData?.userData?.user?.pdf
+    (state) => state?.getUserProfile?.userProfile
   );
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
@@ -75,11 +75,17 @@ const CreactProfileForMedical = () => {
     setPostImage(null);
     setProfileExist(true);
     getUser(getData);
+    getProfileData(getProfileCallBack)
   }
+
+  
 
   function getData(data) {
     dispatch(getUserData(data));
   }
+
+  
+
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -94,20 +100,24 @@ const CreactProfileForMedical = () => {
   function editProfile() {
     setProfileExist(false);
 
-    setValue("firstName", user?.firstName);
-    setValue("lastName", user?.lastName);
-    setValue("about", user?.about);
-    setValue("phoneNumber", user?.phone);
-    setValue("street", user?.street);
-    setValue("city", user?.city);
-    setValue("state", user?.state);
-    setValue("zipCode", user?.zipCode);
-    setValue("email2", user?.email2);
+    setValue("firstName", profile?.firstName);
+    setValue("lastName", profile?.lastName);
+    setValue("about", profile?.about);
+    setValue("phoneNumber", profile?.phone);
+    setValue("street", profile?.street);
+    setValue("city", profile?.city);
+    setValue("state", profile?.state);
+    setValue("zipCode", profile?.zipCode);
+    setValue("email2", profile?.email2);
   }
+
+
 
   useEffect(() => {
     setName(user?.name);
   }, [user]);
+
+
 
   useEffect(() => {
     if (profile) {
@@ -116,6 +126,22 @@ const CreactProfileForMedical = () => {
       setProfileExist(false);
     }
   }, [profile]);
+
+
+
+
+
+  // useEffect(()=>{
+
+  //   getProfileData(getProfileCallBack)
+
+  // },[])
+  
+  function  getProfileCallBack(data) {
+
+    dispatch(getUserProfile(data))    
+    
+  }
 
   return (
     <div className="container-fluid">
@@ -143,7 +169,7 @@ const CreactProfileForMedical = () => {
                 <div className=" col-12 col-md-5 py-md-0 py-3 d-flex justify-content-center align-items-center">
                   <img
                     id="profileImage"
-                    src={`http://localhost:8080/userImages/${user.pdf}`}
+                    src={`http://localhost:8080/userImages/${profile?.pdf}`}
                     // src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1686779814~exp=1686780414~hmac=8eaa3044bc5a8a986d5b2e1eefd2ef9e3894822142aa0df3727bc1201f8e1a85"
                     alt="profile image"
                   />
@@ -160,15 +186,15 @@ const CreactProfileForMedical = () => {
 
                     <div style={{ margin: "18px 0px" }}>
                       <p>
-                        Name : {user?.firstName} {user?.lastName}
+                        Name : {profile?.firstName} {profile?.lastName}
                       </p>
-                      <p>About : {user.about}</p>
-                      <p>Email : {user?.email}</p>
-                      <p>Cell Phone : {user?.phone}</p>
+                      <p>About : {profile.about}</p>
+                      <p>Email : {profile?.email2}</p>
+                      <p>Cell Phone : {profile?.phone}</p>
                       <div>
                         <p>
-                          Address : {user?.street} {user?.city} {user?.state}{" "}
-                          {user?.zipCode}
+                          Address : {profile?.street} {profile?.city} {profile?.state}{" "}
+                          {profile?.zipCode}
                         </p>
                       </div>
                     </div>

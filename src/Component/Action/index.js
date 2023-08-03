@@ -16,6 +16,24 @@ export const deleteUserData = ()=>{
 }
 
 
+// getUserProfile
+
+export  const getUserProfile = (data)=>{
+
+  return {type : "GET_USER_PROFILE", payload : data}
+
+}
+
+// deleteUserProfile
+
+export const deleteUserProfile = ()=>{
+  return {type:"DELETE_USER_PROFILE"}
+}
+
+
+
+
+
 // getUserTodo
 export const getUserTodo = (data) => {
 
@@ -79,8 +97,15 @@ export const removeStartLoading = (data) => {
 // getShopData
 export  const getShopData = (data)=>{
 
+  console.log("0000 institute");
+
   return {type : "GET_SHOP_DATA", payload : data}
 
+}
+
+
+export const deleteShopData = () => {
+  return {type : "DELETE_SHOP_DATA"}
 }
 
 

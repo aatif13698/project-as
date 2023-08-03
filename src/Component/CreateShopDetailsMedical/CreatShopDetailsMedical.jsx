@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getShopData, getUserData } from "../Action";
 import {
+  getInstituteProfile,
   getShopProfile,
   getUser,
   uploadProfile,
@@ -205,6 +206,18 @@ const CreatShopDetailsMedical = () => {
       setShopExist(false);
     }
   }, [shop]);
+
+  
+  // useEffect(()=>{
+
+  //     getShopProfile( getShopProfileCallBack )
+
+  // },[])
+
+  
+  // function getInstituteProfileCallBack(data) {
+  //   dispatch(getShopData(data));
+  // }
 
   return (
     <div className="container-fluid" style={{ padding: "0px" }}>

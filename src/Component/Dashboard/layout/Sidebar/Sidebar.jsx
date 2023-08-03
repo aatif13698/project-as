@@ -8,7 +8,7 @@ import { SidebarContext } from "../../../context/sidebarContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../../ApiCalling/api";
-import { getUserData } from "../../../Action";
+import { deleteShopData, deleteUserProfile, getUserData } from "../../../Action";
 import activeLinkContext from "../../../context/activeLinkContext";
 import { ThemeContext } from "../../../context/ThemeContext";
 import { MdLightMode } from "react-icons/md";
@@ -85,6 +85,8 @@ const Sidebar = () => {
 
     localStorage.removeItem("token");
     localStorage.removeItem("reduxState")
+    dispatch(deleteShopData())
+    dispatch(deleteUserProfile())
     dispatch({ type : "GOT_ERROR"})
 
   }

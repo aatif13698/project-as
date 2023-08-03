@@ -416,7 +416,9 @@ export async function restPassword(data, resetCallback) {
 
 
 export async function uploadProfile(datas, uploadProfileCallback){
+  console.log("uploaadd");
   try {
+    console.log("11111");
     const { data : {errorCode, message}} = await axios.post(
       "http://localhost:8080/api/user/uploadProfile",
       datas
@@ -438,15 +440,29 @@ export async function uploadProfile(datas, uploadProfileCallback){
 // getProfile
 
 export async function getProfileData(getProfileCallBack) {
+  
+  console.log("profile dataxxxxxxx");
+
   let token = localStorage.getItem("token");
   try {
     const {
-      data: { errorCode, message, profileImage },
+      data: { errorCode, message, UserProfile },
     } = await axios.get("http://localhost:8080/api/user/getProfile", {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log("image", profileImage );
-    getProfileCallBack(profileImage)
+
+
+    if(errorCode == 200){
+      toast.success(message);
+    getProfileCallBack(UserProfile)
+
+    }else{
+      toast.warning(message)
+    }
+
+
+
+
   } catch (err) {
     console.log(err);
   }
@@ -489,9 +505,7 @@ export async function getShopProfile (getShopProfileCallBack) {
   try {
 
     toast.error("try")
-    const {
-      data: { errorCode, message, shopProfile },
-    } = await axios.get("http://localhost:8080/api/user/getMedicalShopProfile", {
+    const {data: { errorCode, message, shopProfile } } = await axios.get("http://localhost:8080/api/user/getMedicalShopProfile", {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -500,11 +514,12 @@ export async function getShopProfile (getShopProfileCallBack) {
     if(errorCode == 200){
 
       toast.success("get shop success")
-      // console.log("shopdata", shopProfile);
 
     getShopProfileCallBack(shopProfile)
 
 
+    }else{
+      toast.warning(message)
     }
 
 
@@ -543,7 +558,8 @@ export async function uploadInstituteProfile(datas, uploadInstituteProfileCallba
 // getInstituteProfile
 
 export async function getInstituteProfile (getInstituteProfileCallBack) {
-  // console.log("hhhhhhh");
+
+  console.log("institute");
 
   let token = localStorage.getItem("token");
 
@@ -559,10 +575,15 @@ export async function getInstituteProfile (getInstituteProfileCallBack) {
     if(errorCode == 200){
 
       // console.log("shopdata", shopProfile);
+      // console.log("yes institute");
+
+      toast.success(message)
 
       getInstituteProfileCallBack(instituteProfile)
 
 
+    }else{
+      toast.warning(message)
     }
 
 
