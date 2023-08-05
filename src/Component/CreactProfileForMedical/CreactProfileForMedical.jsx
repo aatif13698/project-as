@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileData, getUser, uploadProfile } from "../ApiCalling/api";
 import { getUserData, getUserProfile } from "../Action";
 import avatar from "../Assets/Images/profile.png";
 import "./CreatProfileForMedical.css";
+import activeLinkContext from "../context/activeLinkContext";
 
 const CreactProfileForMedical = () => {
   const [postImage, setPostImage] = useState(null);
@@ -20,6 +21,8 @@ const CreactProfileForMedical = () => {
   );
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
+  const {  setActiveLink } = useContext(activeLinkContext);
+
 
   // const { firstName, lastName, city, street, state, zipCode, about, phone } =
   //   user;
@@ -128,6 +131,11 @@ const CreactProfileForMedical = () => {
   }, [profile]);
 
 
+  useEffect(()=>{
+
+    setActiveLink(8)
+
+  },[])
 
 
 

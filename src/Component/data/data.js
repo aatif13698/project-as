@@ -4,7 +4,7 @@ import { personsImgs } from "../../utils/images";
 export const navigationLinksForMedical = [
   { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
   { id: 2, title: "Shop", image: iconsImgs.Shop, to: "CreatMedicalShop" },
-  { id: 3, title: "Add Doctor", image: iconsImgs.doctor1, to: "home" },
+  { id: 3, title: "Add Doctor", image: iconsImgs.doctor1, to: "addDoctor" },
   { id: 4, title: "Edit Doctor", image: iconsImgs.editProduct, to: "home" },
   { id: 5, title: "Discount", image: iconsImgs.discount, to: "home" },
   {
@@ -41,7 +41,7 @@ export const navigationLinksForInstitute = [
     image: iconsImgs.institute,
     to: "CreatInstituteDetail",
   },
-  { id: 3, title: "Add Teacher", image: iconsImgs.teacher, to: "home" },
+  { id: 3, title: "Add Teacher", image: iconsImgs.teacher, to: "addTeacher" },
   { id: 4, title: "Edit Teacher", image: iconsImgs.editProduct, to: "home" },
   { id: 5, title: "New Batch", image: iconsImgs.batches, to: "home" },
   {
@@ -51,9 +51,9 @@ export const navigationLinksForInstitute = [
     to: "/dashboard/todo",
   },
   { id: 7, title: "Events", image: iconsImgs.event, to: "home" },
-  { id: 8, title: "Memories", image: iconsImgs.memories, to: "home" },
+  { id: 10, title: "Memories", image: iconsImgs.memories, to: "home" },
   { id: 9, title: "Discount", image: iconsImgs.discount, to: "home" },
-  { id: 10, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
+  { id: 8, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
   {
     id: 0,
     title: "Settings",

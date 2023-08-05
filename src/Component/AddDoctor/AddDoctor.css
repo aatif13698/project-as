@@ -1,0 +1,186 @@
+.doctorImg {
+  width: 198px;
+  height: 203px;
+  /* clip-path: polygon(0 28%, 51% 0, 100% 29%, 100% 73%, 51% 100%, 0 71%); */
+  /* border */
+  box-shadow: 2px 9px 12px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border-radius: 55px 55px 55px 55px;
+  z-index: 3;
+}
+
+.doctorRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 71px;
+  height: 44vh;
+  margin-bottom: 5rem;
+
+}
+
+.docRow2 {
+  position: relative;
+  background: white;
+  box-shadow: 2px 9px 12px rgba(0, 0, 0, 0.4);
+}
+
+.docCol {
+  position: relative;
+}
+
+.docText{
+    z-index: 3;
+    margin: 33px 40px;
+}
+
+.docCol h3 {
+  z-index: 3;
+}
+
+.docCol::before {
+  content: "";
+  width: 135%;
+  background: #c4fffd;
+  height: 100%;
+  position: absolute;
+  border-radius: 40px 123px 123px 40px;
+  z-index: 2;
+  left: 0px;
+  box-shadow: 8px 0px 17px rgba(0, 0, 0, 0.3);
+}
+
+#dark .docCol::before {
+    background-color:  #71afad;
+ }
+
+.docRow2::before {
+  content: "";
+  top: 17%;
+  width: 3%;
+  height: 72%;
+  left: 0px;
+  background-color: #3ce2ad;
+  position: absolute;
+  border-radius: 0px 23px 0px 23px;
+  z-index: 3;
+  box-shadow: 4px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+#dark .docRow2::before{
+
+    background-color: #425851;
+
+}
+
+
+
+.docCol2 {
+  position: relative;
+}
+
+.docCol2::before {
+  content: "";
+  width: 137%;
+  height: 100%;
+  background-color: #89e1ff;
+  position: absolute;
+  right: 0px;
+  border-radius: 0px;
+  -webkit-border-radius: 0px 40px 40px 0px;
+  z-index: 1;
+}
+
+#dark .docCol2::before {
+    background-color: #5591a5;
+}
+
+
+.docLine{
+    position: absolute;
+    height: 4px;
+    background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52%);
+    width: 73%;
+}
+
+
+.docIcon{
+    width: 28px;
+    margin: 1px 10px 0px 0px;
+}
+
+.docSpan{
+    margin-top: 26px;
+}
+
+.docSpan p{
+  margin: 0px;
+}
+
+
+
+.docSpan span{
+    font-size: 1.2rem;
+}
+
+
+.doc_btn{
+  background:  #3ce2ad;
+    box-shadow: 2px 6px 21px rgba(0,0,0, 0.2);
+    padding: 12px 39px;
+    font-size: 12px;
+    border-radius: 20px;
+    color: white;
+    margin: 0px 4px;
+}
+
+.doc_btn:hover{
+  background:  white;
+  color: black;
+  cursor: pointer;
+}
+
+#dark .doc_btn{
+  background: #425851;
+    box-shadow: 2px 6px 21px rgb(109 217 214);
+}
+
+#dark .doc_btn:hover{
+  background-color: #23b3b8;
+}
+
+
+@media screen and (max-width: 768px) {
+  .docCol2::before {
+    width: 100%;
+    border-radius: 0px;
+    -webkit-border-radius: 40px 40px 0px 0px;
+  }
+
+  .docCol::before {
+    width: 100%;
+
+    height: 153%;
+
+    border-radius: 123px 123px 40px 40px;
+
+    bottom: 0px;
+  }
+
+  .docCol2{
+    padding: 35px 0px;
+  }
+
+
+  .doctorRow{
+
+    margin: 20rem 0px;
+
+  }
+
+
+  .docText{
+  margin: 33px 15px;
+
+}
+}

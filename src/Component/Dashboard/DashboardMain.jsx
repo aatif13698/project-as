@@ -6,8 +6,8 @@ import { SidebarProvider } from "../context/sidebarContext";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useNavigate } from "react-router-dom";
-import { getInstituteProfile, getProfileData, getShopProfile, getUser } from "../ApiCalling/api";
-import { getShopData, getUserData, getUserProfile } from "../Action";
+import { getAllDoctosOfParticularMedical, getAllTeachersOfParticularInstitute, getInstituteProfile, getProfileData, getShopProfile, getUser } from "../ApiCalling/api";
+import { getDoctorList, getShopData, getTeacherList, getUserData, getUserProfile } from "../Action";
 
 
 const DashboardMain = ({ children }) => {
@@ -41,6 +41,9 @@ const DashboardMain = ({ children }) => {
       getInstituteProfile(getInstituteProfileCallBack);
       getShopProfile( getShopProfileCallBack )
       getProfileData(getProfileCallBack)
+      getAllDoctosOfParticularMedical(getAllDoctorsCallback);
+
+      getAllTeachersOfParticularInstitute(getAllTeachersCallback)
       
     }
   },[])
@@ -59,6 +62,16 @@ const DashboardMain = ({ children }) => {
   }
 
 
+  function getAllDoctorsCallback(data) {
+    
+    dispatch(getDoctorList(data))
+  }
+
+
+  function getAllTeachersCallback(data) {
+  
+    dispatch(getTeacherList(data));
+  }
 
 
 

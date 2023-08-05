@@ -97,17 +97,50 @@ export const removeStartLoading = (data) => {
 // getShopData
 export  const getShopData = (data)=>{
 
-  console.log("0000 institute");
 
   return {type : "GET_SHOP_DATA", payload : data}
 
 }
 
-
+// deleteShopData
 export const deleteShopData = () => {
   return {type : "DELETE_SHOP_DATA"}
 }
 
+
+// getDoctorList
+
+export  const getDoctorList = (data)=>{
+
+  return {type : "GET_DOCTOR", payload : data}
+
+}
+
+// deleDoctor
+
+export  const deleDoctor = (data)=>{
+
+  return {type : "DELETE_DOCTOR", payload : data}
+
+}
+
+
+
+// getTeacherList
+
+export  const getTeacherList = (data)=>{
+
+  return {type : "GET_TEACHER", payload : data}
+
+}
+
+// deleTeacher
+
+export  const deleTeacher = (data)=>{
+
+  return {type : "DELETE_TEACHER", payload : data}
+
+}
 
 
 

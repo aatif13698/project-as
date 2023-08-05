@@ -40,17 +40,21 @@ import { toast } from "react-toastify";
 // }
 
 // *** actual signUp Api
-export async function signUpUser(datas, reset, signUpCallBack, setDisable, setGoogleVerified) {
+export async function signUpUser(
+  datas,
+  reset,
+  signUpCallBack,
+  setDisable,
+  setGoogleVerified
+) {
   try {
-    const { data : {errorCode, message, token} } = await axios.post(
-      "http://localhost:8080/api/user/signUp",
-      datas
-    );
+    const {
+      data: { errorCode, message, token },
+    } = await axios.post("http://localhost:8080/api/user/signUp", datas);
 
     console.log(errorCode);
 
-    if(errorCode == 401 || errorCode == 200){
-
+    if (errorCode == 401 || errorCode == 200) {
       toast.success(message, {
         position: "top-right",
         autoClose: 3000, // Close the toast after 3 seconds
@@ -61,13 +65,12 @@ export async function signUpUser(datas, reset, signUpCallBack, setDisable, setGo
         progress: undefined,
       });
 
-      reset()
+      reset();
 
-      signUpCallBack(datas.email, token, errorCode)
-
+      signUpCallBack(datas.email, token, errorCode);
     }
 
-    if (errorCode == 404  ) {
+    if (errorCode == 404) {
       toast.warning(message, {
         position: "top-right",
         autoClose: 3000, // Close the toast after 3 seconds
@@ -78,12 +81,11 @@ export async function signUpUser(datas, reset, signUpCallBack, setDisable, setGo
         progress: undefined,
       });
 
-      setDisable(false)
-      setGoogleVerified(false)
+      setDisable(false);
+      setGoogleVerified(false);
 
       reset();
-    }else if(errorCode == 201){
-
+    } else if (errorCode == 201) {
       toast.success(message, {
         position: "top-right",
         autoClose: 3000, // Close the toast after 3 seconds
@@ -93,12 +95,8 @@ export async function signUpUser(datas, reset, signUpCallBack, setDisable, setGo
         draggable: true,
         progress: undefined,
       });
-      signUpCallBack(datas.email, token, errorCode)
-
-
+      signUpCallBack(datas.email, token, errorCode);
     }
-
-
   } catch (err) {
     toast.error("server error", {
       position: "top-right",
@@ -109,121 +107,97 @@ export async function signUpUser(datas, reset, signUpCallBack, setDisable, setGo
       draggable: true,
       progress: undefined,
     });
-
   }
 }
 
-// *** sendMail 
-  
-export async function  sendMail(datas, sendMailCallBack){
- 
-  try{
+// *** sendMail
 
-   const {data:{errorCode, message}} = await   axios.post("http://localhost:8080/api/user/sendVerificationMail",datas);
+export async function sendMail(datas, sendMailCallBack) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/sendVerificationMail",
+      datas
+    );
 
-    if(errorCode == 200){
-      toast.success(message)
-      sendMailCallBack()
-    }else if(errorCode == 500){
-      toast.warning(message)
-      sendMailCallBack()
+    if (errorCode == 200) {
+      toast.success(message);
+      sendMailCallBack();
+    } else if (errorCode == 500) {
+      toast.warning(message);
+      sendMailCallBack();
     }
-
-    
-
-  }catch(err){
+  } catch (err) {
     console.log("SendMainERR", err);
   }
-
-
 }
 
 // VerifyMail
 
-export async function  VerifyUserMail(datas, verifyUserMailCallBack){
+export async function VerifyUserMail(datas, verifyUserMailCallBack) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post("http://localhost:8080/api/user/verifyMail", datas);
 
-  try{
-
-    const {data :{errorCode, message}} = await   axios.post("http://localhost:8080/api/user/verifyMail",datas);
-
-    if(errorCode == 200){
-
-      toast.success(message)
-      verifyUserMailCallBack(errorCode)
-
-    }else if(errorCode == 401){
-
-      toast.error(message)
-      verifyUserMailCallBack(errorCode)
-
+    if (errorCode == 200) {
+      toast.success(message);
+      verifyUserMailCallBack(errorCode);
+    } else if (errorCode == 401) {
+      toast.error(message);
+      verifyUserMailCallBack(errorCode);
     }
-
-
-  }catch(err){
+  } catch (err) {
     console.log("verifyMailERR", err);
   }
-
 }
-
-
-
-
-
 
 // login Api
 
 export async function loginUser(datas, loginCallBack) {
-
   try {
-    const { data: { errorCode ,message, token }} = await axios.post("http://localhost:8080/api/user/login", datas);
+    const {
+      data: { errorCode, message, token },
+    } = await axios.post("http://localhost:8080/api/user/login", datas);
 
-    if(errorCode == 200){
-
+    if (errorCode == 200) {
       localStorage.setItem("token", token);
       loginCallBack(errorCode);
       toast.success(message, {
         position: "top-right",
-        autoClose: 2000, 
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-
-    }else if(errorCode == 401 || errorCode == 402){
-
+    } else if (errorCode == 401 || errorCode == 402) {
       loginCallBack(errorCode);
       toast.warning(message, {
         position: "top-right",
-        autoClose: 2000, 
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-
-    }else if(errorCode == 404){
-     
+    } else if (errorCode == 404) {
       loginCallBack(errorCode);
       toast.error(message, {
         position: "top-right",
-        autoClose: 2000, 
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-
     }
 
-
-
-
     if (message) {
-  
     }
   } catch (err) {
     toast.error(err.response.data.message, {
@@ -263,7 +237,6 @@ export async function getUser(getData) {
   } catch (err) {
     console.log(err);
   }
-  
 }
 
 // addTask in todo
@@ -362,72 +335,55 @@ export async function checkedOneTask(datas, checkedCallBack) {
   }
 }
 
-
-
-
 // sendforgetPasswordMail
 
 export async function sendforgetPasswordMail(data, forgetPasswordCallback) {
-  
   try {
-
-    const {data: { errorCode, message, email  } } = await axios.post("http://localhost:8080/api/user/sendPassordResetEmail", data);
-
+    const {
+      data: { errorCode, message, email },
+    } = await axios.post(
+      "http://localhost:8080/api/user/sendPassordResetEmail",
+      data
+    );
 
     // console.log(errorCode, message);
 
-    forgetPasswordCallback(errorCode, message, email)
-
-
+    forgetPasswordCallback(errorCode, message, email);
   } catch (err) {
-
     console.log(err);
-
   }
 }
-
-
 
 // restPassword
 
 export async function restPassword(data, resetCallback) {
-  
   try {
-
-    const {data: { errorCode, message  } } = await axios.post("http://localhost:8080/api/user/resetPassword", data);
-
+    const {
+      data: { errorCode, message },
+    } = await axios.post("http://localhost:8080/api/user/resetPassword", data);
 
     // console.log(errorCode, message);
 
-    resetCallback(errorCode, message)
-
-
+    resetCallback(errorCode, message);
   } catch (err) {
-
     console.log(err);
-
   }
 }
 
-
-
-
 // uploadProfile
 
-
-export async function uploadProfile(datas, uploadProfileCallback){
+export async function uploadProfile(datas, uploadProfileCallback) {
   console.log("uploaadd");
   try {
     console.log("11111");
-    const { data : {errorCode, message}} = await axios.post(
-      "http://localhost:8080/api/user/uploadProfile",
-      datas
-    );
-    if(errorCode == 200){
-       toast.success(message);
-       uploadProfileCallback()
-    }else{
-      toast.warning(message, errorCode)
+    const {
+      data: { errorCode, message },
+    } = await axios.post("http://localhost:8080/api/user/uploadProfile", datas);
+    if (errorCode == 200) {
+      toast.success(message);
+      uploadProfileCallback();
+    } else {
+      toast.warning(message, errorCode);
       // uploadProfileCallback()
     }
   } catch (err) {
@@ -435,12 +391,9 @@ export async function uploadProfile(datas, uploadProfileCallback){
   }
 }
 
-
-
 // getProfile
 
 export async function getProfileData(getProfileCallBack) {
-  
   console.log("profile dataxxxxxxx");
 
   let token = localStorage.getItem("token");
@@ -451,100 +404,92 @@ export async function getProfileData(getProfileCallBack) {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-
-    if(errorCode == 200){
-      toast.success(message);
-    getProfileCallBack(UserProfile)
-
-    }else{
-      toast.warning(message)
+    if (errorCode == 200) {
+      // toast.success(message);
+      getProfileCallBack(UserProfile);
+    } else {
+      // toast.warning(message)
     }
-
-
-
-
   } catch (err) {
     console.log(err);
   }
 }
-
-
 
 // uploadshopProfile
 
-export async function uploadshopProfile(datas, uploadShopProfileCallback){
+export async function uploadshopProfile(datas, uploadShopProfileCallback) {
   try {
-    const { data : {errorCode, message}} = await axios.post(
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
       "http://localhost:8080/api/user/uploadMedicalShopProfile",
       datas
     );
-    if(errorCode == 200){
-       toast.success(message);
-       uploadShopProfileCallback()
-    }else{
-      toast.warning( message)
+    if (errorCode == 200) {
+      toast.success(message);
+      uploadShopProfileCallback();
+    } else {
+      toast.warning(message);
       // uploadProfileCallback()
     }
   } catch (err) {
     console.log("checkedERR", err);
   }
 }
-
 
 // getShopProfile
 
-export async function getShopProfile (getShopProfileCallBack) {
-  
-  toast.warning("go")
+export async function getShopProfile(getShopProfileCallBack) {
+  // toast.warning("go")
 
   let token = localStorage.getItem("token");
 
-  toast.error(token)
+  // toast.error(token)
 
   // console.log("token", token);
   try {
+    // toast.error("try")
+    const {
+      data: { errorCode, message, shopProfile },
+    } = await axios.get(
+      "http://localhost:8080/api/user/getMedicalShopProfile",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
-    toast.error("try")
-    const {data: { errorCode, message, shopProfile } } = await axios.get("http://localhost:8080/api/user/getMedicalShopProfile", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    // toast.error("try Success")
 
-    toast.error("try Success")
+    if (errorCode == 200) {
+      // toast.success("get shop success")
 
-    if(errorCode == 200){
-
-      toast.success("get shop success")
-
-    getShopProfileCallBack(shopProfile)
-
-
-    }else{
-      toast.warning(message)
+      getShopProfileCallBack(shopProfile);
+    } else {
+      // toast.warning(message)
     }
-
-
   } catch (err) {
-
     console.log(err);
-
   }
 }
 
-
 // uploadInstituteProfile
 
-export async function uploadInstituteProfile(datas, uploadInstituteProfileCallback){
+export async function uploadInstituteProfile(
+  datas,
+  uploadInstituteProfileCallback
+) {
   try {
-    const { data : {errorCode, message}} = await axios.post(
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
       "http://localhost:8080/api/user/uploadInstituteProfile",
       datas
     );
-    if(errorCode == 200){
-       toast.success(message);
-       uploadInstituteProfileCallback()
-    }else{
-      
-      toast.warning( message)
+    if (errorCode == 200) {
+      toast.success(message);
+      uploadInstituteProfileCallback();
+    } else {
+      toast.warning(message);
       // uploadProfileCallback()
     }
   } catch (err) {
@@ -552,44 +497,180 @@ export async function uploadInstituteProfile(datas, uploadInstituteProfileCallba
   }
 }
 
-
-
-
 // getInstituteProfile
 
-export async function getInstituteProfile (getInstituteProfileCallBack) {
-
+export async function getInstituteProfile(getInstituteProfileCallBack) {
   console.log("institute");
 
   let token = localStorage.getItem("token");
 
   // console.log("token", token);
   try {
-
     const {
       data: { errorCode, message, instituteProfile },
     } = await axios.get("http://localhost:8080/api/user/getInstituteProfile", {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if(errorCode == 200){
-
+    if (errorCode == 200) {
       // console.log("shopdata", shopProfile);
       // console.log("yes institute");
 
-      toast.success(message)
+      // toast.success(message)
 
-      getInstituteProfileCallBack(instituteProfile)
-
-
-    }else{
-      toast.warning(message)
+      getInstituteProfileCallBack(instituteProfile);
+    } else {
+      toast.warning(message);
     }
-
-
   } catch (err) {
-
     console.log(err);
+  }
+}
 
+// addDoctorProfile
+
+export async function addDoctorProfile(datas, doctorProfileCallback) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/addDoctorProfile",
+      datas
+    );
+    if (errorCode == 200) {
+      toast.success(message);
+      doctorProfileCallback();
+    } else {
+      toast.warning(message, errorCode);
+    }
+  } catch (err) {
+    console.log("checkedERR", err);
+  }
+}
+
+// getAllDoctosOfParticularMedical
+
+export async function getAllDoctosOfParticularMedical(getAllDoctorsCallback) {
+  console.log("institute");
+
+  let token = localStorage.getItem("token");
+
+  try {
+    const {
+      data: { errorCode, message, totalDoctors },
+    } = await axios.get(
+      "http://localhost:8080/api/user/getAllDoctorsOfParticularMedical",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+
+      getAllDoctorsCallback(totalDoctors);
+    } else {
+      toast.warning(message);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// deleteParticularDoctor
+
+export async function deleteParticularDoctor(data, deleteParticularDocCallback) {
+  try {
+    const {
+      data: { errorCode, message }
+    } = await axios.post(
+      "http://localhost:8080/api/user/deleteParticularDoctor",
+      data
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+      deleteParticularDocCallback()
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+
+
+// addTeacherProfile
+
+export async function addTeacherProfile(datas, teacherProfileCallback) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/addTeacherProfile",
+      datas
+    );
+    if (errorCode == 200) {
+      toast.success(message);
+      teacherProfileCallback();
+    } else {
+      toast.warning(message, errorCode);
+    }
+  } catch (err) {
+    console.log("checkedERR", err);
+  }
+}
+
+
+
+// getAllTeachersOfParticularInstitute
+
+export async function getAllTeachersOfParticularInstitute(getAllTeachersCallback) {
+  console.log("institute");
+
+  let token = localStorage.getItem("token");
+
+  try {
+    const {
+      data: { errorCode, message, totalTeachers },
+    } = await axios.get(
+      "http://localhost:8080/api/user/getAllTeachersOfParticulInstitute",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+
+      getAllTeachersCallback(totalTeachers);
+    } else {
+      toast.warning(message);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+// deleteParticularTeacher
+
+export async function deleteParticularTeacher(data, deleteParticularTecCallback) {
+  try {
+    const {
+      data: { errorCode, message }
+    } = await axios.post(
+      "http://localhost:8080/api/user/deleteParticularTeacher",
+      data
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+      deleteParticularTecCallback()
+    }
+  } catch (error) {
+    console.log(error);
   }
 }

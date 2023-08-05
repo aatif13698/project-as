@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getShopData, getUserData } from "../Action";
@@ -14,6 +14,7 @@ import "./CreatShopDetailsMedical.css";
 import { Country, State, City } from "country-state-city";
 import Select from "react-dropdown-select";
 import { options } from "../data/data";
+import activeLinkContext from "../context/activeLinkContext";
 
 const CreatShopDetailsMedical = () => {
   const [postImage, setPostImage] = useState(null);
@@ -26,6 +27,7 @@ const CreatShopDetailsMedical = () => {
   );
 
   const shop = useSelector((state) => state?.getShopDetailsM?.shopDataM);
+  const {  setActiveLink } = useContext(activeLinkContext);
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
 
@@ -207,6 +209,12 @@ const CreatShopDetailsMedical = () => {
     }
   }, [shop]);
 
+
+  useEffect(()=>{
+
+    setActiveLink(2)
+
+  },[])
   
   // useEffect(()=>{
 
@@ -341,7 +349,7 @@ const CreatShopDetailsMedical = () => {
               data-aos="fade-left"
               data-aos-duration="800"
               data-aos-delay={400}
-              className="col-12   col-md-10"
+              className="col-12   col-md-8"
               id="creatProfile"
             >
               <form

@@ -28,6 +28,8 @@ import CreactProfileForMedical from "./Component/CreactProfileForMedical/CreactP
 import Public from "./Component/Common/Public";
 import CreatShopDetailsMedical from "./Component/CreateShopDetailsMedical/CreatShopDetailsMedical";
 import CreateInstituteDetail from "./Component/CreatInstituteDetail/CreateInstituteDetail";
+import AddDoctor from "./Component/AddDoctor/AddDoctor";
+import AddTeacher from "./Component/AddTeacher/AddTeacher";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -68,6 +70,9 @@ function App() {
               <Route path="todo/notdonetodo" element={<NotDoneTodo />} />
               <Route path="CreatProfile" element={<CreactProfileForMedical />} />
               <Route path="CreatMedicalShop" element={<CreatShopDetailsMedical />} />
+              <Route path="addDoctor" element={<AddDoctor />} />
+              <Route path="addTeacher" element={<AddTeacher />} />
+
               <Route path="CreatInstituteDetail" element={<CreateInstituteDetail/>} />
               
             </Route>

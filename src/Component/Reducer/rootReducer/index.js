@@ -7,9 +7,11 @@ import startLoading from "../StartLoading";
 import getErrorPage from "../getErrorPage";
 import getShopDetailsM from "../getShopDetailsM";
 import getUserProfile from "../getUserProfile";
+import getAllDoctorsProfile from "../getAllDoctorsProfile";
+import getAllTeachersProfile from "../getAllTeachersProfile";
 
 
 
-const rootReducer = combineReducers({getUserData,getUserTodo, getDoneList, progress, startLoading, getErrorPage, getShopDetailsM, getUserProfile});
+const rootReducer = combineReducers({getUserData,getUserTodo, getDoneList, progress, startLoading, getErrorPage, getShopDetailsM, getUserProfile, getAllDoctorsProfile, getAllTeachersProfile });
 
 export default rootReducer;
