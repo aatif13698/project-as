@@ -142,6 +142,43 @@ export  const deleTeacher = (data)=>{
 
 }
 
+// getBatchList
+
+export  const getBatchList = (data)=>{
+
+  return {type : "GET_BATCH", payload : data}
+
+}
+
+// deleBatchList
+
+export  const deleBatchList = (data)=>{
+
+  return {type : "DELETE_BATCH", payload : data}
+
+}
+
+
+
+// **
+
+
+// getUpcommingBatchList
+
+export  const getUpcommingBatchList = (data)=>{
+
+  return {type : "GET_UPBATCH", payload : data}
+
+}
+
+// deleteUpcommingBatchList
+
+export  const deleteUpcommingBatchList = (data)=>{
+
+  return {type : "DELETE_UPBATCH", payload : data}
+
+}
+
 
 
 

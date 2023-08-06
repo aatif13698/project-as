@@ -49,7 +49,7 @@ export async function signUpUser(
 ) {
   try {
     const {
-      data: { errorCode, message, token },
+      data: { errorCode, message },
     } = await axios.post("http://localhost:8080/api/user/signUp", datas);
 
     console.log(errorCode);
@@ -67,7 +67,7 @@ export async function signUpUser(
 
       reset();
 
-      signUpCallBack(datas.email, token, errorCode);
+      signUpCallBack(datas.email, errorCode);
     }
 
     if (errorCode == 404) {
@@ -95,7 +95,7 @@ export async function signUpUser(
         draggable: true,
         progress: undefined,
       });
-      signUpCallBack(datas.email, token, errorCode);
+      signUpCallBack(datas.email, errorCode);
     }
   } catch (err) {
     toast.error("server error", {
@@ -211,6 +211,20 @@ export async function loginUser(datas, loginCallBack) {
     });
 
     //   console.log(err.response.data.message);
+  }
+}
+
+// verifyByToken
+
+export async function verifyByToken(data, verifyByTokenCallback) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post("http://localhost:8080/api/user/verifyByToken", data);
+
+    verifyByTokenCallback(errorCode, message);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -579,10 +593,13 @@ export async function getAllDoctosOfParticularMedical(getAllDoctorsCallback) {
 
 // deleteParticularDoctor
 
-export async function deleteParticularDoctor(data, deleteParticularDocCallback) {
+export async function deleteParticularDoctor(
+  data,
+  deleteParticularDocCallback
+) {
   try {
     const {
-      data: { errorCode, message }
+      data: { errorCode, message },
     } = await axios.post(
       "http://localhost:8080/api/user/deleteParticularDoctor",
       data
@@ -590,16 +607,12 @@ export async function deleteParticularDoctor(data, deleteParticularDocCallback) 
 
     if (errorCode == 200) {
       toast.success(message);
-      deleteParticularDocCallback()
+      deleteParticularDocCallback();
     }
   } catch (error) {
     console.log(error);
   }
 }
-
-
-
-
 
 // addTeacherProfile
 
@@ -622,11 +635,11 @@ export async function addTeacherProfile(datas, teacherProfileCallback) {
   }
 }
 
-
-
 // getAllTeachersOfParticularInstitute
 
-export async function getAllTeachersOfParticularInstitute(getAllTeachersCallback) {
+export async function getAllTeachersOfParticularInstitute(
+  getAllTeachersCallback
+) {
   console.log("institute");
 
   let token = localStorage.getItem("token");
@@ -641,10 +654,10 @@ export async function getAllTeachersOfParticularInstitute(getAllTeachersCallback
       }
     );
 
+    getAllTeachersCallback(totalTeachers);
+
     if (errorCode == 200) {
       toast.success(message);
-
-      getAllTeachersCallback(totalTeachers);
     } else {
       toast.warning(message);
     }
@@ -653,14 +666,15 @@ export async function getAllTeachersOfParticularInstitute(getAllTeachersCallback
   }
 }
 
-
-
 // deleteParticularTeacher
 
-export async function deleteParticularTeacher(data, deleteParticularTecCallback) {
+export async function deleteParticularTeacher(
+  data,
+  deleteParticularTecCallback
+) {
   try {
     const {
-      data: { errorCode, message }
+      data: { errorCode, message },
     } = await axios.post(
       "http://localhost:8080/api/user/deleteParticularTeacher",
       data
@@ -668,7 +682,158 @@ export async function deleteParticularTeacher(data, deleteParticularTecCallback)
 
     if (errorCode == 200) {
       toast.success(message);
-      deleteParticularTecCallback()
+      deleteParticularTecCallback();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// addBatchProfile
+
+export async function addBatchProfile(data, addBatchProfilecallback) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/addBatchProfile",
+      data
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+      addBatchProfilecallback();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// getAllBatchesOfParticularInstitute
+
+export async function getAllBatchesOfParticularInstitute(
+  getAllBatchesCallback
+) {
+  console.log("institute");
+
+  let token = localStorage.getItem("token");
+
+  try {
+    const {
+      data: { errorCode, message, totalBatches },
+    } = await axios.get(
+      "http://localhost:8080/api/user/getAllBatchesOfParticulInstitute",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    getAllBatchesCallback(totalBatches);
+
+    if (errorCode == 200) {
+      toast.success(message);
+    } else {
+      toast.warning(message);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// deleteParticularBatch
+
+export async function deleteParticularBatch(
+  data,
+  deleteParticularBatchCallback
+) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/deleteParticularBatch",
+      data
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+      deleteParticularBatchCallback();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// addUpcommingBatchProfile
+
+export async function addUpcommingBatchProfile(
+  data,
+  addUpcommingBatchProfilecallback
+) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/addUpcommingBatchProfile",
+      data
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+      addUpcommingBatchProfilecallback();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// getAllUpcommingBatchesOfParticularInstitute
+
+export async function getAllUpcommingBatchesOfParticularInstitute(
+  getAllUpcommingBatchesCallback
+) {
+  console.log("institute");
+
+  let token = localStorage.getItem("token");
+
+  try {
+    const {
+      data: { errorCode, message, totalUpcommingBatches },
+    } = await axios.get(
+      "http://localhost:8080/api/user/getAllUpcommingBatchesOfParticulInstitute",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    getAllUpcommingBatchesCallback(totalUpcommingBatches);
+
+    if (errorCode == 200) {
+      toast.success(message);
+    } else {
+      toast.warning(message);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// deleteParticularUpcommingBatch
+
+export async function deleteParticularUpcommingBatch(
+  data,
+  deleteParticularUpcommingBatchCallback
+) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/deleteParticularUpcommingBatch",
+      data
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+      deleteParticularUpcommingBatchCallback();
     }
   } catch (error) {
     console.log(error);

@@ -118,6 +118,11 @@
 }
 
 
+#dark .docSpan img {
+  filter: invert(1);
+}
+
+
 
 .docSpan span{
     font-size: 1.2rem;

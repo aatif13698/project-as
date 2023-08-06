@@ -16,13 +16,10 @@ const CreactProfileForMedical = () => {
   const email = useSelector(
     (state) => state?.getUserData?.userData?.user?.email
   );
-  const profile = useSelector(
-    (state) => state?.getUserProfile?.userProfile
-  );
+  const profile = useSelector((state) => state?.getUserProfile?.userProfile);
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
-  const {  setActiveLink } = useContext(activeLinkContext);
-
+  const { setActiveLink } = useContext(activeLinkContext);
 
   // const { firstName, lastName, city, street, state, zipCode, about, phone } =
   //   user;
@@ -78,17 +75,12 @@ const CreactProfileForMedical = () => {
     setPostImage(null);
     setProfileExist(true);
     getUser(getData);
-    getProfileData(getProfileCallBack)
+    getProfileData(getProfileCallBack);
   }
-
-  
 
   function getData(data) {
     dispatch(getUserData(data));
   }
-
-  
-
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -114,13 +106,9 @@ const CreactProfileForMedical = () => {
     setValue("email2", profile?.email2);
   }
 
-
-
   useEffect(() => {
     setName(user?.name);
   }, [user]);
-
-
 
   useEffect(() => {
     if (profile) {
@@ -130,25 +118,18 @@ const CreactProfileForMedical = () => {
     }
   }, [profile]);
 
-
-  useEffect(()=>{
-
-    setActiveLink(8)
-
-  },[])
-
-
+  useEffect(() => {
+    setActiveLink(8);
+  }, []);
 
   // useEffect(()=>{
 
   //   getProfileData(getProfileCallBack)
 
   // },[])
-  
-  function  getProfileCallBack(data) {
 
-    dispatch(getUserProfile(data))    
-    
+  function getProfileCallBack(data) {
+    dispatch(getUserProfile(data));
   }
 
   return (
@@ -165,56 +146,67 @@ const CreactProfileForMedical = () => {
             <h4 className="text-center">Hey {name}...</h4>
             <h5 className="text-center">Here is your profile details.</h5>
           </div>
-          <div className="row mx-md-5 " id="profileContainer" >
-            <div className="col-12" style={{ padding: "24px 12px" }} >
-              <div
-                className="row "
-                style={{ height: "100%" }}
-                data-aos="fade-left"
-                data-aos-duration="500"
-                data-aos-delay={400}
-              >
-                <div className=" col-12 col-md-5 py-md-0 py-3 d-flex justify-content-center align-items-center">
-                  <img
-                    id="profileImage"
-                    src={`http://localhost:8080/userImages/${profile?.pdf}`}
-                    // src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1686779814~exp=1686780414~hmac=8eaa3044bc5a8a986d5b2e1eefd2ef9e3894822142aa0df3727bc1201f8e1a85"
-                    alt="profile image"
-                  />
-                </div>
-
-                <div
-                  className="col-12 col-md-7 d-flex align-items-center "
-                  id="profileText"
-                >
-                  <div>
-                    <div>
-                      <h4 className="my-3">Personal informations..</h4>
-                    </div>
-
-                    <div style={{ margin: "18px 0px" }}>
-                      <p>
-                        Name : {profile?.firstName} {profile?.lastName}
-                      </p>
-                      <p>About : {profile.about}</p>
-                      <p>Email : {profile?.email2}</p>
-                      <p>Cell Phone : {profile?.phone}</p>
-                      <div>
-                        <p>
-                          Address : {profile?.street} {profile?.city} {profile?.state}{" "}
-                          {profile?.zipCode}
-                        </p>
+          <div className="row mx-md-5 " style={{justifyContent:"center"}}>
+            <div className="col-12 col-md-8" id="profileContainer">
+              <div className="row">
+                <div className=" col-12" style={{ padding: "24px 12px" }}>
+                  <div
+                    className="row "
+                    style={{ height: "100%" }}
+                    data-aos="fade-left"
+                    data-aos-duration="500"
+                    data-aos-delay={400}
+                  >
+                    <div className="  col-12 col-md-5 py-md-0 py-3 d-flex justify-content-center align-items-center">
+                      <div className="profileImgContainer">
+                        <img
+                          id="profileImage"
+                          src={`http://localhost:8080/userImages/${profile?.pdf}`}
+                          // src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1686779814~exp=1686780414~hmac=8eaa3044bc5a8a986d5b2e1eefd2ef9e3894822142aa0df3727bc1201f8e1a85"
+                          alt="profile image"
+                        />
                       </div>
                     </div>
 
-                    <div>
-                      <button
-                        onClick={editProfile}
-                        className="btn btn-success"
-                        id="profileEdit"
-                      >
-                        Edit Profile
-                      </button>
+                    <div
+                      className="col-12 col-md-7 d-flex align-items-center "
+                      id="profileText"
+                    >
+                      <div className="d-flex justify-center align-items-center flex-column">
+                        <div>
+                          <h4 className="personalInfo my-3">
+                            Personal Informations..
+                          </h4>
+                        </div>
+
+                        <div
+                          className="profileText"
+                          style={{ margin: "18px 0px" }}
+                        >
+                          <p>
+                            Name : {profile?.firstName} {profile?.lastName}
+                          </p>
+                          <p>About : {profile.about}</p>
+                          <p>Email : {profile?.email2}</p>
+                          <p>Cell Phone : {profile?.phone}</p>
+                          <div>
+                            <p>
+                              Address : {profile?.street} {profile?.city}{" "}
+                              {profile?.state} {profile?.zipCode}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div>
+                          <button
+                            onClick={editProfile}
+                            className="btn btn-success"
+                            id="profileEdit"
+                          >
+                            Edit Profile
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

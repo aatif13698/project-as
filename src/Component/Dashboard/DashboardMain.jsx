@@ -6,8 +6,9 @@ import { SidebarProvider } from "../context/sidebarContext";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useNavigate } from "react-router-dom";
-import { getAllDoctosOfParticularMedical, getAllTeachersOfParticularInstitute, getInstituteProfile, getProfileData, getShopProfile, getUser } from "../ApiCalling/api";
-import { getDoctorList, getShopData, getTeacherList, getUserData, getUserProfile } from "../Action";
+import { getAllBatchesOfParticularInstitute, getAllDoctosOfParticularMedical, getAllTeachersOfParticularInstitute, getAllUpcommingBatchesOfParticularInstitute, getInstituteProfile, getProfileData, getShopProfile, getUser, verifyByToken } from "../ApiCalling/api";
+import { getBatchList, getDoctorList, getShopData, getTeacherList, getUpcommingBatchList, getUserData, getUserProfile } from "../Action";
+import { toast } from "react-toastify";
 
 
 const DashboardMain = ({ children }) => {
@@ -33,20 +34,61 @@ const DashboardMain = ({ children }) => {
   console.log("StoreDash", STORE);
 
   useEffect(()=>{
+
     if(token == null){
       dispatch({ type : "GOT_ERROR"})
-    }else{
+    }else if(token){
+
+      const data = {token : token}
+
+      verifyByToken(data, verifyByTokenCallback)
+
+    }
+    
+    else{
+    //   dispatch({ type : "NO_ERROR"})
+    //   getUser(getData);
+    //   getInstituteProfile(getInstituteProfileCallBack);
+    //   getShopProfile( getShopProfileCallBack )
+    //   getProfileData(getProfileCallBack)
+    //   getAllDoctosOfParticularMedical(getAllDoctorsCallback);
+    //   getAllTeachersOfParticularInstitute(getAllTeachersCallback);
+    //   getAllBatchesOfParticularInstitute(getAllBatchesCallback);
+    // getAllUpcommingBatchesOfParticularInstitute(getAllUpcommingBatchesCallback);
+
+
+      
+    }
+  },[])
+
+  function verifyByTokenCallback(errorCode, message){
+
+    if(errorCode == 200){
+      toast.success(message);
       dispatch({ type : "NO_ERROR"})
       getUser(getData);
       getInstituteProfile(getInstituteProfileCallBack);
       getShopProfile( getShopProfileCallBack )
       getProfileData(getProfileCallBack)
       getAllDoctosOfParticularMedical(getAllDoctorsCallback);
+      getAllTeachersOfParticularInstitute(getAllTeachersCallback);
+      getAllBatchesOfParticularInstitute(getAllBatchesCallback);
+    getAllUpcommingBatchesOfParticularInstitute(getAllUpcommingBatchesCallback);
 
-      getAllTeachersOfParticularInstitute(getAllTeachersCallback)
       
+    }else if(errorCode == 404 || errorCode == 401){
+
+
+      toast.warning(message)
+
+      localStorage.clear("token");
+
+      navigate('/login')
+      // dispatch({ type : "GOT_ERROR"})
+
     }
-  },[])
+
+  }
 
   
   function getData(data) {
@@ -73,6 +115,15 @@ const DashboardMain = ({ children }) => {
     dispatch(getTeacherList(data));
   }
 
+
+  function getAllBatchesCallback(data) {
+  
+    dispatch(getBatchList(data));
+  }
+
+  function getAllUpcommingBatchesCallback(data) {
+    dispatch(getUpcommingBatchList(data));
+  }
 
 
 

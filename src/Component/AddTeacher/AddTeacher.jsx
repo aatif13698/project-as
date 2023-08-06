@@ -507,11 +507,11 @@ const AddTeacher = () => {
 
       {
         teachers?.length > 0 ? 
-         <h3 className='text-center mb-5' style={{position:"relative"}}>List Of Teachers You Added.
+         <h3 className='text-center mb-5' style={{position:"relative", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>List Of Teachers You Added.
 
                          <div
                           className="docLine"
-                          style={{ position: "absolute", height: "4px", left:"33%" }}
+                          style={{ position: "absolute", height: "4px", top:"120%" , background:"linear-gradient(36deg, rgba(60,226,173,1) 0%, rgb(12 229 236) 52%)"}}
                         ></div>
          
          </h3> 

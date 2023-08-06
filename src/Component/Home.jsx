@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { ThemeContext } from './context/ThemeContext';
@@ -6,6 +6,16 @@ import { ThemeContext } from './context/ThemeContext';
 const Home = () => {
     const navigate = useNavigate();
     const { theme, toggleTheme } = useContext(ThemeContext);
+
+    const [dekhao , setDekhao] = useState(false);
+
+
+
+    function dekhaoFnc(){
+
+      setDekhao(!dekhao);
+
+    }
 
    
   return (
@@ -70,6 +80,17 @@ const Home = () => {
           >
             Login
           </button>
+
+
+          <div  className={` ${dekhao ? "d-block" : "d-none"} `}     >
+
+
+<h3>kuhjdshkfkhfakshdkhdf</h3>
+
+          </div>
+
+
+          <button onClick={dekhaoFnc}>Dekhao</button>
 
           <button className='btn btn-success' onClick={toggleTheme}>theme</button>
         </div>

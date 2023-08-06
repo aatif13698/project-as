@@ -9,13 +9,39 @@
     background-color: #2a3a35;
 }
 
-#dark #creatProfile input{
-    background: #5fb2b5;
-  border: none;
+#dark #creatProfile input[type="text"]{
+    background: transparent;
+  /* border: 2px solid white; */
+  color: white;
+  
 }
+
+
+#dark #creatProfile input[type="text"]::placeholder{
+    color: white;
+}
+
+#dark #creatProfile input[type="number"]{
+    background: transparent;
+  /* border: 2px solid white; */
+  color: white;
+  
+}
+
+#dark #creatProfile input[type="number"]::placeholder{
+    color: white;
+}
+
+
 
 #creatProfile label{
     margin: 4px;
+    font-size: 16px;
+    color: #584242;
+}
+
+#dark  #creatProfile label{
+    color: white;
 }
 
 #about{
@@ -26,8 +52,12 @@
 } 
 
 #dark #about{
-    background: #5fb2b5;
-    border: none;
+    background: transparent;
+    border: 2px solid white;
+}
+
+#dark #about ::placeholder{
+    color: whitesmoke;
 }
 
 
@@ -68,7 +98,48 @@
     border-radius: 12px;
     box-shadow: 1px 10px 10px rgba(0,0,0,0.2);
     margin: 50px 0px;
+    position: relative;
 }
+
+
+#profileContainer::before{
+
+    content: "";
+    width: 68%;
+    height: 100%;
+    background: #92ffbc;
+    position: absolute;
+    border-radius: 12px;
+    clip-path: polygon(58% 0, 100% 0, 100% 100%, 75% 100%, 58% 100%, 0% 50%);
+    right: 0px;
+
+
+}
+
+#dark #profileContainer::before {
+   background:  rgb(52 73 74 / 44%) 34%;
+}
+
+.profileImgContainer{
+    background: #92ffbc;
+    border-radius: 50%;
+}
+
+#dark .profileImgContainer{
+    background: rgb(52 73 74 / 44%) 34% ;
+
+}
+
+
+.profileText p{
+    text-shadow: 1px 4px 8px rgba(0,0,0,0.2 );
+    font-size: 1rem;
+}
+
+
+
+
+
 
 #dark #profileContainer {
     background: linear-gradient(26deg, rgb(67 108 86 / 44%) 34%, rgb(18 149 155 / 65%) 31%);
@@ -80,7 +151,9 @@
     height: 150px;
     border-radius: 50%;
     box-shadow: -1px 7px 10px rgba(0,0,0,0.2);
+    padding: 3px;
 }
+
 
 
 #profileText p{

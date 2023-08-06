@@ -8,13 +8,13 @@ const VerifyMail = () => {
 
     const navigate = useNavigate()
     const param = useParams();
-    const {id, token} = param;
+    const {id, OTP} = param;
 
     const {theme} = useContext(ThemeContext)
 
 function verifyFnc(){
 
-    const datas = {id: id, token: token}
+    const datas = {id: id, OTP: OTP}
     VerifyUserMail(datas, verifyUserMailCallBack)
 
 }

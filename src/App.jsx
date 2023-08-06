@@ -4,6 +4,8 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 import { useContext, useEffect } from "react";
 
@@ -30,6 +32,9 @@ import CreatShopDetailsMedical from "./Component/CreateShopDetailsMedical/CreatS
 import CreateInstituteDetail from "./Component/CreatInstituteDetail/CreateInstituteDetail";
 import AddDoctor from "./Component/AddDoctor/AddDoctor";
 import AddTeacher from "./Component/AddTeacher/AddTeacher";
+import AddBatches from "./Component/AddBatches/AddBatches";
+import AddUpcommingBatch from "./Component/AddUpcommingBatch/AddUpcommingBatch";
+import UpcommingEvents from "./Component/UpcommingEvents/UpcommingEvents";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -43,6 +48,12 @@ function App() {
   useEffect(() => {}, []);
 
   return (
+
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    
+  
+
+    
     <div className={`App `} id={theme}>
       <ToastContainer />
       <BrowserRouter>
@@ -54,8 +65,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route index path="login" element={<Login />} />
             <Route path="signUp" element={<SignUp />} />
-            <Route path="ConfirmMail/:email/:token" element={<ConfirmMail />} />
-            <Route path="emailVerify/:id/:token" element={<VerifyMail />} />
+            <Route path="ConfirmMail/:email" element={<ConfirmMail />} />
+            <Route path="emailVerify/:id/:OTP" element={<VerifyMail />} />
             <Route path="forgetPassword" element={<ForgetPassword />} />
             <Route path="resetPassword/:email" element={<ResetPassword />} />
           </Route>
@@ -72,6 +83,9 @@ function App() {
               <Route path="CreatMedicalShop" element={<CreatShopDetailsMedical />} />
               <Route path="addDoctor" element={<AddDoctor />} />
               <Route path="addTeacher" element={<AddTeacher />} />
+              <Route path="addBatches" element={<AddBatches />} />
+              <Route path="addUpcommingBatch" element={<AddUpcommingBatch />} />
+              {/* <Route path="addUpcommingEvents" element={<UpcommingEvents />} /> */}
 
               <Route path="CreatInstituteDetail" element={<CreateInstituteDetail/>} />
               
@@ -80,6 +94,8 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+
+    </LocalizationProvider>
   );
 }
 

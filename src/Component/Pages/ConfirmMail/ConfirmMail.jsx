@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { sendMail } from "../../ApiCalling/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,15 +12,17 @@ const ConfirmMail = () => {
   const progress = useSelector((state) => state?.progress?.progress);
   // const display = useSelector((state) => state?.progress?.display);
 
+  // const [dekhao, seTDekhao] = useState(false);
+
   const email = params.email;
-  const token = params.token;
+  // const token = params.token;
 
   function submitHandler(e) {
     e.preventDefault();
 
     const datas = {
       email: email,
-      token: token,
+      // token: token,
     };
 
     sendMail(datas, sendMailCallBack);

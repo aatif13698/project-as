@@ -32,11 +32,11 @@ const SignUp = () => {
   }
 
   // callBack
-  function signUpCallBack(email, token, errorCode) {
+  function signUpCallBack(email, errorCode) {
     setGoogleVerified(false);
 
     if (errorCode == 401 || errorCode == 200) {
-      navigate(`/ConfirmMail/${email}/${token}`);
+      navigate(`/ConfirmMail/${email}`);
     } else if (errorCode == 201) {
       navigate("/login");
     }
