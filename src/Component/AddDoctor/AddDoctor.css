@@ -7,6 +7,7 @@
   position: relative;
   border-radius: 55px 55px 55px 55px;
   z-index: 3;
+  transition: all 300ms ease-in-out;
 }
 
 .doctorRow {
@@ -23,11 +24,25 @@
   position: relative;
   background: white;
   box-shadow: 2px 9px 12px rgba(0, 0, 0, 0.4);
+  transition: all 300ms ease-in-out;
 }
+
+.docRow2:hover{
+  transform: scale(1.020);
+
+  .doctorImg{
+    width: 205px;
+    height: 210px;
+  }
+}
+
+
 
 .docCol {
   position: relative;
 }
+
+
 
 .docText{
     z-index: 3;
@@ -154,6 +169,20 @@
   background-color: #23b3b8;
 }
 
+.docHead{
+  background: #92f4e9d9;
+  border-radius: 12px;
+  padding: 16px 12px;
+  margin: 24px 0px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1 );
+  
+}
+
+#dark .docHead {
+  background: #0d617b70;
+
+
+}
 
 @media screen and (max-width: 768px) {
   .docCol2::before {

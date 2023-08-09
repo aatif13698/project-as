@@ -3,19 +3,16 @@ import { personsImgs } from "../../utils/images";
 
 export const navigationLinksForMedical = [
   { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
+  {id : 6, title:"Demo card", image: iconsImgs.event, to: "democard"},
+
+  { id: 8, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
   { id: 2, title: "Shop", image: iconsImgs.Shop, to: "CreatMedicalShop" },
   { id: 3, title: "Add Doctor", image: iconsImgs.doctor1, to: "addDoctor" },
-  { id: 4, title: "Edit Doctor", image: iconsImgs.editProduct, to: "home" },
-  { id: 5, title: "Discount", image: iconsImgs.discount, to: "home" },
-  {
-    id: 6,
-    title: "Work List",
-    image: iconsImgs.workList,
-    to: "/dashboard/todo",
-  },
+  { id: 5, title: "Discount", image: iconsImgs.discount, to: "discountOnMedicine" },
+ 
   { id: 7, title: "Test facility", image: iconsImgs.testFacility, to: "home" },
-  { id: 8, title: "Profile", image: iconsImgs.profile, to: "CreatProfile" },
-  { id: 9, title: "Account", image: iconsImgs.account, to: "home" },
+  
+  
   {
     id: 0,
     title: "Settings",
@@ -31,6 +28,13 @@ export const navigationLinksForMedical = [
       },
     ],
   },
+
+   // {
+  //   id: 6,
+  //   title: "Work List",
+  //   image: iconsImgs.workList,
+  //   to: "/dashboard/todo",
+  // },
 ];
 
 export const navigationLinksForInstitute = [
@@ -42,17 +46,16 @@ export const navigationLinksForInstitute = [
     to: "CreatInstituteDetail",
   },
   { id: 3, title: "Add Teacher", image: iconsImgs.teacher, to: "addTeacher" },
-  { id: 4, title: "Edit Teacher", image: iconsImgs.editProduct, to: "home" },
+  // { id: 4, title: "Edit Teacher", image: iconsImgs.editProduct, to: "home" },
   { id: 5, title: "Batches", image: iconsImgs.batches, to: "addBatches" },
   {
     id: 6,
-    title: "Upcomming Batch",
+    title: "Launcg Batch",
     image: iconsImgs.subjects,
     to: "addUpcommingBatch",
   },
-  { id: 7, title: "Uploading Events", image: iconsImgs.event, to: "addUpcommingEvents" },
+  { id: 7, title: "Future Events", image: iconsImgs.event, to: "addUpcommingEvents" },
   { id: 10, title: "Memories", image: iconsImgs.memories, to: "home" },
-  { id: 9, title: "Discount", image: iconsImgs.discount, to: "home" },
   { id: 8, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
   {
     id: 0,
@@ -552,3 +555,36 @@ export const teacherOptions = [
     label: "Odia (ODIA) ",
   },
 ];
+
+
+ export const dayOption = [
+  {
+    value: 1,
+    label: "MONDAY",
+  },
+  {
+    value: 2,
+    label: "TUESDAY",
+  },
+  {
+    value: 3,
+    label: "WEDNESDAY",
+  },
+  {
+    value: 4,
+    label: "THURSDAY",
+  },
+  {
+    value: 5,
+    label: "FRIDAY",
+  },
+  {
+    value: 6,
+    label: "SATURDAY",
+  },
+  {
+    value: 7,
+    label: "SUNDAY",
+  },
+
+]

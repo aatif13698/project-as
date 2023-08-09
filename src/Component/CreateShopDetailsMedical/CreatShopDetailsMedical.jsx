@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getShopData, getUserData } from "../Action";
 import {
@@ -12,22 +12,29 @@ import {
 import shopImg from "../Assets/Images/medicalShopDemo3.png";
 import "./CreatShopDetailsMedical.css";
 import { Country, State, City } from "country-state-city";
+import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
+
 import Select from "react-dropdown-select";
 import { options } from "../data/data";
 import activeLinkContext from "../context/activeLinkContext";
+import dayjs from "dayjs";
+
 
 const CreatShopDetailsMedical = () => {
   const [postImage, setPostImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
   const [shopExist, setShopExist] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [timeValue, setTimeValue] = useState(dayjs("2022-04-17T15:30"));
+
 
   const email = useSelector(
     (state) => state?.getUserData?.userData?.user?.email
   );
 
   const shop = useSelector((state) => state?.getShopDetailsM?.shopDataM);
-  const {  setActiveLink } = useContext(activeLinkContext);
+  const { setActiveLink } = useContext(activeLinkContext);
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
 
@@ -48,6 +55,7 @@ const CreatShopDetailsMedical = () => {
     formState: { errors },
     reset,
     setValue,
+    control
   } = useForm({
     mode: "onChange",
   });
@@ -82,16 +90,13 @@ const CreatShopDetailsMedical = () => {
   const handleCityChange = (selected) => {
     setCity(selected[0]);
     setValue("city", selected[0]?.name);
-
   };
 
   const handleDoctorCategories = (selected) => {
-
     // console.log("doctor", selected);
 
-    setValue("doctorCategories", selected )
-
-  }
+    setValue("doctorCategories", selected);
+  };
 
   // console.log("countryData", country);
   // console.log("stateData", stateData);
@@ -118,10 +123,10 @@ const CreatShopDetailsMedical = () => {
       street,
       totalDoctor,
       zipCode,
-      doctorCategories
+      doctorCategories,
     } = data;
 
-    const doctorCategories1 =  JSON.stringify(doctorCategories);
+    const doctorCategories1 = JSON.stringify(doctorCategories);
 
     // console.log("12", data);
     // console.log("13", doctorCategories);
@@ -158,8 +163,6 @@ const CreatShopDetailsMedical = () => {
     getShopProfile(getShopProfileCallBack);
   }
 
-  
-
   function getShopProfileCallBack(data) {
     dispatch(getShopData(data));
   }
@@ -180,6 +183,8 @@ const CreatShopDetailsMedical = () => {
 
   function editShopProfile() {
     setShopExist(false);
+    setEdit(true);
+    setTimeValue(shop?.shopTime)
 
     setValue("ownerName", shop?.ownerName);
     setValue("shopName", shop?.shopName);
@@ -194,8 +199,20 @@ const CreatShopDetailsMedical = () => {
     setValue("zipCode", shop?.zipCode);
     setValue("email3", shop?.email3);
     // setCity(shop?.city)
-    setValue("doctorCategories", shop?.doctorCategories)
+    setValue("doctorCategories", shop?.doctorCategories);
   }
+
+  function formateToTimeString(dateString) {
+    const date = new Date(dateString);
+    const formattedTime = date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+    return formattedTime;
+  }
+
+
 
   useEffect(() => {
     setName(user?.name);
@@ -209,20 +226,16 @@ const CreatShopDetailsMedical = () => {
     }
   }, [shop]);
 
+  useEffect(() => {
+    setActiveLink(2);
+  }, []);
 
-  useEffect(()=>{
-
-    setActiveLink(2)
-
-  },[])
-  
   // useEffect(()=>{
 
   //     getShopProfile( getShopProfileCallBack )
 
   // },[])
 
-  
   // function getInstituteProfileCallBack(data) {
   //   dispatch(getShopData(data));
   // }
@@ -242,11 +255,14 @@ const CreatShopDetailsMedical = () => {
             <h5 className="text-center">Here is your profile details.</h5>
           </div>
           <div
-            className="row mx-md-5 "
-            id="ShopProfileContainer"
+            className="row mx-md-5 justify-content-center align-items-center "
             style={{ margin: "16px 0px" }}
           >
-            <div className="col-12" style={{ padding: "0px 12px 20px 12px" }}>
+            <div
+              id="ShopProfileContainer"
+              className="col-12 col-md-8 "
+              style={{ padding: "0px 12px 20px 12px" }}
+            >
               <div
                 className="row "
                 style={{ height: "100%" }}
@@ -303,7 +319,7 @@ const CreatShopDetailsMedical = () => {
                       <p>About Shop : {shop?.aboutShop}</p>
                       <p>Email : {shop?.email3}</p>
                       <p>Contact : {shop?.phone}</p>
-                      <p>Timming : {shop?.shopTime}</p>
+                      <p>Timming : { formateToTimeString(shop?.shopTime)}</p>
                       <p>Total Doctors : {shop?.totalDoctor}</p>
                       <p>Contact : {shop?.phone}</p>
                       <div>
@@ -344,12 +360,15 @@ const CreatShopDetailsMedical = () => {
             </h6>
           </div>
 
-          <div className="row justify-content-center align-items-center mx-md-2">
+          <div
+            className="row justify-content-center align-items-center mx-md-2"
+            style={{ margin: "0px" }}
+          >
             <div
               data-aos="fade-left"
               data-aos-duration="800"
               data-aos-delay={400}
-              className="col-12   col-md-8"
+              className="col-12   col-md-7"
               id="creatProfile"
             >
               <form
@@ -436,10 +455,10 @@ const CreatShopDetailsMedical = () => {
 
                 <div className="row flex-md-row flex-column mb-3">
                   <div className="col">
-                    <label id="login_label" htmlFor="firstName">
+                    {/* <label id="login_label" htmlFor="firstName">
                       Shop Timming
-                    </label>
-                    <input
+                    </label> */}
+                    {/* <input
                       type="text"
                       className="form-control login_input"
                       placeholder="from ___ to ___"
@@ -451,7 +470,32 @@ const CreatShopDetailsMedical = () => {
                       <span className="text-danger">
                         This field is required
                       </span>
-                    )}
+                    )} */}
+
+                    <Controller
+                      name="shopTime"
+                      control={control}
+                      rules={{ required: "This field is required" }}
+                      render={({ field }) => (
+                        <>
+                          <label htmlFor="">Shop Timming</label>
+                          <MobileTimePicker
+                            // label="Controlled picker"
+                            {...field}
+                            value={timeValue}
+                            selected={field.value}
+                            onChange={(date) => field.onChange(date)}
+                            sx={{ width: "100%" }}
+                          />
+
+                          {errors.shopTime && (
+                            <span className="text-danger">
+                              {errors.shopTime.message}
+                            </span>
+                          )}
+                        </>
+                      )}
+                    />
                   </div>
                   <div className="col">
                     <label id="login_label" htmlFor="name">
@@ -514,6 +558,11 @@ const CreatShopDetailsMedical = () => {
                       placeholder="Enter Email"
                       {...register("email3", {
                         required: true,
+                        pattern: {
+                          value:
+                            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                          message: "Please enter a valid email.",
+                        },
                       })}
                     />
                     {errors.email3 && errors.email3.type === "required" && (
@@ -521,11 +570,14 @@ const CreatShopDetailsMedical = () => {
                         This field is required
                       </span>
                     )}
+                    {errors.email3 && errors.email3.type === "pattern" && (
+                      <span className="text-danger">
+                        {errors.email3.message}
+                      </span>
+                    )}
                   </div>
                 </div>
-                <div
-                  className="row flex-md-row flex-column mb-3"
-                >
+                <div className="row flex-md-row flex-column mb-3">
                   <div className="col">
                     {/* <label id="login_label" htmlFor="name">
                       Street
@@ -558,8 +610,8 @@ const CreatShopDetailsMedical = () => {
                       placeholder="Select Country Name"
                       style={{
                         borderRadius: "6px",
-                        fontSize: "20px",
-                        color: "black",
+                        fontSize: "18px",
+                        // color: "black",
                       }}
                     />
                     {errors.country && errors.country.type === "required" && (
@@ -599,8 +651,7 @@ const CreatShopDetailsMedical = () => {
                       placeholder="Select State Name"
                       style={{
                         borderRadius: "6px",
-                        fontSize: "20px",
-                        color: "black",
+                        fontSize: "18px",
                       }}
                     />
                     {errors.state && errors.state.type === "required" && (
@@ -643,8 +694,7 @@ const CreatShopDetailsMedical = () => {
                       placeholder="Select Citry Name"
                       style={{
                         borderRadius: "6px",
-                        fontSize: "20px",
-                        color: "black",
+                        fontSize: "18px",
                       }}
                     />
                     {errors.city && errors.city.type === "required" && (
@@ -726,27 +776,26 @@ const CreatShopDetailsMedical = () => {
                       onChange={(selected) => handleDoctorCategories(selected)}
                     />
                   </div>
-                 
                 </div>
-                <div className="row flex-md-row flex-column mb-3" style={{margin:"0px"}}>
-                    <label htmlFor="aboutShop">About Shop:</label>
-                    <textarea
-                      id="about"
-                      name="aboutShop"
-                      placeholder="Enter between 20 to 30 words...."
-                      rows="4"
-                      cols="45"
-                      {...register("aboutShop", {
-                        required: true,
-                      })}
-                    ></textarea>
-                    {errors.aboutShop &&
-                      errors.aboutShop.type === "required" && (
-                        <span className="text-danger">
-                          This field is required
-                        </span>
-                      )}
-                  </div>
+                <div
+                  className="row flex-md-row flex-column mb-3"
+                  style={{ margin: "0px" }}
+                >
+                  <label htmlFor="aboutShop">About Shop:</label>
+                  <textarea
+                    id="about"
+                    name="aboutShop"
+                    placeholder="Enter between 20 to 30 words...."
+                    rows="4"
+                    cols="45"
+                    {...register("aboutShop", {
+                      required: true,
+                    })}
+                  ></textarea>
+                  {errors.aboutShop && errors.aboutShop.type === "required" && (
+                    <span className="text-danger">This field is required</span>
+                  )}
+                </div>
 
                 <div className="text-center">
                   <button
@@ -754,7 +803,7 @@ const CreatShopDetailsMedical = () => {
                     id="profile_btn"
                     className="btn btn-block "
                   >
-                    Create
+                    {edit ? "Edit " : "Creat"}
                   </button>
                 </div>
               </form>

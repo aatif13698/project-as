@@ -11,9 +11,10 @@ import getAllDoctorsProfile from "../getAllDoctorsProfile";
 import getAllTeachersProfile from "../getAllTeachersProfile";
 import getBatchesProfile from "../getBatchesProfile";
 import getUpcommingBatchesProfile from "../getUpcommingBatchProfile";
+import getDiscountMedicine from "../getDiscountMedicine";
 
 
 
-const rootReducer = combineReducers({getUserData,getUserTodo, getDoneList, progress, startLoading, getErrorPage, getShopDetailsM, getUserProfile, getAllDoctorsProfile, getAllTeachersProfile, getBatchesProfile, getUpcommingBatchesProfile });
+const rootReducer = combineReducers({getUserData,getUserTodo, getDoneList, progress, startLoading, getErrorPage, getShopDetailsM, getUserProfile, getAllDoctorsProfile, getAllTeachersProfile, getBatchesProfile, getUpcommingBatchesProfile ,getDiscountMedicine});
 
 export default rootReducer;

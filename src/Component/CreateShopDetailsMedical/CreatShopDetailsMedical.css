@@ -34,3 +34,25 @@
 #ShopProfileText p{
     margin-bottom: 0px;
 }
+
+#dark .css-1pj3ptj-DropDown {
+    color: black;
+}
+
+.css-9ma7ck-OptionComponent{
+    background: #1de4ae !important;
+    border-radius: 12px !important;
+    padding: 2px 6px !important;
+    color: black !important;
+
+}
+
+
+#dark .css-9ma7ck-OptionComponent{
+
+    background: #779bba !important;
+    color: white !important;
+
+
+
+}

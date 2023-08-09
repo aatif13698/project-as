@@ -6,8 +6,8 @@ import { SidebarProvider } from "../context/sidebarContext";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useNavigate } from "react-router-dom";
-import { getAllBatchesOfParticularInstitute, getAllDoctosOfParticularMedical, getAllTeachersOfParticularInstitute, getAllUpcommingBatchesOfParticularInstitute, getInstituteProfile, getProfileData, getShopProfile, getUser, verifyByToken } from "../ApiCalling/api";
-import { getBatchList, getDoctorList, getShopData, getTeacherList, getUpcommingBatchList, getUserData, getUserProfile } from "../Action";
+import { getAllBatchesOfParticularInstitute, getAllDiscountCardOfMedical, getAllDoctosOfParticularMedical, getAllTeachersOfParticularInstitute, getAllUpcommingBatchesOfParticularInstitute, getInstituteProfile, getProfileData, getShopProfile, getUser, verifyByToken } from "../ApiCalling/api";
+import { getBatchList, getDoctorList, getMedicalDiscountCardList, getShopData, getTeacherList, getUpcommingBatchList, getUserData, getUserProfile } from "../Action";
 import { toast } from "react-toastify";
 
 
@@ -61,19 +61,40 @@ const DashboardMain = ({ children }) => {
     }
   },[])
 
-  function verifyByTokenCallback(errorCode, message){
+  function verifyByTokenCallback(errorCode, message, userType){
 
     if(errorCode == 200){
-      toast.success(message);
+
+      if(userType == "instituteOwner"){
+
+
       dispatch({ type : "NO_ERROR"})
+      toast.success(message);
+
+   
       getUser(getData);
-      getInstituteProfile(getInstituteProfileCallBack);
-      getShopProfile( getShopProfileCallBack )
       getProfileData(getProfileCallBack)
-      getAllDoctosOfParticularMedical(getAllDoctorsCallback);
+      getInstituteProfile(getInstituteProfileCallBack);
       getAllTeachersOfParticularInstitute(getAllTeachersCallback);
       getAllBatchesOfParticularInstitute(getAllBatchesCallback);
-    getAllUpcommingBatchesOfParticularInstitute(getAllUpcommingBatchesCallback);
+      getAllUpcommingBatchesOfParticularInstitute(getAllUpcommingBatchesCallback);
+
+      }else {
+
+      dispatch({ type : "NO_ERROR"})
+      toast.success(message);
+      getUser(getData);
+      getProfileData(getProfileCallBack);
+      getShopProfile( getShopProfileCallBack )
+      getAllDoctosOfParticularMedical(getAllDoctorsCallback);
+      getAllDiscountCardOfMedical(getAllMedicalCardCallback)
+
+
+      }
+
+
+
+     
 
       
     }else if(errorCode == 404 || errorCode == 401){
@@ -125,6 +146,12 @@ const DashboardMain = ({ children }) => {
     dispatch(getUpcommingBatchList(data));
   }
 
+
+  function getAllMedicalCardCallback(data){
+
+    dispatch(getMedicalDiscountCardList(data))
+
+  }
 
 
   // useEffect(()=>{

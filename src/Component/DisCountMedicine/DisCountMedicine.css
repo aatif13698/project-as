@@ -1,0 +1,88 @@
+
+
+
+.discountcard{
+    background: #a0e4e978;
+    position: relative;
+}
+
+/* .discountcard::before{
+
+    content: "";
+    width: 100%;
+    height: 20%;
+    background: red;
+    position: absolute;
+} */
+
+.custom-shape-divider-top-1691572611 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    
+}
+
+.custom-shape-divider-top-1691574080 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.medicine{
+   color:   #333535;
+}
+
+
+/*  */
+.custom-shape-divider-bottom-1691574366 {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    padding: 0px;
+    border-radius: 12px;
+}
+.custom-shape-divider-bottom-1691574366 .shape-fill {
+    fill: #3ce2ad;
+}
+
+.custom-shape-divider-bottom-1691574366 svg {
+    position: relative;
+    display: block;
+    width: calc(188% + 1.3px);
+    height: 65px;
+}
+
+.custom-shape-divider-bottom-1691574366 .shape-fill {
+    fill: #3ce2ad;
+}
+
+#dark  .custom-shape-divider-bottom-1691574366 .shape-fill{
+    fill: #2a3a35;
+
+}
+
+/* fill="#3ce2ad" */
+
+.disPercent{
+    position: absolute;
+    left: 8%;
+    top: 20%;
+    background: #00dcd4;
+    padding: 3px 10px;
+    border-radius: 29px;
+    font-weight: bold;
+}
+
+#dark .disPercent{
+    background:#04302e;
+}

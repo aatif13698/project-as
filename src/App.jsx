@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Aos from "aos";
-import "aos/dist/aos.css";
+// import "aos/dist/aos.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -35,6 +35,8 @@ import AddTeacher from "./Component/AddTeacher/AddTeacher";
 import AddBatches from "./Component/AddBatches/AddBatches";
 import AddUpcommingBatch from "./Component/AddUpcommingBatch/AddUpcommingBatch";
 import UpcommingEvents from "./Component/UpcommingEvents/UpcommingEvents";
+import Democard from "./Component/DemoCard/Democard";
+import DisCountMedicine from "./Component/DisCountMedicine/DisCountMedicine";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -82,6 +84,8 @@ function App() {
               <Route path="CreatProfile" element={<CreactProfileForMedical />} />
               <Route path="CreatMedicalShop" element={<CreatShopDetailsMedical />} />
               <Route path="addDoctor" element={<AddDoctor />} />
+              <Route path="democard" element={<Democard />} />
+              <Route path="discountOnMedicine" element={<DisCountMedicine />} />
               <Route path="addTeacher" element={<AddTeacher />} />
               <Route path="addBatches" element={<AddBatches />} />
               <Route path="addUpcommingBatch" element={<AddUpcommingBatch />} />

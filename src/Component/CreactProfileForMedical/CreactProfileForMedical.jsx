@@ -1,17 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileData, getUser, uploadProfile } from "../ApiCalling/api";
 import { getUserData, getUserProfile } from "../Action";
 import avatar from "../Assets/Images/profile.png";
 import "./CreatProfileForMedical.css";
 import activeLinkContext from "../context/activeLinkContext";
+import { Country, State, City } from "country-state-city";
+import Select from "react-dropdown-select";
+import { iconsImgs } from "../../utils/images";
 
 const CreactProfileForMedical = () => {
   const [postImage, setPostImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
   const [profileExist, setProfileExist] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   const email = useSelector(
     (state) => state?.getUserData?.userData?.user?.email
@@ -21,12 +25,58 @@ const CreactProfileForMedical = () => {
   const user = useSelector((state) => state?.getUserData?.userData?.user);
   const { setActiveLink } = useContext(activeLinkContext);
 
-  // const { firstName, lastName, city, street, state, zipCode, about, phone } =
-  //   user;
+  // console.log("profile", profile);
+  // console.log("user", user);
+  // console.log("existProfile", profileExist);
 
-  console.log("profile", profile);
-  console.log("user", user);
-  console.log("existProfile", profileExist);
+  // country / state / city
+
+  let countryData = Country.getAllCountries();
+  // console.log("country data",countryData);
+  const [stateData, setStateData] = useState([]);
+  const [cityData, setCityData] = useState([]);
+
+  const [country, setCountry] = useState(countryData[100]);
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
+
+  console.log("country data", country);
+  console.log("state data", stateData);
+  console.log("city data", cityData);
+
+  useEffect(() => {
+    setStateData(State.getStatesOfCountry(country?.isoCode));
+  }, [country]);
+
+  useEffect(() => {
+    setCityData(City.getCitiesOfState(country?.isoCode, state?.isoCode));
+  }, [state]);
+
+  useEffect(() => {
+    stateData && setState(stateData[0]);
+  }, [stateData]);
+
+  useEffect(() => {
+    cityData && setCity(cityData[0]);
+  }, [cityData]);
+
+  // select
+  const handleCountryChange = (selected) => {
+    setCountry(selected[0]);
+    // setValue("country", selected[0]?.name);
+  };
+
+  const handleStateChange = (selected) => {
+    setState(selected[0]);
+    // setValue("state", selected[0]?.name);
+  };
+
+  const handleCityChange = (selected) => {
+    setCity(selected[0]);
+    // setValue("city", selected[0]?.name);
+  };
+
+  // country / state / city
 
   const dispatch = useDispatch();
 
@@ -37,6 +87,7 @@ const CreactProfileForMedical = () => {
     formState: { errors },
     reset,
     setValue,
+    control,
   } = useForm({
     mode: "onChange",
   });
@@ -53,6 +104,10 @@ const CreactProfileForMedical = () => {
       zipCode,
       about,
     } = data;
+
+    const arr = JSON.stringify(state);
+    const arr1 = JSON.stringify(city);
+
     console.log(data, "11");
     const formData = new FormData();
     formData.append("img", selectedImage);
@@ -63,8 +118,8 @@ const CreactProfileForMedical = () => {
     formData.append("about", about);
     formData.append("phoneNumber", phoneNumber);
     formData.append("street", street);
-    formData.append("city", city);
-    formData.append("state", state);
+    formData.append("city", arr1);
+    formData.append("state", arr);
     formData.append("zipCode", zipCode);
     // console.log("data", formData);
     uploadProfile(formData, uploadProfileCallback);
@@ -94,6 +149,7 @@ const CreactProfileForMedical = () => {
 
   function editProfile() {
     setProfileExist(false);
+    setEdit(true);
 
     setValue("firstName", profile?.firstName);
     setValue("lastName", profile?.lastName);
@@ -104,6 +160,7 @@ const CreactProfileForMedical = () => {
     setValue("state", profile?.state);
     setValue("zipCode", profile?.zipCode);
     setValue("email2", profile?.email2);
+    setState(profile?.state);
   }
 
   useEffect(() => {
@@ -133,7 +190,7 @@ const CreactProfileForMedical = () => {
   }
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" style={{ padding: "0px" }}>
       {profileExist ? (
         <>
           <div
@@ -146,7 +203,125 @@ const CreactProfileForMedical = () => {
             <h4 className="text-center">Hey {name}...</h4>
             <h5 className="text-center">Here is your profile details.</h5>
           </div>
-          <div className="row mx-md-5 " style={{justifyContent:"center"}}>
+
+          <div
+            className=" row  justify-content-center"
+            style={{ margin: "0px 12px" }}
+          >
+            <div
+              className="col-md-8 col-12 "
+              style={{ padding: "0px", position: "relative" }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  background: "#2bf2d0",
+                  opacity: "0.50",
+                  left: "-9px",
+                  top: "-16px",
+                  borderRadius: "40px",
+                }}
+              ></div>
+              <div className="row row1profile">
+                <div
+                  data-aos="zoom-in-down"
+                  data-aos-duration="500"
+                  data-aos-delay={400}
+                  className="col-md-5 col-12 imgCol1  d-flex justify-content-center align-items-center"
+                >
+                  <div className="profileImg1">
+                    <img
+                      className="img1"
+                      src={`http://localhost:8080/userImages/${profile?.pdf}`}
+                      // src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1686779814~exp=1686780414~hmac=8eaa3044bc5a8a986d5b2e1eefd2ef9e3894822142aa0df3727bc1201f8e1a85"
+                      alt="profile image"
+                    />
+                  </div>
+                </div>
+                <div
+                  data-aos="zoom-in-down"
+                  data-aos-duration="500"
+                  data-aos-delay={400}
+                  className="col-md-7 col-12 d-flex justify-content-start align-items-center flex-column"
+                  style={{ margin: "60px 0px" }}
+                >
+                  <div style={{ margin: "0px 10px" }}>
+                    <h3>
+                      {profile?.firstName} {profile?.lastName}
+                    </h3>
+                    <p style={{ marginBottom: "3px" }}>
+                      <img
+                        className="profileIcon1"
+                        src={iconsImgs.mail}
+                        alt=""
+                      />{" "}
+                      {profile?.email2}
+                    </p>
+                    <p style={{ marginBottom: "3px" }}>
+                      <img
+                        className="profileIcon1"
+                        src={iconsImgs.phone}
+                        alt=""
+                      />{" "}
+                      {profile?.phone}
+                    </p>
+                    <p
+                      style={{
+                        marginBottom: "3px",
+                        display: "flex",
+                        flexDirection: "row",
+                      }}
+                    >
+                      <img
+                        className="profileIcon1"
+                        src={iconsImgs.location}
+                        alt=""
+                      />
+                      <span>
+                        {profile?.street}{" "}
+                        {profile?.city?.length > 0
+                          ? profile.city[0].name
+                          : null}{" "}
+                        {profile?.zipCode}{" "}
+                        {profile?.state?.length > 0
+                          ? profile.state[0].name
+                          : null}{" "}
+                      </span>
+                    </p>
+
+                    <h6
+                      style={{
+                        marginBottom: "3px",
+                        display: "flex",
+                        flexDirection: "row",
+                      }}
+                    >
+                      {" "}
+                      <img
+                        style={{ marginBottom: "45px" }}
+                        className="profileIcon1"
+                        src={iconsImgs.about}
+                        alt=""
+                      />{" "}
+                      <span>{profile.about}</span>{" "}
+                    </h6>
+                  </div>
+                  <div>
+                    <button
+                      onClick={editProfile}
+                      className="btn btn-success"
+                      id="profileEdit"
+                    >
+                      Edit Profile
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className="row mx-md-5 " style={{ justifyContent: "center" }}>
             <div className="col-12 col-md-8" id="profileContainer">
               <div className="row">
                 <div className=" col-12" style={{ padding: "24px 12px" }}>
@@ -183,17 +358,23 @@ const CreactProfileForMedical = () => {
                           className="profileText"
                           style={{ margin: "18px 0px" }}
                         >
-                          <p>
+                          <span>
                             Name : {profile?.firstName} {profile?.lastName}
-                          </p>
+                          </span>
                           <p>About : {profile.about}</p>
                           <p>Email : {profile?.email2}</p>
                           <p>Cell Phone : {profile?.phone}</p>
                           <div>
-                            <p>
-                              Address : {profile?.street} {profile?.city}{" "}
-                              {profile?.state} {profile?.zipCode}
-                            </p>
+                            <span>
+                              Address : {profile?.street}{" "}
+                              {profile?.city?.length > 0
+                                ? profile.city[0].name
+                                : null}
+                              {profile?.state?.length > 0
+                                ? profile.state[0].name
+                                : null}
+                              {profile?.zipCode}
+                            </span>
                           </div>
                         </div>
 
@@ -212,7 +393,7 @@ const CreactProfileForMedical = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </>
       ) : (
         <>
@@ -233,7 +414,7 @@ const CreactProfileForMedical = () => {
               data-aos="fade-left"
               data-aos-duration="800"
               data-aos-delay={400}
-              className="col-12   col-md-10"
+              className="col-12   col-md-8"
               id="creatProfile"
             >
               <form
@@ -264,7 +445,9 @@ const CreactProfileForMedical = () => {
                       />
                     </label>
 
-                    <p style={{ marginTop: "10px" }}>Select Profile Image</p>
+                    <p style={{ marginTop: "10px", marginBottom: "0px" }}>
+                      Select Profile Image
+                    </p>
 
                     <input
                       type="file"
@@ -298,12 +481,7 @@ const CreactProfileForMedical = () => {
 
                 <h5>Personal Details</h5>
 
-                <div
-                  // data-aos="fade-left"
-                  // data-aos-duration="500"
-                  // data-aos-delay={800}
-                  className="row flex-md-row flex-column mb-3"
-                >
+                <div className="row flex-md-row flex-column mb-3">
                   <div className="col">
                     <label id="login_label" htmlFor="firstName">
                       First Name
@@ -343,12 +521,7 @@ const CreactProfileForMedical = () => {
                   </div>
                 </div>
 
-                <div
-                  // data-aos="fade-left"
-                  // data-aos-duration="500"
-                  // data-aos-delay={1000}
-                  className="row flex-md-row flex-column mb-3"
-                >
+                <div className="row flex-md-row flex-column mb-3">
                   <div className="col">
                     <label id="login_label" htmlFor="name">
                       Phone Number
@@ -388,6 +561,11 @@ const CreactProfileForMedical = () => {
                       placeholder="Enter Email"
                       {...register("email2", {
                         required: true,
+                        pattern: {
+                          value:
+                            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                          message: "Please enter a valid email.",
+                        },
                       })}
                     />
                     {errors.email2 && errors.email2.type === "required" && (
@@ -395,17 +573,98 @@ const CreactProfileForMedical = () => {
                         This field is required
                       </span>
                     )}
+
+                    {errors.email2 && errors.email2.type === "pattern" && (
+                      <span className="text-danger">
+                        {errors.email2.message}
+                      </span>
+                    )}
                   </div>
                 </div>
 
                 <h5>Address</h5>
 
-                <div
-                  // data-aos="fade-left"
-                  // data-aos-duration="500"
-                  // data-aos-delay={1200}
-                  className="row flex-md-row flex-column mb-3"
-                >
+                <div className="row flex-md-row flex-column mb-3">
+                  <div className="col">
+                    <label id="login_label" htmlFor="name">
+                      State
+                    </label>
+
+                    <Controller
+                      name="state"
+                      control={control}
+                      rules={{ required: "This field is required" }}
+                      render={({ field }) => (
+                        <>
+                          <Select
+                            options={stateData}
+                            {...field}
+                            values={field.value || []}
+                            // value={state || []}
+                            onChange={(event) => {
+                              field.onChange(event);
+                              handleStateChange(event);
+                            }}
+                            labelField="name"
+                            valueField="isoCode"
+                            placeholder="Select State Name"
+                            style={{
+                              borderRadius: "6px",
+                              fontSize: "18px",
+                              // color: "black",
+                            }}
+                          />
+
+                          {errors.state && errors.state.type === "required" && (
+                            <span className="text-danger">
+                              This field is required
+                            </span>
+                          )}
+                        </>
+                      )}
+                    />
+                  </div>
+                  <div className="col">
+                    <label id="login_label" htmlFor="name">
+                      City
+                    </label>
+
+                    <Controller
+                      name="city"
+                      control={control}
+                      rules={{ required: "This field is required" }}
+                      render={({ field }) => (
+                        <>
+                          <Select
+                            options={cityData}
+                            {...field}
+                            values={field.value || []}
+                            onChange={(event) => {
+                              field.onChange(event);
+                              handleCityChange(event);
+                            }}
+                            labelField="name"
+                            valueField="name"
+                            placeholder="Select City Name"
+                            style={{
+                              borderRadius: "6px",
+                              fontSize: "18px",
+                              // color: "black",
+                            }}
+                          />
+
+                          {errors.city && errors.city.type === "required" && (
+                            <span className="text-danger">
+                              This field is required
+                            </span>
+                          )}
+                        </>
+                      )}
+                    />
+                  </div>
+                </div>
+
+                <div className="row flex-md-row flex-column mb-3">
                   <div className="col">
                     <label id="login_label" htmlFor="name">
                       Street
@@ -419,50 +678,6 @@ const CreactProfileForMedical = () => {
                       })}
                     />
                     {errors.street && errors.street.type === "required" && (
-                      <span className="text-danger">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
-                  <div className="col">
-                    <label id="login_label" htmlFor="name">
-                      City
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control login_input"
-                      placeholder="City"
-                      {...register("city", {
-                        required: true,
-                      })}
-                    />
-                    {errors.city && errors.city.type === "required" && (
-                      <span className="text-danger">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div
-                  // data-aos="fade-left"
-                  // data-aos-duration="500"
-                  // data-aos-delay={1400}
-                  className="row flex-md-row flex-column mb-3"
-                >
-                  <div className="col">
-                    <label id="login_label" htmlFor="name">
-                      State
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control login_input"
-                      placeholder="State"
-                      {...register("state", {
-                        required: true,
-                      })}
-                    />
-                    {errors.state && errors.state.type === "required" && (
                       <span className="text-danger">
                         This field is required
                       </span>
@@ -494,7 +709,7 @@ const CreactProfileForMedical = () => {
                     id="profile_btn"
                     className="btn btn-block "
                   >
-                    Create
+                    {edit ? "Edit" : "Create"}
                   </button>
                 </div>
               </form>

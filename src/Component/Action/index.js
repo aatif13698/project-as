@@ -181,5 +181,19 @@ export  const deleteUpcommingBatchList = (data)=>{
 
 
 
+// getMedicalDiscountCardList
+
+export  const getMedicalDiscountCardList = (data)=>{
+
+  return {type : "GET_MEDICAL_CARD", payload : data}
+
+}
+
+
+export  const deleteMedicalDiscountCardList = (data)=>{
+
+  return {type : "DELETE_MEDICAL_CARD", payload : data}
+
+}
 
 

@@ -54,6 +54,7 @@
 #dark #about{
     background: transparent;
     border: 2px solid white;
+    color: white;
 }
 
 #dark #about ::placeholder{
@@ -163,11 +164,12 @@
 #profileEdit{
     background:  #3ce2ad;
     box-shadow: 2px 6px 21px rgba(0,0,0, 0.2);
-    padding: 10px 50px;
+    padding: 10px 30px;
     font-size: 15px;
     border-radius: 20px;
     color: white;
     border: none;
+    margin-top: 25px;
 }
 
 #dark #profileEdit{
@@ -187,3 +189,131 @@
     background-color: #3c6263;
 }
 
+
+
+
+.css-wmy1p7-ReactDropdownSelect{
+    background: white;
+}
+
+#dark .css-wmy1p7-ReactDropdownSelect{
+    background: transparent;
+}
+
+.imgCol1{
+    position: relative;
+
+}
+
+
+.imgCol1::before{
+    content: "";
+    width: 50%;
+    height: 100%;
+    background: #2bf2d0;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    border-radius: 39px 3px 149px 34px;
+    box-shadow: 9px 2px 10px rgba(0,0,0,0.2 );
+    z-index: 1;
+}
+
+#dark .imgCol1::before{
+    background:  #2a3a35;
+
+
+}
+
+.profileImg1{
+    z-index: 2;
+    margin: 33px 0px;
+}
+
+.img1{
+    width: 120px;
+    height: 120px;
+    border-radius: 35px 13px 35px 13px;;
+    box-shadow: 9px 5px 19px rgba( 0,0,0, 0.2);
+
+}
+
+.row1profile{
+    position: relative;
+    border: 2px solid #2bf2d0;
+    border-radius: 40px;
+    transition: all 300ms ease-in-out;
+}
+
+.row1profile:hover{
+    transform: scale(1.016);
+
+}
+
+#dark .row1profile{
+    border: 2px solid  #2a3a35; 
+}
+.row1profile
+/* 
+.row1profile::before{
+   
+    content: "";
+    width: 104%;
+    height: 108%;
+    position: absolute;
+    background: #2bf2d0;
+    z-index: 2;
+    opacity: 0.6;
+    padding: 1px;
+    top: -13px;
+    right: -2%; 
+    border: 12%;
+    border-radius: 40px;
+
+} */
+
+#profileStyle1{
+    position: absolute ;
+    width: 100%;
+    height: 100%;
+    background: #2bf2d0;
+    opacity: 0.50;
+    left: -9px;
+    top: -16px;
+    border-radius: 40px 40px 40px 40px;
+}
+
+
+
+
+.profileIcon1{
+    width: 20px;
+    margin-right: 10px;
+}
+
+#dark .profileIcon1{
+    filter: invert(1);
+}
+
+
+@media screen and (max-width: 768px) {
+
+
+    .imgCol1::before{
+
+        content: "";
+    width: 100%;
+    height: 100%;
+    background: #2bf2d0;
+    left: 0px;
+    top: 0px;
+    border-radius: 40px;
+    clip-path: polygon(92% 0, 0 0, 0 79%);
+    z-index: 1;
+
+
+    }
+
+
+
+}

@@ -219,10 +219,10 @@ export async function loginUser(datas, loginCallBack) {
 export async function verifyByToken(data, verifyByTokenCallback) {
   try {
     const {
-      data: { errorCode, message },
+      data: { errorCode, message , userType},
     } = await axios.post("http://localhost:8080/api/user/verifyByToken", data);
 
-    verifyByTokenCallback(errorCode, message);
+    verifyByTokenCallback(errorCode, message, userType);
   } catch (error) {
     console.log(error);
   }
@@ -579,10 +579,12 @@ export async function getAllDoctosOfParticularMedical(getAllDoctorsCallback) {
       }
     );
 
+    getAllDoctorsCallback(totalDoctors);
+
+
     if (errorCode == 200) {
       toast.success(message);
 
-      getAllDoctorsCallback(totalDoctors);
     } else {
       toast.warning(message);
     }
@@ -834,6 +836,95 @@ export async function deleteParticularUpcommingBatch(
     if (errorCode == 200) {
       toast.success(message);
       deleteParticularUpcommingBatchCallback();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+
+// addDiscountMedicine
+
+
+
+export async function addDiscountMedicine(data, addDiscountMedicinecallback) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/addDiscountMedicine",
+      data
+    );
+
+    if (errorCode == 200) {
+      toast.success(message);
+      addDiscountMedicinecallback();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+
+
+// getAllDiscountCardOfMedical
+
+
+
+
+export async function getAllDiscountCardOfMedical( getAllMedicalCardCallback) {
+
+  let token = localStorage.getItem("token");
+
+  try {
+    const {
+      data: { errorCode, message, totalCards },
+    } = await axios.get(
+      "http://localhost:8080/api/user/getAllDiscountCardOfMedical",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    getAllMedicalCardCallback(totalCards);
+
+    if (errorCode == 200) {
+      toast.success(message);
+    } else {
+      toast.warning(message);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+
+// deleteParticularDiscountMledicine
+
+
+
+export async function deleteParticularDiscountMledicine(
+  data,
+  deleteParticularCardMedicineCallback
+) {
+  try {
+    const {
+      data: { errorCode, message },
+    } = await axios.post(
+      "http://localhost:8080/api/user/deleteParticularDiscountMledicine",
+      data
+    );
+
+    toast.success(message);
+
+    if (errorCode == 200) {
+      deleteParticularCardMedicineCallback();
     }
   } catch (error) {
     console.log(error);

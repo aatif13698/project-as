@@ -26,6 +26,7 @@ import bell1 from '../assets/icons/bell1.svg'
 import phone from '../assets/icons/phone.svg'
 import mail from '../assets/icons/mail.svg'
 import location from '../assets/icons/location.svg'
+import about from '../assets/icons/about.svg'
 
 
 // person images
@@ -36,7 +37,7 @@ import person_four from "../assets/images/person_four.jpg";
 import avatar from "../assets/images/avtar.jpg";
 
 export const iconsImgs = {
-      Shop, doctor1, doctorEdit, addProducts, account, batches, bell, discount, editProduct, memories, profile, search, settings, subjects, teacher, workList, testFacility, home, institute, event, medical, menu1, menu2, bell1,phone, mail, location
+      Shop, doctor1, doctorEdit, addProducts, account, batches, bell, discount, editProduct, memories, profile, search, settings, subjects, teacher, workList, testFacility, home, institute, event, medical, menu1, menu2, bell1,phone, mail, location, about
 }
 
 export const personsImgs = {

@@ -3,7 +3,7 @@ import "./AddDoctor.css";
 import { iconsImgs } from "../../utils/images";
 import activeLinkContext from "../context/activeLinkContext";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import avatar from "../Assets/Images/profile.png";
 import {
   addDoctorProfile,
@@ -14,6 +14,43 @@ import {
 } from "../ApiCalling/api";
 import { getDoctorList, getUserData, getUserProfile } from "../Action";
 import ImgURL from "../Common/imageUrl";
+import DSelec from "react-dropdown-select";
+import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
+import dayjs from "dayjs";
+
+// import {Select as dSelect }from "react-dropdown-select";
+
+import { dayOption } from "../data/data";
+
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import ListItemText from "@mui/material/ListItemText";
+import Select from "@mui/material/Select";
+import Checkbox from "@mui/material/Checkbox";
+import { Country, State, City } from "country-state-city";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+const names = [
+  "SUNDAY",
+  "MONDAY",
+  "TUESDAY",
+  "WEDNESDAY",
+  "THURSDAY",
+  "FRIDAY",
+  "SATURDAY",
+];
 
 const AddDoctor = () => {
   const [postImage, setPostImage] = useState(null);
@@ -22,8 +59,7 @@ const AddDoctor = () => {
   const [choseDoctor, setChoseDoctor] = useState(false);
   const [doctorId, setDoctorId] = useState("");
 
-
-  const scrollRef = useRef()
+  const scrollRef = useRef();
 
   const email = useSelector(
     (state) => state?.getUserData?.userData?.user?.email
@@ -34,10 +70,61 @@ const AddDoctor = () => {
     (state) => state?.getAllDoctorsProfile?.doctorsList
   );
 
-  console.log("choseDoctor", choseDoctor);
-  console.log("docId", doctorId);
+  // console.log("choseDoctor", choseDoctor);
+  // console.log("docId", doctorId);
+  console.log("doctor", doctors);
 
   const { setActiveLink } = useContext(activeLinkContext);
+
+  // country / state / city
+  let countryData = Country.getAllCountries();
+  // console.log("country data",countryData);
+  const [stateData, setStateData] = useState([]);
+  const [cityData, setCityData] = useState([]);
+  const [timeValue, setTimeValue] = useState(dayjs("2022-04-17T15:30"));
+
+
+  const [country, setCountry] = useState(countryData[100]);
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
+
+  // console.log("country data", country);
+  // console.log("state data", stateData);
+  // console.log("city data", cityData);
+
+  useEffect(() => {
+    setStateData(State.getStatesOfCountry(country?.isoCode));
+  }, [country]);
+
+  useEffect(() => {
+    setCityData(City.getCitiesOfState(country?.isoCode, state?.isoCode));
+  }, [state]);
+
+  useEffect(() => {
+    stateData && setState(stateData[0]);
+  }, [stateData]);
+
+  useEffect(() => {
+    cityData && setCity(cityData[0]);
+  }, [cityData]);
+
+  // select
+  const handleCountryChange = (selected) => {
+    setCountry(selected[0]);
+    // setValue("country", selected[0]?.name);
+  };
+
+  const handleStateChange = (selected) => {
+    setState(selected[0]);
+    // setValue("state", selected[0]?.name);
+  };
+
+  const handleCityChange = (selected) => {
+    setCity(selected[0]);
+    // setValue("city", selected[0]?.name);
+  };
+
+  // country / state / city
 
   const dispatch = useDispatch();
 
@@ -48,6 +135,7 @@ const AddDoctor = () => {
     formState: { errors },
     reset,
     setValue,
+    control,
   } = useForm({
     mode: "onChange",
   });
@@ -69,6 +157,11 @@ const AddDoctor = () => {
       time,
     } = data;
     console.log(data, "11");
+
+    const arr = JSON.stringify(day);
+    const arr2 = JSON.stringify(state);
+    const arr3 = JSON.stringify(city);
+
     const formData = new FormData();
     formData.append("img", selectedImage);
     formData.append("email", email);
@@ -78,12 +171,12 @@ const AddDoctor = () => {
     formData.append("aboutDr", aboutDr);
     formData.append("drPhoneNumber", drPhoneNumber);
     formData.append("street", street);
-    formData.append("city", city);
-    formData.append("state", state);
+    formData.append("city", arr3);
+    formData.append("state", arr2);
     formData.append("zipCode", zipCode);
     formData.append("drQualification", drQualification);
     formData.append("drSpecialist", drSpecialist);
-    formData.append("day", day);
+    formData.append("day", arr);
     formData.append("time", time);
     // console.log("data", formData);
 
@@ -144,8 +237,11 @@ const AddDoctor = () => {
     setValue("drQualification", doctor?.drQualification);
     setValue("drSpecialist", doctor?.drSpecialist);
     setValue("drEmail", doctor?.drEmail);
+    setValue("day", doctor?.day);
+    setValue("time",doctor?.time )
 
     setChoseDoctor(true);
+    setTimeValue(doctor?.time)
 
     scrollToSection("form");
   }
@@ -188,18 +284,16 @@ const AddDoctor = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [doctors]);
 
- 
-
   return (
-    <div className="container-fluid " style={{padding:"0px"}}>
+    <div className="container-fluid " style={{ padding: "0px" }}>
       <div
-        className="row justify-content-center" 
+        className="row justify-content-center"
         data-aos="fade-left"
         data-aos-duration="500"
         data-aos-delay={200}
       >
-        <div className="col-md-10 col-12">
-          <h4 className="text-center">Hello {name}..</h4>
+        <div className="col-md-10 col-12 docHead" >
+          {/* <h4 className="text-center">Hello {name}..</h4> */}
           <h6 className="text-center">
             Please Fill The Form To Create Card For Doctors Available In your
             Pharmacy. You Can Add Any Number Of Doctors And Can Manage To Edit
@@ -217,7 +311,7 @@ const AddDoctor = () => {
           data-aos="fade-left"
           data-aos-duration="800"
           data-aos-delay={400}
-          className="col-12   col-md-10"
+          className="col-12   col-md-8"
           id="creatProfile"
         >
           <form
@@ -293,7 +387,7 @@ const AddDoctor = () => {
                 <input
                   type="text"
                   className="form-control login_input"
-                  placeholder="First Name"
+                  placeholder="Doctor Name"
                   {...register("drName", {
                     required: true,
                   })}
@@ -364,49 +458,80 @@ const AddDoctor = () => {
             </div>
 
             <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={800}
+             
               className="row flex-md-row flex-column mb-3"
             >
               <div className="col">
-                <label id="login_label" htmlFor="firstName">
-                  Visitting Day
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Enter Day"
-                  {...register("day", {
-                    required: true,
-                  })}
+               
+                <Controller
+                  name="day"
+                  control={control}
+                  rules={{ required: "This field is required" }}
+                  render={({ field }) => (
+                    <>
+                      <InputLabel id="demo-multiple-checkbox-label">
+                        Visiting Days
+                      </InputLabel>
+                      <Select
+                        labelId="demo-multiple-checkbox-label"
+                        id="demo-multiple-checkbox"
+                        multiple
+                        {...field}
+                        value={field.value || []} 
+                        onChange={(event) => field.onChange(event.target.value)} 
+                        input={<OutlinedInput label="Tag" />}
+                        renderValue={(selected) => selected.join(", ")}
+                        MenuProps={MenuProps}
+                      >
+                        {names.map((name) => (
+                          <MenuItem key={name} value={name}>
+                           
+                            <ListItemText primary={name} />
+                          </MenuItem>
+                        ))}
+                      </Select>
+
+                      {errors.day && (
+                        <span className="text-danger">
+                          {errors.day.message}
+                        </span>
+                      )}
+                    </>
+                  )}
                 />
-                {errors.day && errors.day.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
               </div>
               <div className="col">
-                <label id="login_label" htmlFor="name">
-                  Visitting Time
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Enter Time"
-                  {...register("time", {
-                    required: true,
-                  })}
+                
+
+                <Controller
+                  name="time"
+                  control={control}
+                  rules={{ required: "This field is required" }}
+                  render={({ field }) => (
+                    <>
+                      <label htmlFor="">Visiting Time</label>
+                      <MobileTimePicker
+                       
+                        {...field}
+                        value={timeValue}
+                        selected={field.value}
+                        onChange={(date) => field.onChange(date)}
+                        sx={{ width: "100%" }}
+                      />
+
+                      {errors.time && (
+                        <span className="text-danger">
+                          {errors.time.message}
+                        </span>
+                      )}
+                    </>
+                  )}
                 />
-                {errors.time && errors.time.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
               </div>
             </div>
 
             <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={1000}
+              
               className="row flex-md-row flex-column mb-3"
             >
               <div className="col">
@@ -456,12 +581,89 @@ const AddDoctor = () => {
 
             <h5>Address</h5>
 
-            <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={1200}
-              className="row flex-md-row flex-column mb-3"
-            >
+            <div className="row flex-md-row flex-column mb-3">
+              <div className="col">
+                <label id="login_label" htmlFor="name">
+                  State
+                </label>
+
+                <Controller
+                  name="state"
+                  control={control}
+                  rules={{ required: "This field is required" }}
+                  render={({ field }) => (
+                    <>
+                      <DSelec
+                        options={stateData}
+                        {...field}
+                        values={field.value || []}
+                       
+                        onChange={(event) => {
+                          field.onChange(event);
+                          handleStateChange(event);
+                        }}
+                        labelField="name"
+                        valueField="isoCode"
+                        placeholder="Select State Name"
+                        style={{
+                          borderRadius: "6px",
+                          fontSize: "18px",
+                          width: "100%",
+                         
+                        }}
+                      />
+
+                      {errors.state && errors.state.type === "required" && (
+                        <span className="text-danger">
+                          This field is required
+                        </span>
+                      )}
+                    </>
+                  )}
+                />
+              </div>
+              <div className="col">
+                <label id="login_label" htmlFor="name">
+                  City
+                </label>
+
+                <Controller
+                  name="city"
+                  control={control}
+                  rules={{ required: "This field is required" }}
+                  render={({ field }) => (
+                    <>
+                      <DSelec
+                        options={cityData}
+                        {...field}
+                        values={field.value || []}
+                        onChange={(event) => {
+                          field.onChange(event);
+                          handleCityChange(event);
+                        }}
+                        labelField="name"
+                        valueField="name"
+                        placeholder="Select City Name"
+                        style={{
+                          borderRadius: "6px",
+                          fontSize: "18px",
+                          width: "100%",
+                          
+                        }}
+                      />
+
+                      {errors.city && errors.city.type === "required" && (
+                        <span className="text-danger">
+                          This field is required
+                        </span>
+                      )}
+                    </>
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className="row flex-md-row flex-column mb-3">
               <div className="col">
                 <label id="login_label" htmlFor="name">
                   Street
@@ -475,46 +677,6 @@ const AddDoctor = () => {
                   })}
                 />
                 {errors.street && errors.street.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  City
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="City"
-                  {...register("city", {
-                    required: true,
-                  })}
-                />
-                {errors.city && errors.city.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-            </div>
-
-            <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={1400}
-              className="row flex-md-row flex-column mb-3"
-            >
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  State
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="State"
-                  {...register("state", {
-                    required: true,
-                  })}
-                />
-                {errors.state && errors.state.type === "required" && (
                   <span className="text-danger">This field is required</span>
                 )}
               </div>
@@ -545,12 +707,26 @@ const AddDoctor = () => {
         </div>
       </div>
 
+      {
+        doctors?.length > 0 ? 
+         <h3 className='text-center mb-5' style={{position:"relative", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>List Of Doctors You Added.
+
+                         <div
+                          className="docLine"
+                          style={{ position: "absolute", height: "4px", top:"120%" , background:"linear-gradient(36deg, rgba(60,226,173,1) 0%, rgb(12 229 236) 52%)"}}
+                        ></div>
+         
+         </h3> 
+         :  null
+       }
+
       {doctors &&
         doctors.map((val) => {
           return (
-            <div className="row  doctorRow" key={val._id} ref={scrollRef}>
-              <div className=" col-12 col-md-9" style={{ height: "100%" }}>
+            <div  className="row  doctorRow" key={val._id} ref={scrollRef}>
+              <div  className=" col-12 col-md-8" style={{ height: "100%" }}>
                 <div
+                
                   className="row flex-md-row flex-reverse  docRow2 "
                   style={{
                     height: "100%",
@@ -562,7 +738,8 @@ const AddDoctor = () => {
                     <div className="docText">
                       <div style={{ position: "relative" }}>
                         <h3>DR.{val.drName}</h3>
-                        <h5>{val.drSpecialist}</h5>
+                        <h5 style={{color:"#363e3f99"}}>{val.drSpecialist}</h5>
+                        <p>{val.day.length > 0 ? val.day[0] : null}</p>
                         <div
                           className="docLine"
                           style={{ position: "absolute", height: "4px" }}
@@ -586,14 +763,20 @@ const AddDoctor = () => {
                           />
                           <span> {val.drEmail}</span>
                         </p>
-                        <p>
+                        <p className="d-flex flex-row">
                           <img
                             className="docIcon"
                             src={iconsImgs.location}
                             alt=""
                           />
                           <span>
-                            {val.street} {val.city} {val.state} {val.zipCode}
+                            {val.street}
+
+                            {val?.city?.length > 0 ? val?.city[0]?.name : null}
+                            {val?.state?.length > 0 ? val.state[0].name : null}
+                            {val?.zipCode}
+
+                            {/* {val.city} {val.state} {val.zipCode} */}
                           </span>
                         </p>
                       </div>
@@ -619,9 +802,10 @@ const AddDoctor = () => {
                     </div>
                   </div>
 
-                  <div className="col-12 order-1 order-md-2 col-md-5 docCol2 d-flex justify-content-center align-items-center ">
-                    <div>
+                  <div  className="col-12 order-1 order-md-2 col-md-5 docCol2 d-flex justify-content-center align-items-center ">
+                    <div  >
                       <img
+                     
                         className="doctorImg"
                         src={`${ImgURL}${val?.pdf}`}
                         alt=""
