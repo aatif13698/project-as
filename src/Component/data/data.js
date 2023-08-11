@@ -2,7 +2,7 @@ import { iconsImgs } from "../../utils/images";
 import { personsImgs } from "../../utils/images";
 
 export const navigationLinksForMedical = [
-  { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
+  { id: 1, title: "Home", image: iconsImgs.home, to: "homeMedical" },
   {id : 6, title:"Demo card", image: iconsImgs.event, to: "democard"},
 
   { id: 8, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
@@ -38,7 +38,7 @@ export const navigationLinksForMedical = [
 ];
 
 export const navigationLinksForInstitute = [
-  { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
+  { id: 1, title: "Home", image: iconsImgs.home, to: "homeInstitute" },
   {
     id: 2,
     title: "Institute",
@@ -54,7 +54,7 @@ export const navigationLinksForInstitute = [
     image: iconsImgs.subjects,
     to: "addUpcommingBatch",
   },
-  { id: 7, title: "Future Events", image: iconsImgs.event, to: "addUpcommingEvents" },
+  { id: 7, title: "Future Events", image: iconsImgs.event, to: "home" },
   { id: 10, title: "Memories", image: iconsImgs.memories, to: "home" },
   { id: 8, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
   {

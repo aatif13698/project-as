@@ -56,7 +56,7 @@
 .docCol::before {
   content: "";
   width: 135%;
-  background: #c4fffd;
+  background: #2bf2d0;
   height: 100%;
   position: absolute;
   border-radius: 40px 123px 123px 40px;

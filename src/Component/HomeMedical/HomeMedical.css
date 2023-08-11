@@ -1,0 +1,236 @@
+
+.homeImgDiv{
+
+}
+
+.homeImg{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.col1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-right: 2px solid #546767;
+}
+
+.row1{
+    border-radius: 12px;
+    padding: 12px;
+    background:  #89DFE4;
+    box-shadow: -2px 5px 10px rgba(0,12,12, 0.1 );
+}
+
+#dark .row1{
+    background: #354f52;
+}
+
+
+.homeInfo{
+    border-bottom: 2px solid #546767;
+}
+
+.col2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manageProfile{
+
+}
+
+
+.col3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 2px solid #546767;
+}
+
+.col4{
+    background:  #89DFE4;
+    border-radius: 12px;
+    box-shadow: -2px 5px 10px rgba(0,12,12, 0.1 );
+
+}
+
+#dark .col4{
+    background: #354f52;
+}
+
+.homeBtn{
+    background: #3cb6e2;
+    padding: 7px 10px;
+    border-radius: 10px;
+    color: black;
+}
+
+#dark .homeBtn{
+
+    background:  #009c6c;
+    color: white;
+
+}
+
+
+
+.homeSearchInput{
+    width: 82%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: none;
+    font-size: 20px;
+    border: 2px solid  #3cb6e2;
+    background: transparent;
+
+}
+
+.homeSearchIcon{
+    width: 20px;
+}
+
+
+.row3{
+    /* height: 120px; */
+    /* background: #5dd2ba; */
+    overflow: auto;
+}
+
+.homeDoctDiv{
+    position: absolute;
+    top: 30%;
+    right: 7px;
+}
+
+.homeSmBox{
+    background: #89DFE4;
+ 
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    box-shadow: -2px 5px 10px rgba(0,12,12, 0.1 );
+    padding: 12px;
+
+}
+
+#dark .homeSmBox{
+    background: #354f52;
+}
+
+.homeDoct{
+    width: 37px;
+}
+
+#dark .homeDoct{
+    filter: invert(1);
+}
+
+.homeNum{
+    color: whitesmoke;
+}
+
+.homeSmBox p{
+    color: blue;
+}
+
+
+.homeFollowers{
+    width: 95%;
+    background: #3cb6e2;
+    border-radius: 6px;
+    padding: 8px 2px;
+    margin: 5px 0px
+}
+
+#dark .homeFollowers{
+    background:  #009c6c;
+}
+
+.homeFHead{
+    /* color: #546767; */
+    padding: 8px 2px;
+
+}
+
+.homeSmBox2{
+    background: #89DFE4;
+
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    box-shadow: -2px 5px 10px rgba(0,12,12, 0.1 );
+    padding-bottom: 30px;
+
+}
+
+#dark .homeSmBox2{
+    background: #354f52;
+}
+
+.homeViewMore{
+    position: absolute;
+    right: 19px;
+    bottom: 0;
+    color: blue;
+}
+
+
+.homeSmBox1{
+    background: #89DFE4;
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    box-shadow: -2px 5px 10px rgba(0,12,12, 0.1 );
+    padding: 12px;
+}
+
+#dark .homeSmBox1{
+    background: #354f52;
+}
+
+
+.homeNews{
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+    background: transparent;
+    border: 2px solid  #3cb6e2;
+}
+
+
+#dark .homeSmBox p{
+    color: #009c6c;
+}
+
+#dark .homeViewMore{
+    color: #009c6c;
+
+}
+
+#dark .homeNews{
+    border: 2px solid #009c6c;
+
+}
+
+#dark .homeSearchInput{
+    border: 2px solid #009c6c;
+
+
+}

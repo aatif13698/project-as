@@ -37,6 +37,8 @@ import AddUpcommingBatch from "./Component/AddUpcommingBatch/AddUpcommingBatch";
 import UpcommingEvents from "./Component/UpcommingEvents/UpcommingEvents";
 import Democard from "./Component/DemoCard/Democard";
 import DisCountMedicine from "./Component/DisCountMedicine/DisCountMedicine";
+import HomeMedical from "./Component/HomeMedical/HomeMedical";
+import HomeInstitute from "./Component/HomeInstitute/HomeInstitute";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -86,6 +88,8 @@ function App() {
               <Route path="addDoctor" element={<AddDoctor />} />
               <Route path="democard" element={<Democard />} />
               <Route path="discountOnMedicine" element={<DisCountMedicine />} />
+              <Route path="homeMedical" element={<HomeMedical />} />
+              <Route path="homeInstitute" element={<HomeInstitute />} />
               <Route path="addTeacher" element={<AddTeacher />} />
               <Route path="addBatches" element={<AddBatches />} />
               <Route path="addUpcommingBatch" element={<AddUpcommingBatch />} />

@@ -1,21 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { iconsImgs } from "../../utils/images";
 import profileImg from "../Assets/Images/Realistic-Male-Profile-Picture.webp";
-import "./HomeMedical.css";
-import { BsCircle } from 'react-icons/bs';
+import "./HomeInstitute.css";
+import { BsCircle } from "react-icons/bs";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { ThemeContext } from "@emotion/react";
 
-const HomeMedical = () => {
-
-  // for theme 
+const HomeInstitute = () => {
+  // for theme
 
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const barColor = theme=='dark' ? '#13f0ac' : 'blue'
-
-
-
+  const barColor = theme == "dark" ? "#13f0ac" : "blue";
 
   // for date
   const today = new Date();
@@ -53,7 +49,6 @@ const HomeMedical = () => {
       clearInterval(interval); // Clean up the interval on component unmount
     };
   }, []);
-
 
   // circular progress
 
@@ -123,60 +118,85 @@ const HomeMedical = () => {
         <div className="col-md-4 col-12  mt-md-0 mt-3 d-flex justify-contnet-center align-items-center ">
           <div className=" homerow3 d-flex justify-contnet-center align-items-center flex-column">
               <div>
-                <h3 className="text-center">Create Pharmacy.</h3>
-                <h5 > Pharmacy Profile Will Vissible To The User Searching Your Pharmacy.</h5>
-                <button className=" homeBtn">Manage Pharmacy</button>
+                <h3 className="text-center">Create Institute.</h3>
+                <h5 > Institute Profile Will Vissible To The User Searching Your Institute.</h5>
+                <button className=" homeBtn">Manage Institute</button>
 
               </div>
           </div>
         </div>
       </div>
+
       {/* second section */}
 
       <div className="row gx-3 mb-3">
         <div className="col-md-8 col-12">
           <div className="row ">
             <div className="row gx-3">
-              <div className="col-md-4 col-6 mb-md-0 mb-3 ">
+            <div className="col-md-4 col-6  mb-md-3 mb-3 ">
+                <div className="homeSmBox">
+                  <div className="homeDoctDiv">
+                    <img className="homeDoct" src={iconsImgs.teacher} alt="" />
+                  </div>
+                  <h3>Teachers </h3>
+                  <h2 className="homeNum">78</h2>
+                  <p>Details</p>
+                </div>
+              </div>
+              <div className="col-md-4 col-6  mb-md-3 mb-3 ">
+                <div className="homeSmBox">
+                  <div className="homeDoctDiv">
+                    <img className="homeDoct" src={iconsImgs.batches} alt="" />
+                  </div>
+                  <h3>Batches </h3>
+                  <h2 className="homeNum">78</h2>
+                  <p>Details</p>
+                </div>
+              </div>
+              <div className="col-md-4 col-6  mb-md-3 mb-3 ">
+                <div className="homeSmBox">
+                  <div className="homeDoctDiv">
+                    <img className="homeDoct" src={iconsImgs.memories} alt="" />
+                  </div>
+                  <h3>Memories </h3>
+                  <h2 className="homeNum">78</h2>
+                  <p>Details</p>
+                </div>
+              </div>
+              <div className="col-md-4 col-6  mb-md-3 mb-3 ">
                 <div className="homeSmBox">
                   <div className="homeDoctDiv">
                     <img className="homeDoct" src={iconsImgs.doctor1} alt="" />
                   </div>
-                  <h3>Doctors </h3>
+                  <h3>Gallery </h3>
                   <h2 className="homeNum">78</h2>
                   <p>Details</p>
                 </div>
               </div>
-              <div className="col-md-4 col-6 mb-md-0 mb-3 ">
+              <div className="col-md-8  col-12 mb-md-3 mb-3 ">
                 <div className="homeSmBox">
                   <div className="homeDoctDiv">
-                    <img className="homeDoct" src={iconsImgs.discount} alt="" />
+                    <img className="homeDoct" src={iconsImgs.subjects} alt="" />
                   </div>
-
-                  <h3>Discount</h3>
-                  <h2 className="homeNum">67</h2>
-                  <p>Details</p>
-                </div>
-              </div>
-              <div className="col-md-4 col-12 mb-md-0 mb-3 ">
-                <div className="homeSmBox">
-                  <div className="homeDoctDiv">
-                    <img
-                      className="homeDoct"
-                      src={iconsImgs.testFacility}
-                      alt=""
-                    />
-                  </div>
-                  <h3>Test</h3>
+                  <h3>Upcomming Batch </h3>
                   <h2 className="homeNum">78</h2>
                   <p>Details</p>
                 </div>
               </div>
+             
             </div>
           </div>
         </div>
-        <div className="col-md-4 col-12 col4 mt-md-0 mt-3 d-flex justify-content-center align-items-center ">
-          <div className=" py-3">
+        <div className="col-md-4 col-12  mt-md-0 mt-3 d-flex justify-content-center align-items-center flex-column ">
+          <div className="homedata py-3" style={{position:"relative"}}>
+            <div className="homeDoctDiv">
+              <img className="homeDoct" src={iconsImgs.event} alt="" />
+            </div>
+            <h3>Upcomming Events </h3>
+            <h2 className="homeNum">78</h2>
+            <p>Details</p>
+          </div>
+          <div className="homedata py-3 mt-3">
             <h3>Date : {formatDate(today)}</h3>
 
             <h3> Time: {formatTime(currentTime)}</h3>
@@ -273,7 +293,7 @@ const HomeMedical = () => {
                       value={50}
                       // color="primary"
                       sx={{
-                        '& circle': {
+                        "& circle": {
                           mask: `conic-gradient(
                             from 0deg at 50% 50%, 
                             transparent ${rotationAngle}deg, 
@@ -296,20 +316,21 @@ const HomeMedical = () => {
         </div>
 
         <div className="col-md-4 col-12 col4 mt-md-0 mt-3 ">
-          <div style={{height:"100%"}}>
+          <div style={{ height: "100%" }}>
             <div className="d-flex justify-content-center align-items-center my-3">
-              <h4>Creat News On Health</h4>
-             
+              <h4>Creat News </h4>
             </div>
             <div className="row">
               <div className="col-12">
-                <textarea className="homeNews" placeholder="Type News" name="" id="" cols="30" rows="10">
-
-                </textarea>
-                
+                <textarea
+                  className="homeNews"
+                  placeholder="Type News"
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                ></textarea>
               </div>
-
-
             </div>
           </div>
         </div>
@@ -318,4 +339,4 @@ const HomeMedical = () => {
   );
 };
 
-export default HomeMedical;
+export default HomeInstitute;
