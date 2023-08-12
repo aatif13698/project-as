@@ -3,6 +3,7 @@ import { iconsImgs } from "../../utils/images";
 import profileImg from "../Assets/Images/Realistic-Male-Profile-Picture.webp";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
+import shopImg from "../Assets/Images/medicalShopDemo3.png";
 
 const Democard = () => {
   return (
@@ -48,7 +49,7 @@ const Democard = () => {
               data-aos="zoom-in-down"
               data-aos-duration="500"
               data-aos-delay={400}
-              className="col-md-5 col-12 imgCol1  d-flex justify-content-center align-items-center"
+              className="col-md-5 col-12 imgCol1  d-flex justify-content-center align-items-center "
             >
               <div className="profileImg1">
                 <img
@@ -125,10 +126,9 @@ const Democard = () => {
         </div>
       </div>
 
-
       <div className="row justify-content-center align-items-center">
         <div className="col-md-7 col-12 docHead text-center">
-        <h3>Demo Card of Doctor's Profile.</h3>
+          <h3>Demo Card of Doctor's Profile.</h3>
         </div>
       </div>
 
@@ -200,127 +200,276 @@ const Democard = () => {
       {/* discount card */}
       <div className="row justify-content-center align-items-center">
         <div className="col-md-7 col-12 docHead text-center">
-        <h3>Demo Card of Discount.</h3>
+          <h3>Demo Card of Discount.</h3>
         </div>
       </div>
 
       <div className="row justify-content-center align-items-center my-4 ">
-                <div className="col-md-10 col-12">
-                  <div className="row justify-content-around   gx-2 gy-5">
-                    <div
-                      className="col-md-5 col-12  "
+        <div className="col-md-10 col-12">
+          <div className="row justify-content-around   gx-2 gy-5">
+            <div
+              className="col-md-5 col-12  "
+              style={{
+                position: "relative",
+                padding: "0px",
+                borderRadius: "12px",
+                boxShadow: "4px 3px 10px rgba(0,0,0, 0.2 )",
+              }}
+            >
+              <div
+                className="disPercent"
+                style={{ position: "absolute", left: "8%", top: "20%" }}
+              >
+                <h6 style={{ margin: "0px" }}>30% OFF</h6>
+              </div>
+              <div
+                className=" row  discountcard"
+                style={{
+                  height: "35vh",
+                  borderRadius: "20px",
+                  position: "relative",
+                }}
+              >
+                <div
+                  class="custom-shape-divider-top-1691572611"
+                  style={{ padding: "0px", borderRadius: "12px" }}
+                >
+                  <svg
+                    data-name="Layer 1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1200 120"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                      class="shape-fill"
+                      fill="#3ce2ad"
+                    ></path>
+                  </svg>
+                </div>
+
+                <div
+                  className="col-5  d-flex justify-content-center align-items-center"
+                  style={{ position: "relative" }}
+                >
+                  <h3 className="medicine">Blood Test</h3>
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "18px",
+                      left: "25px",
+                    }}
+                  >
+                    <RiDeleteBin6Fill
+                      // onClick={() => {
+                      //   const shouldDelete = window.confirm(
+                      //     "Are you sure you want to delete?"
+                      //   );
+                      //   if (shouldDelete) {
+                      //     deleteDiscountCard(val._id);
+                      //   }
+                      // }}
+                      style={{ fontSize: "25px", color: "red" }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "18px",
+                      left: "78px",
+                    }}
+                  >
+                    <FiEdit
+                      // onClick={() => editDiscountCard(val._id)}
                       style={{
-                        position: "relative",
-                        padding: "0px",
-                        borderRadius: "12px",
-                        boxShadow: "4px 3px 10px rgba(0,0,0, 0.2 )",
+                        fontSize: "25px",
+                        color: "blue",
+                        cursor: "pointer",
                       }}
+                    />
+                  </div>
+                </div>
+
+                <div
+                  className="col-7  d-flex justify-content-center align-items-center"
+                  style={{ position: "relative" }}
+                >
+                  <div class="custom-shape-divider-bottom-1691574366">
+                    <svg
+                      data-name="Layer 1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1200 120"
+                      preserveAspectRatio="none"
                     >
-                      <div className="disPercent"
-                        style={{ position: "absolute", left: "8%", top: "20%" }}
-                      >
-                        <h6 style={{margin:"0px"}}>30% OFF</h6>
-                      </div>
-                      <div
-                        className=" row  discountcard"
+                      <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"
+                      ></path>
+                    </svg>
+                  </div>
+
+                  <div>
+                    <h4>Azanta Pharmacy</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Shop card */}
+
+          <div className="row justify-content-center align-items-center">
+            <div className="col-md-7 col-12 docHead text-center">
+              <h3>Demo Card of Shop.</h3>
+            </div>
+          </div>
+
+          <div
+            className="row mx-md-5 justify-content-center align-items-center "
+            style={{ margin: "16px 0px" }}
+          >
+            <div
+              id="ShopProfileContainer"
+              className="col-12 col-md-8 "
+              style={{ padding: "0px 12px 20px 12px" }}
+            >
+              <div
+                className="row "
+                style={{ height: "100%" }}
+                // data-aos="fade-left"
+                // data-aos-duration="500"
+                // data-aos-delay={400}
+              >
+                <div
+                  className=" col-12  py-md-0 py-3 "
+                  id="shopBackground"
+                  style={{
+                    backgroundImage: `url('${shopImg}')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: "250px",
+                    borderRadius: "12px 12px 3px 3px",
+                    position: "relative",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "65%",
+                      left: "20px",
+                      background: "white",
+                      borderRadius: "50%",
+                    }}
+                  >
+                    <img
+                      id="profileImage"
+                      src={profileImg}
+                      alt="profile image"
+                      style={{
+                        width: "130px",
+                        height: "130px",
+                        padding: "4px",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div
+                  className="col-12  d-flex align-items-center "
+                  id="ShopProfileText"
+                >
+                  <div style={{ margin: "48px 0px 0px 10px" }}>
+                    <div style={{ margin: "18px 0px" }}>
+                      <h3>Azanta Pharmacy</h3>
+                      <p
                         style={{
-                          height: "35vh",
-                          borderRadius: "20px",
-                          position: "relative",
+                          marginBottom: "3px",
+                          display: "flex",
+                          flexDirection: "row",
                         }}
                       >
-                        <div
-                          class="custom-shape-divider-top-1691572611"
-                          style={{ padding: "0px", borderRadius: "12px" }}
-                        >
-                          <svg
-                            data-name="Layer 1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 1200 120"
-                            preserveAspectRatio="none"
-                          >
-                            <path
-                              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                              class="shape-fill"
-                              fill="#3ce2ad"
-                            ></path>
-                          </svg>
-                        </div>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.location}
+                          alt=""
+                        />
+                        <span>
+                          OK Road Railpar Asansol -713302, West Bengal
+                        </span>
+                      </p>
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.phone}
+                          alt=""
+                        />{" "}
+                        98878XXX76
+                      </p>
 
-                        <div
-                          className="col-5  d-flex justify-content-center align-items-center"
-                          style={{ position: "relative" }}
-                        >
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.mail}
+                          alt=""
+                        />{" "}
+                        dummy@gmail.com
+                      </p>
 
-                          <h3 className="medicine">Blood Test</h3>
-                          <div
-                            style={{
-                              position: "absolute",
-                              bottom: "18px",
-                              left: "25px",
-                            }}
-                          >
-                            <RiDeleteBin6Fill
-                              // onClick={() => {
-                              //   const shouldDelete = window.confirm(
-                              //     "Are you sure you want to delete?"
-                              //   );
-                              //   if (shouldDelete) {
-                              //     deleteDiscountCard(val._id);
-                              //   }
-                              // }}
-                              style={{ fontSize: "25px", color: "red" }}
-                            />
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              bottom: "18px",
-                              left: "78px",
-                            }}
-                          >
-                            <FiEdit
-                              // onClick={() => editDiscountCard(val._id)}
-                              style={{
-                                fontSize: "25px",
-                                color: "blue",
-                                cursor: "pointer",
-                              }}
-                            />
-                          </div>
-                        </div>
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.time}
+                          alt=""
+                        />{" "}
+                        8:00 AM
+                      </p>
 
-                        <div
-                          className="col-7  d-flex justify-content-center align-items-center"
-                          style={{ position: "relative" }}
-                        >
-                          <div class="custom-shape-divider-bottom-1691574366">
-                            <svg
-                              data-name="Layer 1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 1200 120"
-                              preserveAspectRatio="none"
-                            >
-                              <path
-                                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                                class="shape-fill"
-                              ></path>
-                            </svg>
-                          </div>
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.doctor1}
+                          alt=""
+                        />{" "}
+                        Total 12 Doctors Available
+                      </p>
 
-                          <div>
-                            <h4>Azanta Pharmacy</h4>
-                          </div>
-                        </div>
-                      </div>
+                      <h5
+                        style={{
+                          marginBottom: "3px",
+                          display: "flex",
+                          flexDirection: "row",
+                        }}
+                      >
+                        {" "}
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.about}
+                          alt=""
+                        />{" "}
+                        <span>
+                          We Have Doctors with different specialist and the best
+                          to treat. We give a minimum discount of 20% on
+                          medicine and test.
+                        </span>{" "}
+                      </h5>
+                    </div>
+
+                    <div>
+                      <button
+                        // onClick={editShopProfile}
+                        className="btn btn-success"
+                        id="profileEdit"
+                      >
+                        Edit Shop
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-
-
-
-
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -176,7 +176,7 @@ const CreactProfileForMedical = () => {
   }, [profile]);
 
   useEffect(() => {
-    setActiveLink(8);
+    setActiveLink(99);
   }, []);
 
   // useEffect(()=>{

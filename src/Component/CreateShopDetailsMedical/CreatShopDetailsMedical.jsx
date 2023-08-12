@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getShopData, getUserData } from "../Action";
+import { iconsImgs } from "../../utils/images";
+
 import {
   getInstituteProfile,
   getShopProfile,
@@ -19,7 +21,6 @@ import { options } from "../data/data";
 import activeLinkContext from "../context/activeLinkContext";
 import dayjs from "dayjs";
 
-
 const CreatShopDetailsMedical = () => {
   const [postImage, setPostImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
@@ -27,7 +28,6 @@ const CreatShopDetailsMedical = () => {
   const [shopExist, setShopExist] = useState(false);
   const [edit, setEdit] = useState(false);
   const [timeValue, setTimeValue] = useState(dayjs("2022-04-17T15:30"));
-
 
   const email = useSelector(
     (state) => state?.getUserData?.userData?.user?.email
@@ -55,7 +55,7 @@ const CreatShopDetailsMedical = () => {
     formState: { errors },
     reset,
     setValue,
-    control
+    control,
   } = useForm({
     mode: "onChange",
   });
@@ -184,7 +184,7 @@ const CreatShopDetailsMedical = () => {
   function editShopProfile() {
     setShopExist(false);
     setEdit(true);
-    setTimeValue(shop?.shopTime)
+    setTimeValue(shop?.shopTime);
 
     setValue("ownerName", shop?.ownerName);
     setValue("shopName", shop?.shopName);
@@ -212,8 +212,6 @@ const CreatShopDetailsMedical = () => {
     return formattedTime;
   }
 
-
-
   useEffect(() => {
     setName(user?.name);
   }, [user]);
@@ -227,32 +225,31 @@ const CreatShopDetailsMedical = () => {
   }, [shop]);
 
   useEffect(() => {
-    setActiveLink(2);
+    setActiveLink(5);
   }, []);
-
-  // useEffect(()=>{
-
-  //     getShopProfile( getShopProfileCallBack )
-
-  // },[])
-
-  // function getInstituteProfileCallBack(data) {
-  //   dispatch(getShopData(data));
-  // }
 
   return (
     <div className="container-fluid" style={{ padding: "0px" }}>
       {shopExist ? (
         <>
           <div
-            className="row"
-            style={{ margin: "20px 0px" }}
+            className="row "
+            style={{
+              marginBottom: "10px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             data-aos="fade-left"
             data-aos-duration="500"
             data-aos-delay={200}
           >
-            <h4 className="text-center">Hey {name}...</h4>
-            <h5 className="text-center">Here is your profile details.</h5>
+            <div
+              className="col-md-6 col-12 docHead "
+              style={{ marginBottom: "0px" }}
+            >
+              <h3 className="text-center">Shop Card</h3>
+            </div>
           </div>
           <div
             className="row mx-md-5 justify-content-center align-items-center "
@@ -310,24 +307,77 @@ const CreatShopDetailsMedical = () => {
                   id="ShopProfileText"
                 >
                   <div style={{ margin: "48px 0px 0px 10px" }}>
-                    <div>
-                      <h4 className="my-3">Shop informations..</h4>
-                    </div>
 
                     <div style={{ margin: "18px 0px" }}>
-                      <p>Owner Name : {shop?.ownerName}</p>
-                      <p>About Shop : {shop?.aboutShop}</p>
-                      <p>Email : {shop?.email3}</p>
-                      <p>Contact : {shop?.phone}</p>
-                      <p>Timming : { formateToTimeString(shop?.shopTime)}</p>
-                      <p>Total Doctors : {shop?.totalDoctor}</p>
-                      <p>Contact : {shop?.phone}</p>
-                      <div>
-                        <p>
-                          Address : {shop?.street} {shop?.city} {shop?.state}{" "}
+                      <h3>{shop?.shopName}</h3>
+                      <p
+                        style={{
+                          marginBottom: "3px",
+                          display: "flex",
+                          flexDirection: "row",
+                        }}
+                      >
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.location}
+                          alt=""
+                        />
+                        <span>
+                          {shop?.street} {shop?.city} {shop?.state}{" "}
                           {shop?.zipCode}
-                        </p>
-                      </div>
+                        </span>
+                      </p>
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.phone}
+                          alt=""
+                        />{" "}
+                        {shop?.phone}
+                      </p>
+
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.mail}
+                          alt=""
+                        />{" "}
+                        {shop?.email3}
+                      </p>
+
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.time}
+                          alt=""
+                        />{" "}
+                        {formateToTimeString(shop?.shopTime)}
+                      </p>
+
+                      <p style={{ marginBottom: "3px" }}>
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.doctor1}
+                          alt=""
+                        />{" "}
+                        Total {shop?.totalDoctor} Doctors Available
+                      </p>
+
+                      <h5
+                        style={{
+                          marginBottom: "3px",
+                          display: "flex",
+                          flexDirection: "row",
+                        }}
+                      >
+                        {" "}
+                        <img
+                          className="profileIcon1"
+                          src={iconsImgs.about}
+                          alt=""
+                        />{" "}
+                        <span>{shop?.aboutShop}</span>{" "}
+                      </h5>
                     </div>
 
                     <div>

@@ -1,32 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { iconsImgs } from "../../utils/images";
 import profileImg from "../Assets/Images/Realistic-Male-Profile-Picture.webp";
-import "./HomeMedical.css";
+// import "./HomeInstitute.css";
 import { BsCircle } from "react-icons/bs";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { ThemeContext } from "@emotion/react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import activeLinkContext from "../context/activeLinkContext";
 
-const HomeMedical = () => {
-  const user = useSelector((state) => state?.getUserData?.userData?.user);
-  const doctors = useSelector(
-    (state) => state?.getAllDoctorsProfile?.doctorsList
-  );
-  const discountCards = useSelector(
-    (state) => state?.getDiscountMedicine?.CardhList
-  );
-  const profile = useSelector((state) => state?.getUserProfile?.userProfile);
-  const shop = useSelector((state) => state?.getShopDetailsM?.shopDataM);
+const HomeShop = () => {
+  // for theme
 
-  const navigate = useNavigate();
-
-  // for theme  **
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const barColor = theme == "dark" ? "#13f0ac" : "blue";
-  // for theme  **
+  const { setActiveLink } = useContext(activeLinkContext);
 
-  // for date **
+
+  const barColor = theme == "dark" ? "#13f0ac" : "blue";
+
+  // for date
   const today = new Date();
   function formatDate(date) {
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -35,9 +25,8 @@ const HomeMedical = () => {
 
     return ` ${day}/${month}/${year}`;
   }
-  // for date **
 
-  // for time **
+  // for time
   const [currentTime, setCurrentTime] = useState(new Date());
   // const currentTim = new Date();
   function formatTime(date) {
@@ -45,49 +34,54 @@ const HomeMedical = () => {
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
     const ampm = hours >= 12 ? "PM" : "AM";
+
     hours = hours % 12;
     hours = hours ? hours : 12;
+
     return `${hours}:${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")} ${ampm}`;
   }
 
   useEffect(() => {
+
     const interval = setInterval(() => {
-      setCurrentTime(new Date());
+      setCurrentTime(new Date()); // Update current time every second
     }, 1000);
 
     return () => {
-      clearInterval(interval);
+      clearInterval(interval); // Clean up the interval on component unmount
     };
   }, []);
 
-  // for time **
+  // circular progress
 
-  // circular progress **
   const rotationAngle = (50 / 100) * 360;
-  // circular progress **
+
+
+
+  // active link
+
+  useEffect(() => {
+    setActiveLink(2);
+  }, []);
 
   return (
     <div className="container-fluid">
       {/* first section */}
 
       <div className="row gx-3 mb-3">
-        <div className="col-md-8 col-12 ">
+        <div  className="col-md-8 col-12 " data-aos="zoom-in" data-aos-duration="1000">
           <div className=" row1">
             <div className="row">
               <div className="col-md-4 col-6 col1">
                 <div className="homeImgDiv">
-                  <img
-                    className="homeImg"
-                    src={`http://localhost:8080/userImages/${user?.pdf}`}
-                    alt=""
-                  />
+                  <img className="homeImg" src={profileImg} alt="" />
                 </div>
 
                 <div>
                   <h4>Welocome Back</h4>
-                  <h3>{user?.name} </h3>
+                  <h3>Md </h3>
                 </div>
               </div>
               <div className="col-md-4 col-6 col2">
@@ -105,16 +99,7 @@ const HomeMedical = () => {
                         src={iconsImgs.location}
                         alt=""
                       />
-                      <span>
-                        {profile?.street}{" "}
-                        {profile?.city?.length > 0
-                          ? profile.city[0].name
-                          : null}{" "}
-                        {profile?.zipCode}{" "}
-                        {profile?.state?.length > 0
-                          ? profile.state[0].name
-                          : null}{" "}
-                      </span>
+                      <span>Railpar OK Road Asansol -713302, West Bengal</span>
                     </p>
                     <p style={{ marginBottom: "3px" }}>
                       <img
@@ -122,104 +107,108 @@ const HomeMedical = () => {
                         src={iconsImgs.phone}
                         alt=""
                       />{" "}
-                      {profile?.phone}
+                      980065436
                     </p>
                   </div>
 
                   <p style={{ marginBottom: "3px" }}>
                     <img className="profileIcon1" src={iconsImgs.mail} alt="" />{" "}
-                    {profile?.email2}
+                    dummy@gmail.com
                   </p>
                 </div>
               </div>
               <div className="col-md-4 col-sm-12 col3">
                 <div className="manageProfile">
                   <h6>You Can Creat Your Profile And Can Manage It.</h6>
-                  <button
-                    className=" homeBtn"
-                    onClick={() => navigate("/dashboard/CreatProfile")}
-                  >
-                    Manage Profile
-                  </button>
+                  <button className=" homeBtn">Manage Profile</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="col-md-4 col-12  mt-md-0 mt-3 d-flex justify-contnet-center align-items-center ">
+        <div className="col-md-4 col-12  mt-md-0 mt-3 d-flex justify-contnet-center align-items-center " data-aos="zoom-in" data-aos-duration="1000">
           <div className=" homerow3 d-flex justify-contnet-center align-items-center flex-column">
-            <div>
-              <h3 className="text-center">
-                {shop ? "Manage" : "Creat"} Pharmacy.
-              </h3>
-              <h5>
-                {" "}
-                Pharmacy Profile Will Vissible To The User Searching Your
-                Pharmacy.
-              </h5>
-              <button
-                className=" homeBtn"
-                onClick={() => navigate("/dashboard/CreatMedicalShop")}
-              >
-                Manage Pharmacy
-              </button>
-            </div>
+              <div>
+                <h3 className="text-center">Create Institute.</h3>
+                <h5 > Institute Profile Will Vissible To The User Searching Your Institute.</h5>
+                <button className=" homeBtn">Manage Institute</button>
+
+              </div>
           </div>
         </div>
       </div>
+
       {/* second section */}
 
       <div className="row gx-3 mb-3">
         <div className="col-md-8 col-12">
           <div className="row ">
             <div className="row gx-3">
-              <div className="col-md-4 col-6 mb-md-0 mb-3 ">
+            <div className="col-md-4 col-6  mb-md-3 mb-3 " >
                 <div className="homeSmBox">
                   <div className="homeDoctDiv">
-                    <img className="homeDoct" src={iconsImgs.doctor1} alt="" />
+                    <img className="homeDoct" src={iconsImgs.teacher} alt="" />
                   </div>
-                  <h3>Doctors </h3>
-                  <h2 className="homeNum">{doctors ? doctors.length : 0}</h2>
-                  <Link to={"/dashboard/addDoctor"}>
-                    <p>Details</p>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-4 col-6 mb-md-0 mb-3 ">
-                <div className="homeSmBox">
-                  <div className="homeDoctDiv">
-                    <img className="homeDoct" src={iconsImgs.discount} alt="" />
-                  </div>
-
-                  <h3>Discount</h3>
-                  <h2 className="homeNum">{discountCards ? discountCards.length : 0}</h2>
-                  <Link to={'/dashboard/discountOnMedicine'}>
-
-                  <p>Details</p>
-
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-4 col-12 mb-md-0 mb-3 ">
-                <div className="homeSmBox">
-                  <div className="homeDoctDiv">
-                    <img
-                      className="homeDoct"
-                      src={iconsImgs.testFacility}
-                      alt=""
-                    />
-                  </div>
-                  <h3>Test</h3>
+                  <h3>Teachers </h3>
                   <h2 className="homeNum">78</h2>
                   <p>Details</p>
                 </div>
               </div>
+              <div className="col-md-4 col-6  mb-md-3 mb-3 ">
+                <div className="homeSmBox">
+                  <div className="homeDoctDiv">
+                    <img className="homeDoct" src={iconsImgs.batches} alt="" />
+                  </div>
+                  <h3>Batches </h3>
+                  <h2 className="homeNum">78</h2>
+                  <p>Details</p>
+                </div>
+              </div>
+              <div className="col-md-4 col-6  mb-md-3 mb-3 ">
+                <div className="homeSmBox">
+                  <div className="homeDoctDiv">
+                    <img className="homeDoct" src={iconsImgs.memories} alt="" />
+                  </div>
+                  <h3>Memories </h3>
+                  <h2 className="homeNum">78</h2>
+                  <p>Details</p>
+                </div>
+              </div>
+              <div className="col-md-4 col-6  mb-md-3 mb-3 ">
+                <div className="homeSmBox">
+                  <div className="homeDoctDiv">
+                    <img className="homeDoct" src={iconsImgs.doctor1} alt="" />
+                  </div>
+                  <h3>Gallery </h3>
+                  <h2 className="homeNum">78</h2>
+                  <p>Details</p>
+                </div>
+              </div>
+              <div className="col-md-8  col-12 mb-md-3 mb-3 ">
+                <div className="homeSmBox">
+                  <div className="homeDoctDiv">
+                    <img className="homeDoct" src={iconsImgs.subjects} alt="" />
+                  </div>
+                  <h3>Upcomming Batch </h3>
+                  <h2 className="homeNum">78</h2>
+                  <p>Details</p>
+                </div>
+              </div>
+             
             </div>
           </div>
         </div>
-        <div className="col-md-4 col-12 col4 mt-md-0 mt-3 d-flex justify-content-center align-items-center ">
-          <div className=" py-3">
+        <div className="col-md-4 col-12  mt-md-0 mt-3 d-flex justify-content-center align-items-center flex-column ">
+          <div className="homedata py-3" style={{position:"relative"}}>
+            <div className="homeDoctDiv">
+              <img className="homeDoct" src={iconsImgs.event} alt="" />
+            </div>
+            <h3>Upcomming Events </h3>
+            <h2 className="homeNum">78</h2>
+            <p>Details</p>
+          </div>
+          <div className="homedata py-3 mt-3">
             <h3>Date : {formatDate(today)}</h3>
 
             <h3> Time: {formatTime(currentTime)}</h3>
@@ -341,7 +330,7 @@ const HomeMedical = () => {
         <div className="col-md-4 col-12 col4 mt-md-0 mt-3 ">
           <div style={{ height: "100%" }}>
             <div className="d-flex justify-content-center align-items-center my-3">
-              <h4>Creat News On Health</h4>
+              <h4>Creat News </h4>
             </div>
             <div className="row">
               <div className="col-12">
@@ -362,4 +351,4 @@ const HomeMedical = () => {
   );
 };
 
-export default HomeMedical;
+export default HomeShop;

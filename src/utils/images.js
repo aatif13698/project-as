@@ -35,9 +35,13 @@ import person_two from "../assets/images/person_two.jpg";
 import person_three from "../assets/images/person_three.jpg";
 import person_four from "../assets/images/person_four.jpg";
 import avatar from "../assets/images/avtar.jpg";
+import gallery from '../assets/icons/gallery.svg'
+import dashboard from '../assets/icons/dashboard.svg'
+import time from '../assets/icons/time.svg'
+import demo from '../assets/icons/demo.svg'
 
 export const iconsImgs = {
-      Shop, doctor1, doctorEdit, addProducts, account, batches, bell, discount, editProduct, memories, profile, search, settings, subjects, teacher, workList, testFacility, home, institute, event, medical, menu1, menu2, bell1,phone, mail, location, about
+      Shop, doctor1, doctorEdit,demo, addProducts,gallery,dashboard,time, account, batches, bell, discount, editProduct, memories, profile, search, settings, subjects, teacher, workList, testFacility, home, institute, event, medical, menu1, menu2, bell1,phone, mail, location, about
 }
 
 export const personsImgs = {

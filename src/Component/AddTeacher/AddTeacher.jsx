@@ -179,7 +179,7 @@ const AddTeacher = () => {
   }, [user]);
 
   useEffect(() => {
-    setActiveLink(3);
+    setActiveLink(4);
   }, []);
 
   useEffect(() => {

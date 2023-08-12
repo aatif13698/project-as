@@ -39,6 +39,7 @@ import Democard from "./Component/DemoCard/Democard";
 import DisCountMedicine from "./Component/DisCountMedicine/DisCountMedicine";
 import HomeMedical from "./Component/HomeMedical/HomeMedical";
 import HomeInstitute from "./Component/HomeInstitute/HomeInstitute";
+import HomeShop from "./Component/HomeShop/HomeShop";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -79,23 +80,35 @@ function App() {
             <Route path="dashboard" element={<DashboardMain />}>
               <Route index element={<UserHome />} />
               <Route path="home" element={<UserHome />} />
-              {/* <Route path="CreatProfile" element={<CreatProfile />} /> */}
               <Route path="todo" element={<Todo />} />
               <Route path="todo/doneTodo" element={<DoneTodo />} />
               <Route path="todo/notdonetodo" element={<NotDoneTodo />} />
               <Route path="CreatProfile" element={<CreactProfileForMedical />} />
+
+
+              {/* Medical */}
               <Route path="CreatMedicalShop" element={<CreatShopDetailsMedical />} />
               <Route path="addDoctor" element={<AddDoctor />} />
               <Route path="democard" element={<Democard />} />
               <Route path="discountOnMedicine" element={<DisCountMedicine />} />
               <Route path="homeMedical" element={<HomeMedical />} />
+
+              {/* Institute */}
+
               <Route path="homeInstitute" element={<HomeInstitute />} />
+              <Route path="CreatInstituteDetail" element={<CreateInstituteDetail/>} />
               <Route path="addTeacher" element={<AddTeacher />} />
               <Route path="addBatches" element={<AddBatches />} />
               <Route path="addUpcommingBatch" element={<AddUpcommingBatch />} />
               {/* <Route path="addUpcommingEvents" element={<UpcommingEvents />} /> */}
 
-              <Route path="CreatInstituteDetail" element={<CreateInstituteDetail/>} />
+
+
+
+              {/* Sgop */}
+              <Route path="homeShop" element={<HomeShop />} />
+
+
               
             </Route>
           </Route>

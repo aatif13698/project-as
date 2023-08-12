@@ -5,11 +5,14 @@ import "./HomeInstitute.css";
 import { BsCircle } from "react-icons/bs";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { ThemeContext } from "@emotion/react";
+import activeLinkContext from "../context/activeLinkContext";
 
 const HomeInstitute = () => {
   // for theme
 
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const { setActiveLink } = useContext(activeLinkContext);
+
 
   const barColor = theme == "dark" ? "#13f0ac" : "blue";
 
@@ -41,6 +44,7 @@ const HomeInstitute = () => {
   }
 
   useEffect(() => {
+
     const interval = setInterval(() => {
       setCurrentTime(new Date()); // Update current time every second
     }, 1000);
@@ -54,12 +58,20 @@ const HomeInstitute = () => {
 
   const rotationAngle = (50 / 100) * 360;
 
+
+
+  // active link
+
+  useEffect(() => {
+    setActiveLink(2);
+  }, []);
+
   return (
     <div className="container-fluid">
       {/* first section */}
 
       <div className="row gx-3 mb-3">
-        <div className="col-md-8 col-12 ">
+        <div  className="col-md-8 col-12 " data-aos="zoom-in" data-aos-duration="1000">
           <div className=" row1">
             <div className="row">
               <div className="col-md-4 col-6 col1">
@@ -115,7 +127,7 @@ const HomeInstitute = () => {
           </div>
         </div>
 
-        <div className="col-md-4 col-12  mt-md-0 mt-3 d-flex justify-contnet-center align-items-center ">
+        <div className="col-md-4 col-12  mt-md-0 mt-3 d-flex justify-contnet-center align-items-center " data-aos="zoom-in" data-aos-duration="1000">
           <div className=" homerow3 d-flex justify-contnet-center align-items-center flex-column">
               <div>
                 <h3 className="text-center">Create Institute.</h3>
@@ -133,7 +145,7 @@ const HomeInstitute = () => {
         <div className="col-md-8 col-12">
           <div className="row ">
             <div className="row gx-3">
-            <div className="col-md-4 col-6  mb-md-3 mb-3 ">
+            <div className="col-md-4 col-6  mb-md-3 mb-3 " >
                 <div className="homeSmBox">
                   <div className="homeDoctDiv">
                     <img className="homeDoct" src={iconsImgs.teacher} alt="" />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,6 +21,7 @@ import { teacherOptions } from "../data/data";
 import Select from "react-dropdown-select";
 import { Country, State, City } from "country-state-city";
 import Loader from "../Common/Loader/Loader";
+import activeLinkContext from "../context/activeLinkContext";
 
 const CreateInstituteDetail = () => {
   const [postImage, setPostImage] = useState(null);
@@ -39,6 +40,9 @@ const CreateInstituteDetail = () => {
   const shop = useSelector((state) => state?.getShopDetailsM?.shopDataM);
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
+
+  const { setActiveLink } = useContext(activeLinkContext);
+
 
   const dispatch = useDispatch();
 
@@ -214,6 +218,10 @@ const CreateInstituteDetail = () => {
       setShopExist(false);
     }
   }, [shop]);
+
+  useEffect(() => {
+    setActiveLink(3);
+  }, []);
 
 
   // useEffect(()=>{
