@@ -5,6 +5,7 @@ export const navigationLinksForMedical = [
   { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
   {id :  2, title:"Dashboard", image: iconsImgs.dashboard, to :"homeMedical" },
   {id : 3, title:"Demo card", image: iconsImgs.demo, to: "democard"},
+  {id : 4, title:"Demo Site", image: iconsImgs.demo, to: "demoSitePharmacy"},
 
   { id: 99, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
   { id: 5, title: "Shop", image: iconsImgs.Shop, to: "CreatMedicalShop" },

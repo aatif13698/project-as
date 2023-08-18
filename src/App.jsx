@@ -40,6 +40,7 @@ import DisCountMedicine from "./Component/DisCountMedicine/DisCountMedicine";
 import HomeMedical from "./Component/HomeMedical/HomeMedical";
 import HomeInstitute from "./Component/HomeInstitute/HomeInstitute";
 import HomeShop from "./Component/HomeShop/HomeShop";
+import DemoSitePharmacy from "./Component/DemoSitePharmacy/DemoSitePharmacy";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -90,6 +91,7 @@ function App() {
               <Route path="CreatMedicalShop" element={<CreatShopDetailsMedical />} />
               <Route path="addDoctor" element={<AddDoctor />} />
               <Route path="democard" element={<Democard />} />
+              <Route path="demoSitePharmacy" element={<DemoSitePharmacy />} />
               <Route path="discountOnMedicine" element={<DisCountMedicine />} />
               <Route path="homeMedical" element={<HomeMedical />} />
 
@@ -105,7 +107,7 @@ function App() {
 
 
 
-              {/* Sgop */}
+              {/* Shop */}
               <Route path="homeShop" element={<HomeShop />} />
 
 

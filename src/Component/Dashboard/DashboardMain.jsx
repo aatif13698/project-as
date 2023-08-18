@@ -79,7 +79,7 @@ const DashboardMain = ({ children }) => {
       getAllBatchesOfParticularInstitute(getAllBatchesCallback);
       getAllUpcommingBatchesOfParticularInstitute(getAllUpcommingBatchesCallback);
 
-      }else {
+      }else if(userType == "medicalOwner") {
 
       dispatch({ type : "NO_ERROR"})
       toast.success(message);

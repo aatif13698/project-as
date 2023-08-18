@@ -1,0 +1,107 @@
+
+.navrow{
+    background:  rgb(60,226,173);
+
+    height: 40px;
+}
+
+.demSiteUl{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px;
+    padding: 10px 0px;
+    width: 100%;
+}
+
+.demSiteUl ul li link {
+    text-decoration: none;
+    color: white;
+}
+
+
+.togleSiteMenu{
+    width: 32px;
+}
+
+.togleSite{
+    position: absolute;
+    display: none;
+    width: 30px;
+    top: 3px;
+    left: 45%;
+    height: 2%;
+}
+
+.togleMenuItem{
+    position: absolute;
+    top: 44px;
+    width: 100%;
+    height: 0px;
+    /* display: none; */
+    transition: all 300ms linear;
+    background: #c8e8f4;
+    border-radius: 12px;
+    color: black;
+}
+
+.truetogleMenuItem{
+
+    height: 250px;
+
+}
+
+.togleMenuItem ul li {
+    margin: 5px 0px;
+    font-size: 18px;
+    /* color: black; */
+}
+
+
+.togleMenuItem ul li a{
+
+    color: black;
+
+}
+
+.togleMenuItem ul li a:hover{
+    color: blue;
+}
+
+
+.togleUl{
+    display: none;
+    transition: all 300ms linear;
+}
+
+.trutogleUl{
+    display: block;
+}
+
+.closeIcon{
+    width: 13px;
+    float: right;
+    margin: 12px;
+    display: none;
+}
+
+.closeIconTrue{
+    display: block;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .togleSite{
+        display: block;
+    }
+
+    .demSiteUl{
+        display: none;
+    }
+
+   
+
+
+
+}

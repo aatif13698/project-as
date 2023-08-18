@@ -318,7 +318,7 @@ const Democard = () => {
 
           {/* Shop card */}
 
-          <div className="row justify-content-center align-items-center">
+          <div className="row justify-content-center align-items-center mt-5">
             <div className="col-md-7 col-12 docHead text-center">
               <h3>Demo Card of Shop.</h3>
             </div>
