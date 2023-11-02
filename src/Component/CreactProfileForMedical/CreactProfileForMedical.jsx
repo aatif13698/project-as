@@ -9,6 +9,7 @@ import activeLinkContext from "../context/activeLinkContext";
 import { Country, State, City } from "country-state-city";
 import Select from "react-dropdown-select";
 import { iconsImgs } from "../../utils/images";
+import Title from "../Common/Title/Title";
 
 const CreactProfileForMedical = () => {
   const [postImage, setPostImage] = useState(null);
@@ -194,7 +195,7 @@ const CreactProfileForMedical = () => {
       {profileExist ? (
         <>
           <div
-            className="row"
+            className="row "
             style={{ margin: "20px 0px" }}
             data-aos="fade-left"
             data-aos-duration="500"
@@ -397,24 +398,35 @@ const CreactProfileForMedical = () => {
         </>
       ) : (
         <>
-          <div
-            className="row"
+          {/* <div
+            className="row py-3"
             data-aos="fade-left"
             data-aos-duration="500"
             data-aos-delay={200}
+            style={{ background: "red" }}
           >
-            <h4 className="text-center">Hello {name}..</h4>
-            <h6 className="text-center">
-              Please Create your profile. We need the following information.
-            </h6>
-          </div>
+            <div className="col-md-2 col-12">
+              <img
+                 src={iconsImgs.profile}
+                alt="" />
+            </div>
+
+            <div className="col-md-10 col-12">
+              <h4 className="fw-bold text-uppercase">Create Profile</h4>
+              <h6 className="">
+                Fill The Details Below
+              </h6>
+            </div>
+          </div> */}
+
+          <Title src = {iconsImgs.profile} title = {"Create Profile"} subTitle = {"Fill The Details Below"} />
 
           <div className="row justify-content-center align-items-center mx-2">
             <div
               data-aos="fade-left"
               data-aos-duration="800"
               data-aos-delay={400}
-              className="col-12   col-md-8"
+              className="col-12   col-md-10"
               id="creatProfile"
             >
               <form

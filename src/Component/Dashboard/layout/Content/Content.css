@@ -1,16 +1,17 @@
 .main-content {
     /* background-color: var(--clr-secondary); */
-    background-color: #b9f7f9;
+    /* background-color: var(--background-color); */
     flex: 1;
     /* padding: 10px 32px 32px 32px; */
     height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
     /* overflow-y: scroll; */
+    background: var(--mainContent-bg-light) !important
   }
 
   #dark .main-content{
-    background-color: #0061645e;
+    background-color: var(--mainContent-bg-dark) !important
   }
 
   @media screen and (max-width: 1400px) {

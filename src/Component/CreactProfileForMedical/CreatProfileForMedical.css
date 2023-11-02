@@ -1,12 +1,12 @@
 #creatProfile{
-    background-color: #c9e9e8;
+    background-color: var(--creatProfile-bg-light);
     box-shadow: 2px 8px 9px rgba(0,0,0,0.2);
     padding: 12px 15px;
     border-radius: 12px;
 }
 
 #dark #creatProfile{
-    background-color: #2a3a35;
+    background-color: var(--creatProfile-bg-dark);
 }
 
 #dark #creatProfile input[type="text"]{

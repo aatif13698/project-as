@@ -9,7 +9,18 @@
 
 :root {
   --clr-primary: #29221d;
-  --clr-primar-light: #473b33;
+
+
+  /* my color collection */
+  --clr-primar-light: #e1f5f4;
+  --clr-primar-dark: #3f3a36;
+
+
+
+
+
+
+
   --clr-secondary: #1e1611;
   --clr-white: #fff;
   --clr-black: #000;

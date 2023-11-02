@@ -1,6 +1,6 @@
 .App{
  
-  width: 100vw;
+  /* width: 100vw; */
   /* height: 100vh; */
   overflow: hidden;
 
@@ -9,17 +9,19 @@
 }
 
 #dark {
-  background: #00fe93;
-  background: linear-gradient(26deg, rgb(70 163 134 / 99%) 22%, rgb(53 77 78 / 65%) 85%);
+  background: var(--background-color-dark);
+  /* background: linear-gradient(26deg, rgb(70 163 134 / 99%) 22%, rgb(53 77 78 / 65%) 85%); */
   color: whitesmoke;
   transition: all 1s ease-out;
 }
 
 #light{
 
-  background: rgb(60,226,173);
-  background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52%);
+  background: var(--background-color-light);
+  /* background: linear-gradient(36deg, rgba(60,226,173,1) 0%, rgba(185,247,249,1) 52%); */
   color: black;
+  transition: all 1s ease-out;
+
 }
 
 
@@ -36,6 +38,46 @@
 }
 
 :root {
+
+  /* my color collection */
+  --background-color-light:rgb(181, 139, 139);
+  --background-color-dark:rgb(181, 139, 139);
+
+  --sideBar-bg-light : #caf0f8;
+  --sideBar-bg-dark : #343a40;
+  --sidebar-container-bg-light :#90e0ef;
+  --sidebar-container-bg-dark :#212529;
+ --nav-link-active-color-light : #00b4d8;
+ --nav-link-active-color-dark : #17191b;
+
+ --nav-link-hover-color : #caf0f8;
+ --nav-link-hover-dark-color : #575e65;
+ --main-content-top-bg-light : #90e0ef;
+ --main-content-top-bg-dark :#212529;
+
+ --mainContent-bg-light :#caf0f8;
+ --mainContent-bg-dark :#343a40;
+
+ --creatProfile-bg-light :#dceef1;
+ --creatProfile-bg-dark :#363c42;
+
+
+ --title-div-bg-light : #90e0ef;
+ --title-div-bg-dark : #212529;
+
+ --profile-img-div-bg-light:#00b4d8;
+ --profile-img-div-bg-dark:#17191b;
+
+ --dashboard-box-bg-light : #90e0ef;
+ --dashboard-box-bg-dark : #363c42;
+
+
+ --homeNews-border-color-light: #caf0f8;
+ --homeNews-border-color-dark: #90e0ef;
+
+ --search-btn-bg-light:#deedf554;
+ --search-btn-bg-dark:#86898a24;
+
   --primary: #29221d;
   --primar-light: #473b33;
   --secondary: #1e1611;

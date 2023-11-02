@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 
 const DashboardMain = ({ children }) => {
 
-  const [activeLink, setActiveLink] = useState(1);
+  const [activeLink, setActiveLink] = useState(2);
   const navigate = useNavigate()
 
   const STORE = useSelector((state) => state);

@@ -2,7 +2,8 @@ import { iconsImgs } from "../../utils/images";
 import { personsImgs } from "../../utils/images";
 
 export const navigationLinksForMedical = [
-  { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
+
+  
   {id :  2, title:"Dashboard", image: iconsImgs.dashboard, to :"homeMedical" },
   {id : 3, title:"Demo card", image: iconsImgs.demo, to: "democard"},
   {id : 4, title:"Demo Site", image: iconsImgs.demo, to: "demoSitePharmacy"},
@@ -40,7 +41,6 @@ export const navigationLinksForMedical = [
 ];
 
 export const navigationLinksForInstitute = [
-  { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
   { id: 2, title: "Dashboard", image: iconsImgs.dashboard, to: "homeInstitute" },
   {
     id: 3,
@@ -78,7 +78,6 @@ export const navigationLinksForInstitute = [
 ];
 
 export const navigationLinksForShops = [
-  { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
   { id: 2, title: "Dashboard", image: iconsImgs.dashboard, to: "homeShop" },
 
   { id: 2, title: "Shop", image: iconsImgs.Shop, to: "home" },
@@ -112,7 +111,6 @@ export const navigationLinksForShops = [
 ];
 
 export const navigationLinksForPublic = [
-  { id: 1, title: "Home", image: iconsImgs.home, to: "home" },
   { id: 2, title: "Doctors", image: iconsImgs.doctor1, to: "home" },
   { id: 3, title: "Medicals", image: iconsImgs.medical, to: "home" },
   { id: 4, title: "Coaching", image: iconsImgs.institute, to: "home" },

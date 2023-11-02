@@ -1,38 +1,38 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import activeLinkContext from '../context/activeLinkContext';
-import { useForm } from 'react-hook-form';
-import { addTeacherProfile, deleteParticularTeacher, getAllTeachersOfParticularInstitute, getUser } from '../ApiCalling/api';
-import { getTeacherList, getUserData } from '../Action';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import activeLinkContext from "../context/activeLinkContext";
+import { useForm } from "react-hook-form";
+import {
+  addTeacherProfile,
+  deleteParticularTeacher,
+  getAllTeachersOfParticularInstitute,
+  getUser,
+} from "../ApiCalling/api";
+import { getTeacherList, getUserData } from "../Action";
 import avatar from "../Assets/Images/profile.png";
 import { iconsImgs } from "../../utils/images";
 import ImgURL from "../Common/imageUrl";
-
-
+import Title from "../Common/Title/Title";
 
 const AddTeacher = () => {
-
-    const [postImage, setPostImage] = useState(null);
+  const [postImage, setPostImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
   const [choseTeacher, setChoseTeacher] = useState(false);
   const [teacherId, setTeacherId] = useState("");
 
-
-  const scrollRef = useRef()
+  const scrollRef = useRef();
 
   const email = useSelector(
     (state) => state?.getUserData?.userData?.user?.email
   );
-//   const profile = useSelector((state) => state?.getUserProfile?.userProfile);
+  //   const profile = useSelector((state) => state?.getUserProfile?.userProfile);
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
 
   const teachers = useSelector(
     (state) => state?.getAllTeachersProfile?.teachersList
   );
-
-  
 
   const { setActiveLink } = useContext(activeLinkContext);
 
@@ -62,7 +62,6 @@ const AddTeacher = () => {
       city,
       state,
       zipCode,
-     
     } = data;
     // console.log(data, "11");
 
@@ -93,16 +92,15 @@ const AddTeacher = () => {
     }
 
     addTeacherProfile(formData, teacherProfileCallback);
-    setSelectedImage("")
+    setSelectedImage("");
   }
 
   function teacherProfileCallback() {
     reset();
     setPostImage(null);
     getUser(getData);
-    getAllTeachersOfParticularInstitute(getAllTeachersCallback)
-    setChoseTeacher(false)
-
+    getAllTeachersOfParticularInstitute(getAllTeachersCallback);
+    setChoseTeacher(false);
   }
 
   function getData(data) {
@@ -110,7 +108,6 @@ const AddTeacher = () => {
   }
 
   function getAllTeachersCallback(data) {
-  
     dispatch(getTeacherList(data));
   }
 
@@ -142,15 +139,13 @@ const AddTeacher = () => {
     setValue("subjectSpecialist", teacher?.subjectSpecialist);
     setValue("trEmail", teacher?.trEmail);
 
-
-    setChoseTeacher(true)
+    setChoseTeacher(true);
     scrollToSection("form");
   }
 
   // delete doctor
 
   function deleteTeacherProfile(ID) {
-
     const data = { ID: ID, email: email };
 
     deleteParticularTeacher(data, deleteParticularTecCallback);
@@ -159,7 +154,7 @@ const AddTeacher = () => {
   function deleteParticularTecCallback() {
     console.log("ho raha");
 
-    getAllTeachersOfParticularInstitute(getAllTeachersCallback)
+    getAllTeachersOfParticularInstitute(getAllTeachersCallback);
   }
 
   // function for scrolling
@@ -186,25 +181,30 @@ const AddTeacher = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [teachers]);
 
-
-
-
   return (
-    <div className="container-fluid " style={{padding:"0px"}}>
+    <div className="container-fluid " style={{ padding: "0px" }}>
       <div
-        className="row justify-content-center" 
+        className="row justify-content-center"
         data-aos="fade-left"
         data-aos-duration="500"
         data-aos-delay={200}
       >
-        <div className="col-md-10 col-12">
+        {/* <div className="col-md-10 col-12">
           <h4 className="text-center">Hello {name}..</h4>
           <h6 className="text-center">
             Please Fill The Form To Create Card For Teachers Available In your
             Institute. You Can Add Any Number Of Teachers And Can Manage To Edit
             And Delete The Teacher Card As Per The Requirement.
           </h6>
-        </div>
+        </div> */}
+
+        <Title
+          src={iconsImgs.profile}
+          title={"Create Teacher Card"}
+          subTitle={
+            "Fill The Form To Create Card For Teachers Available In Your Institute"
+          }
+        />
       </div>
 
       <div
@@ -362,7 +362,6 @@ const AddTeacher = () => {
               </div>
             </div>
 
-            
             <div
               // data-aos="fade-left"
               // data-aos-duration="500"
@@ -498,25 +497,45 @@ const AddTeacher = () => {
 
             <div className="text-center">
               <button type="submit" id="profile_btn" className="btn btn-block ">
-                {choseTeacher ? "Edit" : "Creat"} 
+                {choseTeacher ? "Edit" : "Creat"}
               </button>
             </div>
           </form>
         </div>
       </div>
 
-      {
-        teachers?.length > 0 ? 
-         <h3 className='text-center mb-5' style={{position:"relative", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>List Of Teachers You Added.
+      {teachers?.length > 0 ? (
+        // <h3
+        //   className="text-center mb-5"
+        //   style={{
+        //     position: "relative",
+        //     display: "flex",
+        //     justifyContent: "center",
+        //     alignItems: "center",
+        //     flexDirection: "column",
+        //   }}
+        // >
+        //   List Of Teachers You Added.
+        //   <div
+        //     className="docLine"
+        //     style={{
+        //       position: "absolute",
+        //       height: "4px",
+        //       top: "120%",
+        //       background:
+        //         "linear-gradient(36deg, rgba(60,226,173,1) 0%, rgb(12 229 236) 52%)",
+        //     }}
+        //   ></div>
+        // </h3>
 
-                         <div
-                          className="docLine"
-                          style={{ position: "absolute", height: "4px", top:"120%" , background:"linear-gradient(36deg, rgba(60,226,173,1) 0%, rgb(12 229 236) 52%)"}}
-                        ></div>
-         
-         </h3> 
-         :  null
-       }
+        <Title
+          src={iconsImgs.profile}
+          title={"List Of Teachers"}
+          subTitle={
+            "Total Teacher Available In Your System"
+          }
+        />
+      ) : null}
 
       {teachers &&
         teachers.map((val) => {
@@ -607,7 +626,7 @@ const AddTeacher = () => {
           );
         })}
     </div>
-  )
-}
+  );
+};
 
-export default AddTeacher
+export default AddTeacher;

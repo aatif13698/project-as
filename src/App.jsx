@@ -5,7 +5,7 @@ import Aos from "aos";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 import { useContext, useEffect } from "react";
 
@@ -41,6 +41,7 @@ import HomeMedical from "./Component/HomeMedical/HomeMedical";
 import HomeInstitute from "./Component/HomeInstitute/HomeInstitute";
 import HomeShop from "./Component/HomeShop/HomeShop";
 import DemoSitePharmacy from "./Component/DemoSitePharmacy/DemoSitePharmacy";
+import Landing from "./Component/Pages/Landing/Landing";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -54,70 +55,72 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-    
-  
+      <div className={`App `} id={theme}>
+        <ToastContainer />
+        <BrowserRouter>
+          <LoadingPage />
 
-    
-    <div className={`App `} id={theme}>
-      <ToastContainer />
-      <BrowserRouter>
-        <LoadingPage />
-
-        <Routes>
-          
-          <Route element={<Public />}>
-            <Route path="/" element={<Home />} />
-            <Route index path="login" element={<Login />} />
-            <Route path="signUp" element={<SignUp />} />
-            <Route path="ConfirmMail/:email" element={<ConfirmMail />} />
-            <Route path="emailVerify/:id/:OTP" element={<VerifyMail />} />
-            <Route path="forgetPassword" element={<ForgetPassword />} />
-            <Route path="resetPassword/:email" element={<ResetPassword />} />
-          </Route>
-
-          <Route element={<Private />}>
-            <Route path="dashboard" element={<DashboardMain />}>
-              <Route index element={<UserHome />} />
-              <Route path="home" element={<UserHome />} />
-              <Route path="todo" element={<Todo />} />
-              <Route path="todo/doneTodo" element={<DoneTodo />} />
-              <Route path="todo/notdonetodo" element={<NotDoneTodo />} />
-              <Route path="CreatProfile" element={<CreactProfileForMedical />} />
-
-
-              {/* Medical */}
-              <Route path="CreatMedicalShop" element={<CreatShopDetailsMedical />} />
-              <Route path="addDoctor" element={<AddDoctor />} />
-              <Route path="democard" element={<Democard />} />
-              <Route path="demoSitePharmacy" element={<DemoSitePharmacy />} />
-              <Route path="discountOnMedicine" element={<DisCountMedicine />} />
-              <Route path="homeMedical" element={<HomeMedical />} />
-
-              {/* Institute */}
-
-              <Route path="homeInstitute" element={<HomeInstitute />} />
-              <Route path="CreatInstituteDetail" element={<CreateInstituteDetail/>} />
-              <Route path="addTeacher" element={<AddTeacher />} />
-              <Route path="addBatches" element={<AddBatches />} />
-              <Route path="addUpcommingBatch" element={<AddUpcommingBatch />} />
-              {/* <Route path="addUpcommingEvents" element={<UpcommingEvents />} /> */}
-
-
-
-
-              {/* Shop */}
-              <Route path="homeShop" element={<HomeShop />} />
-
-
-              
+          <Routes>
+            <Route element={<Public />}>
+              {/* <Route path="/" element={<Home />} /> */}
+              <Route path="/" element={<Landing />} />
+              <Route index path="login" element={<Login />} />
+              <Route path="signUp" element={<SignUp />} />
+              <Route path="ConfirmMail/:email" element={<ConfirmMail />} />
+              <Route path="emailVerify/:id/:OTP" element={<VerifyMail />} />
+              <Route path="forgetPassword" element={<ForgetPassword />} />
+              <Route path="resetPassword/:email" element={<ResetPassword />} />
             </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
 
+            <Route element={<Private />}>
+              <Route path="dashboard" element={<DashboardMain />}>
+                <Route index element={<UserHome />} />
+                <Route path="home" element={<UserHome />} />
+                <Route path="todo" element={<Todo />} />
+                <Route path="todo/doneTodo" element={<DoneTodo />} />
+                <Route path="todo/notdonetodo" element={<NotDoneTodo />} />
+                <Route
+                  path="CreatProfile"
+                  element={<CreactProfileForMedical />}
+                />
+
+                {/* Medical */}
+                <Route
+                  path="CreatMedicalShop"
+                  element={<CreatShopDetailsMedical />}
+                />
+                <Route path="addDoctor" element={<AddDoctor />} />
+                <Route path="democard" element={<Democard />} />
+                <Route path="demoSitePharmacy" element={<DemoSitePharmacy />} />
+                <Route
+                  path="discountOnMedicine"
+                  element={<DisCountMedicine />}
+                />
+                <Route path="homeMedical" element={<HomeMedical />} />
+
+                {/* Institute */}
+
+                <Route path="homeInstitute" element={<HomeInstitute />} />
+                <Route
+                  path="CreatInstituteDetail"
+                  element={<CreateInstituteDetail />}
+                />
+                <Route path="addTeacher" element={<AddTeacher />} />
+                <Route path="addBatches" element={<AddBatches />} />
+                <Route
+                  path="addUpcommingBatch"
+                  element={<AddUpcommingBatch />}
+                />
+                {/* <Route path="addUpcommingEvents" element={<UpcommingEvents />} /> */}
+
+                {/* Shop */}
+                <Route path="homeShop" element={<HomeShop />} />
+              </Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </LocalizationProvider>
   );
 }

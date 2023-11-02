@@ -41,10 +41,12 @@ import time from '../assets/icons/time.svg'
 import demo from '../assets/icons/demo.svg'
 import menu3 from '../assets/icons/menu3.svg'
 import close from '../assets/icons/colse.svg'
+import closeIcon from '../assets/icons/colse.svg'
+
 
 
 export const iconsImgs = {
-      Shop, doctor1, doctorEdit,demo,menu3,close, addProducts,gallery,dashboard,time, account, batches, bell, discount, editProduct, memories, profile, search, settings, subjects, teacher, workList, testFacility, home, institute, event, medical, menu1, menu2, bell1,phone, mail, location, about
+      Shop, doctor1, doctorEdit,demo,menu3,close, addProducts,gallery,dashboard,time, account, batches, bell, discount, editProduct, memories, profile, search, settings, subjects, teacher, workList, testFacility, home, institute, event, medical, menu1, menu2, bell1,phone, mail, location, about,closeIcon
 }
 
 export const personsImgs = {

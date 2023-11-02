@@ -93,11 +93,12 @@ const Sidebar = () => {
 
   return (
     <div className={`sidebar ${sidebarClass}`}>
-      <div className="user-info">
-        <div className="info-img img-fit-cover">
+      <div className="sidebar-heading ">
+        {/* <div className="info-img img-fit-cover">
           <img src={    profileImage ? `http://localhost:8080/userImages/${profileImage}` : personsImgs.avatar} alt="profile image" />
         </div>
-        <span className="info-name">{user?.name}</span>
+        <span className="info-name">{user?.name}</span> */}
+        <h3 className="text-center mb-0">KareebMai</h3>
       </div>
       <div className="sidebar_container">
         <nav className="navigation">
@@ -154,13 +155,7 @@ const Sidebar = () => {
 export default Sidebar;
 
 function SettingMenu({ menu, display, toggleTheme, theme, hideMenu, logOutFunc }) {
- 
-
   const menuRef = useRef(null);
-
-
-
-
   function handleFunction(ID) {
     if (ID == 1) {
       toggleTheme();
@@ -170,11 +165,6 @@ function SettingMenu({ menu, display, toggleTheme, theme, hideMenu, logOutFunc }
     
     }
   }
-
-
-  
-
-
 
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -189,7 +179,6 @@ function SettingMenu({ menu, display, toggleTheme, theme, hideMenu, logOutFunc }
       };
     }, []);
 
-
   return (
     <ul
     ref={menuRef}
@@ -198,7 +187,7 @@ function SettingMenu({ menu, display, toggleTheme, theme, hideMenu, logOutFunc }
         position: "absolute",
         top: "0px",
         left: "103%",
-        background: `${theme == "dark" ? "#2a3a35" : "#3ce2ad"}`,
+        background: `${theme == "dark" ? "#17191b" : "#00b4d8"}`,
         padding: "10px 12px 10px 2px",
         borderRadius: "8px",
         transition: "all 2sec ease-in",

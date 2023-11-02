@@ -1,22 +1,28 @@
 /* sidebar */
 .sidebar {
     /* background-color: var(--clr-primary); */
-    background-color: #b9f7f9;
+    background-color: var(--sideBar-bg-light);
     width: 260px;
-    padding: 36px 20px;
+    padding: 4px 20px;
     transition: var(--transition-default);
     height: 100vh;
   }
 
+  .sidebar-heading{
+    margin-bottom: .80em;
+    margin-top: .80em;
+  }
+
   #dark .sidebar{
-    background-color: #0061645e;
+    background-color: var(--sideBar-bg-dark);
   }
   .user-info {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    column-gap: 16px;
-    margin-bottom: 10px;
+    column-gap: 9px;
+    cursor: pointer;
+    /* margin-bottom: 10px; */
   }
   .info-name {
     font-weight: 500;
@@ -30,8 +36,8 @@
 
 
   .info-img {
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     overflow: hidden;
     overflow: hidden;
     border-radius: 100%;
@@ -81,17 +87,23 @@
   }
   .nav-link:hover {
     border: 1px solid var(--clr-primar-light);
-    background-color: rgb(149, 218, 195);
+    background-color: var(--nav-link-hover-color);
   }
+
+  #dark  .nav-link:hover{
+    background-color: var(--nav-link-hover-dark-color);
+  }
+
+
   .nav-link.active {
     /* background-color: var(--clr-pumpkin); */
-    background-color: #3ce2ad;
+    background-color: var(--nav-link-active-color-light);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
       rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   }
 
   #dark .nav-link.active {
-    background-color: #2a3a35;
+    background-color: var(--nav-link-active-color-dark);
     color: white;
   }
 
@@ -115,20 +127,21 @@
   .sidebar_container{
     /* border: 2px solid red; */
     padding: 1px 15px;
-    background: #5fb2b5;
+    background: var(--sidebar-container-bg-light);
     border-radius: 12px;
     height: 92%;
+    box-shadow: 3px 8px 9px rgba(0,0,0,0.1);
   }
 
   #dark .sidebar_container{
-    background-color: #425851;
+    background-color: var(--sidebar-container-bg-dark);
     color: white;
   }
 
 
   @media screen and (max-width: 1400px) {
     .sidebar {
-      padding: 15px 10px;
+      padding: 0px 15px 10px;
     }
   }
   

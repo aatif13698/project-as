@@ -1,5 +1,5 @@
 let initialState = {
-    list : []
+    list : [],
   };
 
 
@@ -12,7 +12,7 @@ let initialState = {
   }
   
 
-  const getUserTodo = (state = initialState, action) =>{
+  const getUserTodo = (state = initialState, action) => {
     switch (action.type) {
         case "GET_List" : 
 

@@ -1,0 +1,346 @@
+
+
+.landing{
+
+    background-color: white;
+
+}
+.div1{
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    width: 94%;
+    left: 3%;
+}
+
+
+.navrow{
+    background: rgb(60,226,173);
+    height: 40px;
+    box-shadow: 2px 2px 9px rgba(0,0,0,0.2 );
+}
+
+.dropdown_menu_visble{
+    display: block;
+    background: #3bdea8 !important;
+    padding: 12px 50px 12px 12px !important;
+    position: absolute;
+    top: 167%;
+    
+}
+
+.dropdown_menu1_visble{
+
+    display: block;
+    background: #3bdea8 !important;
+    padding: 7px 30px 7px 14px !important;
+    position: absolute;
+    left: 31%;
+    bottom: 24%;
+    border-radius: 6px;
+}
+
+.dropdown_menu_hide{
+    display: none;
+    background: #3bdea8 !important; 
+    padding: 12px !important;
+}
+
+.dropdown_menu_visble  li a{
+    text-decoration: none !important;
+    color: white;
+}
+
+.dropdown_menu1_visble  li a{
+    text-decoration: none !important;
+
+}
+
+.SignInBtn{
+    text-decoration: none;
+    background: #67e5b0;
+    padding: 6px 8px;
+    box-shadow: 1px 2px 3px rgb(23 210 140);
+    border-radius: 4px;
+}
+
+.dropdown_toggle{
+    color: white !important;
+}
+.dropdown_toggle1{
+    color: black;
+}
+
+.demSiteUl li{
+    position: relative;
+}
+
+.demSiteUl li a{
+    text-decoration: none !important;
+    color: white !important;
+    transition: all 0.3s ease-in;
+}
+
+.demSiteUl li a:hover{
+    color: black !important;
+}
+
+
+.demSiteUl li::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: rgb(13, 246, 40);
+    position: absolute;
+    bottom: 0;
+    left: -3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.demSiteUl li:hover::after {
+    width: 110%; 
+  }
+
+  .weDo{
+    padding-top: 70px;
+  }
+
+  .weDoText{
+    color: rgb(60,226,173);
+    font-weight: 600;
+  }
+
+  .sectionText{
+    font-weight: 900;
+    opacity: 0.7;
+  }
+
+  .weDobtn{
+    background: #67e5b0;
+    padding: 6px 8px;
+    box-shadow: 1px 2px 3px rgb(23 210 140);
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .weDobtn:hover{
+    background-color: #64b995;
+    color: white;
+    padding: 6px 12px;
+  }
+
+
+.pimg2 {
+    position: relative;
+    background-image: url('../../Assets/Images/services1.jpg');
+
+    min-height: 500px;
+    background-position: center center;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    margin-top: 48px;
+}
+
+.pimg3 {
+    position: relative; 
+    background-image: url('../../Assets/Images/technologyBack.jpg');
+
+    min-height: 410px;
+    background-position: center center;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.pimg4 {
+    position: relative;
+    background-image: url('../../Assets/Images/services2.jpg');
+
+    min-height: 410px;
+    background-position: center center;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.pimg5 {
+    position: relative;
+    background-image: url('../../Assets/Images/doctors.jpg');
+
+    min-height: 410px;
+    background-position: center center;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.pimg6 {
+    position: relative;
+    background-image: url('../../Assets/Images/mediBack.jpg');
+
+    min-height: 410px;
+    background-position: center center;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.pimg7 {
+    position: relative;
+    background-image: url('../../Assets/Images/classroomBack.jpg');
+
+    min-height: 410px;
+    background-position: center center;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.pimg8 {
+    position: relative;
+    background-image: url('../../Assets/Images/teacherBack.jpg');
+
+    min-height: 410px;
+    background-position: center center;
+    opacity: 1;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.section {
+    text-align: center;
+    padding: 10px 1px;
+}
+
+.section-light {
+    background-color: #f4f4f4;
+    color: #666;
+}
+
+.section-dark {
+    /* background-color: #282834; */
+    color: black;
+}
+
+.ptext {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    /* color: white; */
+    font-size: 30px;
+    letter-spacing: 5px;
+    color: #428f4c;
+    font-weight: 700;
+}
+
+.ptext .border {
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.border:hover {
+    background-color: #000;
+}
+
+.serviceCol{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.serviceIcon{
+
+    height: 60px;
+    background: rgb(60,226,173);
+    padding: 6px;
+    border-radius: 12px;
+    box-shadow: 1px 5px 6px rgb(41 62 57 / 20%);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.serviceIcon:hover{
+    height: 65px;
+    background: #02f7aa;
+
+}
+
+.serviceDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* position: relative; */
+}
+
+.serviceDiv h5{
+    transition: all .3s ease-in-out;
+}
+
+.serviceDiv:hover h5 {
+    color: #02f7aa;
+    font-size: 20px;
+}
+
+
+
+
+.docCard{
+    border-radius: 12px;
+    border: 2px solid rgb(60,226,173);
+}
+
+.docImage{
+    max-width: 100%; /* Make the image fit its container width */
+    height: auto;
+    border-radius: 12px;
+}
+
+.doctTitle{
+    text-align: center;
+    margin-top: 54px;
+    font-weight: 800;
+    font-size: medium;
+}
+
+.docImageDiv{
+
+    position: relative;
+}
+
+.docIncon{
+    position: absolute;
+    width: 30px;
+    right: 43%;
+    top: 104%;
+}
+
+.docMainDiv{
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.docMainDiv:hover{
+    padding: 8px;
+}
+
+
+
+.docMainDiv:hover .docCard{
+    border: 2px solid black;
+}
+
+.teachSub{
+   color: #514e4e ;  
+}
+
+.pharmayText{
+    text-align: center;
+    margin: 12px;
+}

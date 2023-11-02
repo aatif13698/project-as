@@ -20,12 +20,12 @@
 .row1{
     border-radius: 12px;
     padding: 12px;
-    background:  #89DFE4;
+    background:  var(--dashboard-box-bg-light);
     box-shadow: -2px 5px 10px rgba(0,12,12, 0.1 );
 }
 
 #dark .row1{
-    background: #354f52;
+    background: var(--dashboard-box-bg-dark);
 }
 
 
@@ -59,11 +59,11 @@
 }
 
 #dark .col4{
-    background: #354f52;
+    background: var(--dashboard-box-bg-dark);
 }
 
 .homeBtn{
-    background: #3cb6e2;
+    background:  var(--nav-link-active-color-light);;
     padding: 7px 10px;
     border-radius: 10px;
     color: black;
@@ -71,7 +71,7 @@
 
 #dark .homeBtn{
 
-    background:  #009c6c;
+    background:   var(--nav-link-active-color-dark);;
     color: white;
 
 }
@@ -107,7 +107,7 @@
 }
 
 .homeSmBox{
-    background: #89DFE4;
+    background: var(--dashboard-box-bg-light);
  
     height: 100%;
     border-radius: 12px;
@@ -122,7 +122,7 @@
 }
 
 #dark .homeSmBox{
-    background: #354f52;
+    background: var(--dashboard-box-bg-dark);
 }
 
 .homeDoct{
@@ -144,14 +144,14 @@
 
 .homeFollowers{
     width: 95%;
-    background: #3cb6e2;
+    background: var(--nav-link-active-color-light);
     border-radius: 6px;
     padding: 8px 2px;
     margin: 5px 0px
 }
 
 #dark .homeFollowers{
-    background:  #009c6c;
+    background:  var(--main-content-top-bg-dark);
 }
 
 .homeFHead{
@@ -161,7 +161,7 @@
 }
 
 .homeSmBox2{
-    background: #89DFE4;
+    background: var(--dashboard-box-bg-light);
 
     height: 100%;
     border-radius: 12px;
@@ -176,7 +176,7 @@
 }
 
 #dark .homeSmBox2{
-    background: #354f52;
+    background: var(--dashboard-box-bg-dark);
 }
 
 .homeViewMore{
@@ -188,7 +188,7 @@
 
 
 .homeSmBox1{
-    background: #89DFE4;
+    background: var(--dashboard-box-bg-light);
     height: 100%;
     border-radius: 12px;
     display: flex;
@@ -201,7 +201,7 @@
 }
 
 #dark .homeSmBox1{
-    background: #354f52;
+    background: var(--dashboard-box-bg-dark);
 }
 
 
@@ -211,26 +211,26 @@
     padding: 12px;
     font-size: 14px;
     background: transparent;
-    border: 2px solid  #3cb6e2;
+    border: 2px solid  var(--homeNews-border-color-light);
 }
 
 
 #dark .homeSmBox p{
-    color: #009c6c;
+    color:  var(--nav-link-active-color-dark);;
 }
 
 #dark .homeViewMore{
-    color: #009c6c;
+    color:  var(--nav-link-active-color-dark);;
 
 }
 
 #dark .homeNews{
-    border: 2px solid #009c6c;
+    border: 2px solid var(--nav-link-active-color-dark);
 
 }
 
 #dark .homeSearchInput{
-    border: 2px solid #009c6c;
+    border: 2px solid  var(--nav-link-active-color-dark);;
 
 
 }

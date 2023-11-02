@@ -47,6 +47,8 @@ const useBoxChange = () => {
         dispatch(getUserTodo(data));
       }
 
+      // dispatch({type:"GET_List", payload : data})
+
 
       return [handleBoxChange]
 

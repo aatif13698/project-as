@@ -2,10 +2,16 @@
 .mainContent{
     height: 93%;
     padding: 10px 15px 15px 15px;
+    /* background-color: var(--mainContent-bg-light); */
 
     overflow-y: auto;
 }
 
+
+#dark .mainContent{
+  /* background-color: var(--mainContent-bg-dark); */
+
+}
 
 
 
