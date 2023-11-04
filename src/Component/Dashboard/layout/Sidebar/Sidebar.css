@@ -107,11 +107,27 @@
     color: white;
   }
 
+  .nav-item-icon{
+    border-radius: 4px;
+    padding: 3px;
+    box-shadow: rgba(20, 20, 20, 0.12) 0rem 0.25rem 0.375rem -0.0625rem, rgba(20, 20, 20, 0.07) 0rem 0.125rem 0.25rem -0.0625rem;
+    background: var(--nav-link-active-color-light);
+  }
+
+  .nav-item-icon.iconActive {
+    background-color: var( --nav-icon-active-color-light);
+  }
+
 
   .nav-link-icon {
     width: 22px;
     /* color: white; */
     /* background-color: white; */
+  }
+
+  .nav-link-icon.activeCoolor{
+    filter: invert(1);
+
   }
 
   #dark  .nav-link-icon{

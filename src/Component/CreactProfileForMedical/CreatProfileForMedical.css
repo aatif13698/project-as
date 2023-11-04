@@ -1,6 +1,7 @@
 #creatProfile{
     background-color: var(--creatProfile-bg-light);
-    box-shadow: 2px 8px 9px rgba(0,0,0,0.2);
+    box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
+
     padding: 12px 15px;
     border-radius: 12px;
 }
@@ -63,7 +64,7 @@
 
 
 #profile_btn{
-    background:  #3ce2ad;
+    background:  var(--nav-link-active-color-light);;
     box-shadow: 2px 6px 21px rgba(0,0,0, 0.2);
     padding: 10px 50px;
     font-size: 15px;
@@ -72,24 +73,25 @@
 }
 
 #dark #profile_btn {
-    background: #5fb2b5;
+    background: var(--nav-link-active-color-dark);;
     box-shadow: 2px 6px 21px rgb(34 229 224 / 20%);
 }
 
 #dark #profile_btn:hover{
-    background-color: #3c6263;
+    background-color: var(--btn-hover-light);;
 }
 
 
 #profile_btn:hover{
-    background:  white;
+    background:  var(--btn-hover-dark);;
     color: black;
     cursor: pointer;
 }
 
 
 #creatProfile h5{
-    color: #3ce2ad;
+    color: var(--from-headingText-light);
+    font-weight: 600;
 }
 
 
@@ -162,31 +164,41 @@
 }
 
 #profileEdit{
-    background:  #3ce2ad;
-    box-shadow: 2px 6px 21px rgba(0,0,0, 0.2);
+    background:  var(--nav-link-active-color-light);
+    box-shadow: 2px 6px 21px rgba(110, 109, 109, 0.2);
     padding: 10px 30px;
     font-size: 15px;
     border-radius: 20px;
     color: white;
     border: none;
     margin-top: 25px;
+    transition: all ease-in .3s;
 }
 
 #dark #profileEdit{
 
-    background: #5fb2b5;
+    background: var(--nav-link-active-color-dark);;
     box-shadow: 2px 6px 21px rgb(34 229 224 / 20%);
 
 }
 
 #profileEdit:hover{
-    background:  white;
+    background:  var(--btn-hover-light);
     color: black;
     cursor: pointer;
 }
 
 #dark #profileEdit:hover{
-    background-color: #3c6263;
+    background-color: var(--btn-hover-dark);;
+}
+
+.profileStyleDiv{
+    background: var(--profile-card-side-light)
+}
+
+#dark .profileStyleDiv{
+    background: var(--profile-card-side-dark)
+
 }
 
 
@@ -210,7 +222,7 @@
     content: "";
     width: 50%;
     height: 100%;
-    background: #2bf2d0;
+    background: var( --profile-card-side-light);
     position: absolute;
     z-index: 1;
     left: 0px;
@@ -220,7 +232,7 @@
 }
 
 #dark .imgCol1::before{
-    background:  #2a3a35;
+    background:  var( --profile-card-side-dark);
 
 
 }
@@ -240,7 +252,7 @@
 
 .row1profile{
     position: relative;
-    border: 2px solid #2bf2d0;
+    border: 2px solid var(--profile-card-side-light);
     border-radius: 40px;
     transition: all 300ms ease-in-out;
 }
@@ -251,7 +263,7 @@
 }
 
 #dark .row1profile{
-    border: 2px solid  #2a3a35; 
+    border: 2px solid  var(--profile-card-side-dark); 
 }
 .row1profile
 /* 
@@ -304,7 +316,7 @@
         content: "";
     width: 100%;
     height: 100%;
-    background: #2bf2d0;
+    background: var(--nav-link-active-color-light);
     left: 0px;
     top: 0px;
     border-radius: 40px;
@@ -317,3 +329,15 @@
 
 
 }
+
+/* 
+.formStyle::before{
+    content: "";
+    width: 100%;
+    background: var(--nav-icon-active-color-light);
+    height: 50%;
+    position: absolute;
+    z-index: 0;
+    top: 1%
+} */
+

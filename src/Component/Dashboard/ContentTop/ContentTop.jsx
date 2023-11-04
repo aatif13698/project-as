@@ -5,6 +5,8 @@ import { SidebarContext } from "../../context/sidebarContext";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { personsImgs } from "../../../utils/images";
+import { ThemeContext } from "../../context/ThemeContext";
+
 
 import {
   DropdownToggle,
@@ -19,6 +21,8 @@ import {
 
 const ContentTop = () => {
   const { toggleSidebar } = useContext(SidebarContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -127,19 +131,24 @@ const ContentTop = () => {
               data-aos-delay={100}
             >
               <Nav vertical>
-                <NavItem className="nav-item-header">Activity</NavItem>
+                <NavItem className="navItem-header">Activity</NavItem>
 
                 <NavItem>
-                  <NavLink href="#">Recover Password</NavLink>
+                  <button  className="topMenu-btn">Recover Password</button>
                 </NavItem>
-                <NavItem className="nav-item-header">My Account</NavItem>
                 <NavItem>
-                  <NavLink href="#">Settings</NavLink>
+                  <button onClick={()=> navigate("/dashboard/CreatProfile")} className="topMenu-btn">Manage Profile</button>
+                </NavItem>
+                <NavItem className="">
+                   <button  className="topMenu-btn">Manage Account</button>
+                </NavItem>
+                <NavItem>
+                <button  className="topMenu-btn">Settings</button>
                 </NavItem>
 
                 <NavItem>
                   {/* <NavLink href="#">Logout</NavLink> */}
-                  <button onClick={logOutFunc}>Logout</button>
+                  <button onClick={logOutFunc} className="topMenu-btn" >Logout</button>
                 </NavItem>
                 <NavItem>
                   <label class="switch">
@@ -154,7 +163,7 @@ const ContentTop = () => {
                         </g>
                       </svg>
                     </span>
-                    <span class="moon">
+                    <span class="moon" >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
@@ -163,7 +172,7 @@ const ContentTop = () => {
                       </svg>
                     </span>
                     <input type="checkbox" class="input" />
-                    <span class="slider"></span>
+                    <span class="slider" onClick={toggleTheme}></span>
                   </label>
                 </NavItem>
               </Nav>

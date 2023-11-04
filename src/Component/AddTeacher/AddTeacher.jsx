@@ -174,7 +174,7 @@ const AddTeacher = () => {
   }, [user]);
 
   useEffect(() => {
-    setActiveLink(4);
+    setActiveLink(3);
   }, []);
 
   useEffect(() => {
@@ -199,7 +199,7 @@ const AddTeacher = () => {
         </div> */}
 
         <Title
-          src={iconsImgs.profile}
+          src={iconsImgs.teacher}
           title={"Create Teacher Card"}
           subTitle={
             "Fill The Form To Create Card For Teachers Available In Your Institute"

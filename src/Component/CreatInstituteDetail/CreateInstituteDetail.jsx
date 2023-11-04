@@ -22,6 +22,8 @@ import Select from "react-dropdown-select";
 import { Country, State, City } from "country-state-city";
 import Loader from "../Common/Loader/Loader";
 import activeLinkContext from "../context/activeLinkContext";
+import Title from "../Common/Title/Title";
+import { iconsImgs } from "../../utils/images";
 
 const CreateInstituteDetail = () => {
   const [postImage, setPostImage] = useState(null);
@@ -220,7 +222,7 @@ const CreateInstituteDetail = () => {
   }, [shop]);
 
   useEffect(() => {
-    setActiveLink(3);
+    setActiveLink(2);
   }, []);
 
 
@@ -243,7 +245,7 @@ const CreateInstituteDetail = () => {
 
       {shopExist ? (
         <>
-          <div
+          {/* <div
             className="row"
             style={{ margin: "20px 0px" }}
             data-aos="fade-left"
@@ -252,7 +254,9 @@ const CreateInstituteDetail = () => {
           >
             <h4 className="text-center">Hey {name}...</h4>
             <h5 className="text-center">Here is your Institute details.</h5>
-          </div>
+          </div> */}
+          <Title src = {iconsImgs.institute} title = {"Your Institute Details"} subTitle = {"You Can Edit Institute Details."} />
+
           <div
             className="row mx-md-5 "
             id="ShopProfileContainer"
@@ -347,7 +351,7 @@ const CreateInstituteDetail = () => {
         </>
       ) : (
         <>
-          <div
+          {/* <div
             className="row my-3"
             data-aos="fade-left"
             data-aos-duration="500"
@@ -358,7 +362,10 @@ const CreateInstituteDetail = () => {
               Please Create your Institute profile. We need the following
               information.
             </h6>
-          </div>
+          </div> */}
+
+<Title src = {iconsImgs.institute} title = {"Create Institute Card "} subTitle = {"Institute Details will vissible To EveryOne."} />
+
 
           <div className="row justify-content-center align-items-center mx-md-2">
             <div

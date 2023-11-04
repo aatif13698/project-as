@@ -19,6 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import Title from "../Common/Title/Title";
 
 
 const ITEM_HEIGHT = 48;
@@ -161,7 +162,7 @@ const AddBatches = () => {
   }, [user]);
 
   useEffect(() => {
-    setActiveLink(5);
+    setActiveLink(4);
   }, []);
 
   useEffect(() => {
@@ -170,7 +171,7 @@ const AddBatches = () => {
 
   return (
     <div className="container-fluid " style={{ padding: "0px" }}>
-      <div
+      {/* <div
         className="row justify-content-center"
         data-aos="fade-left"
         data-aos-duration="500"
@@ -184,7 +185,15 @@ const AddBatches = () => {
             And Delete The Batch Card As Per The Requirement.
           </h6>
         </div>
-      </div>
+      </div> */}
+
+      <Title
+          src={iconsImgs.batches}
+          title={"Create Batches Card"}
+          subTitle={
+            "The Batch Card Will Vissible To EveryOne"
+          }
+        />
 
       <div
         className="row justify-content-center align-items-center mx-2"

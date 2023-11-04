@@ -63,7 +63,7 @@ const HomeInstitute = () => {
   // active link
 
   useEffect(() => {
-    setActiveLink(2);
+    setActiveLink(1);
   }, []);
 
   return (

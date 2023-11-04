@@ -22,6 +22,7 @@ const CreactProfileForMedical = () => {
     (state) => state?.getUserData?.userData?.user?.email
   );
   const profile = useSelector((state) => state?.getUserProfile?.userProfile);
+  console.log("profile",profile);
 
   const user = useSelector((state) => state?.getUserData?.userData?.user);
   const { setActiveLink } = useContext(activeLinkContext);
@@ -162,6 +163,7 @@ const CreactProfileForMedical = () => {
     setValue("zipCode", profile?.zipCode);
     setValue("email2", profile?.email2);
     setState(profile?.state);
+    
   }
 
   useEffect(() => {
@@ -177,7 +179,7 @@ const CreactProfileForMedical = () => {
   }, [profile]);
 
   useEffect(() => {
-    setActiveLink(99);
+    setActiveLink(9);
   }, []);
 
   // useEffect(()=>{
@@ -194,7 +196,7 @@ const CreactProfileForMedical = () => {
     <div className="container-fluid" style={{ padding: "0px" }}>
       {profileExist ? (
         <>
-          <div
+          {/* <div
             className="row "
             style={{ margin: "20px 0px" }}
             data-aos="fade-left"
@@ -203,22 +205,26 @@ const CreactProfileForMedical = () => {
           >
             <h4 className="text-center">Hey {name}...</h4>
             <h5 className="text-center">Here is your profile details.</h5>
-          </div>
+          </div> */}
+
+          <Title src = {iconsImgs.profile} title = {"Your Profile"} subTitle = {"You Can Edit Profile."} />
+
 
           <div
-            className=" row  justify-content-center"
+            className=" row   justify-content-center"
             style={{ margin: "0px 12px" }}
           >
             <div
-              className="col-md-8 col-12 "
+              className="col-md-8 col-12 mt-3 "
               style={{ padding: "0px", position: "relative" }}
             >
               <div
+                className="profileStyleDiv"
                 style={{
                   position: "absolute",
                   width: "100%",
                   height: "100%",
-                  background: "#2bf2d0",
+                  
                   opacity: "0.50",
                   left: "-9px",
                   top: "-16px",
@@ -421,12 +427,12 @@ const CreactProfileForMedical = () => {
 
           <Title src = {iconsImgs.profile} title = {"Create Profile"} subTitle = {"Fill The Details Below"} />
 
-          <div className="row justify-content-center align-items-center mx-2">
+          <div className="row justify-content-center align-items-center  formStyle" style={{position:"relative"}}>
             <div
               data-aos="fade-left"
               data-aos-duration="800"
               data-aos-delay={400}
-              className="col-12   col-md-10"
+              className="col-12   col-md-8"
               id="creatProfile"
             >
               <form
@@ -445,6 +451,7 @@ const CreactProfileForMedical = () => {
                         alignItems: "center",
                       }}
                     >
+                      
                       <img
                         src={`${postImage ? postImage : avatar}`}
                         alt=""
@@ -491,7 +498,7 @@ const CreactProfileForMedical = () => {
                   </div>
                 </div>
 
-                <h5>Personal Details</h5>
+                <h5>USER INFORMATION</h5>
 
                 <div className="row flex-md-row flex-column mb-3">
                   <div className="col">
@@ -594,7 +601,7 @@ const CreactProfileForMedical = () => {
                   </div>
                 </div>
 
-                <h5>Address</h5>
+                <h5>CONTACT INFORMATION</h5>
 
                 <div className="row flex-md-row flex-column mb-3">
                   <div className="col">

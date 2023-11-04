@@ -14,6 +14,7 @@ import { iconsImgs } from "../../utils/images";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import "./AddUpcommingBatch.css";
 import dayjs from "dayjs";
+import { GrGroup } from "react-icons/gr";
 
 // for material Ui select
 
@@ -25,6 +26,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
+import Title from "../Common/Title/Title";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -208,7 +210,7 @@ const AddUpcommingBatch = () => {
   }, [user]);
 
   useEffect(() => {
-    setActiveLink(6);
+    setActiveLink(5);
   }, []);
 
   useEffect(() => {
@@ -217,7 +219,7 @@ const AddUpcommingBatch = () => {
 
   return (
     <div className="container-fluid " style={{ padding: "0px" }}>
-      <div
+      {/* <div
         className="row justify-content-center"
         data-aos="fade-left"
         data-aos-duration="500"
@@ -231,7 +233,15 @@ const AddUpcommingBatch = () => {
             Can Manage To Edit And Delete The Batch Card As Per The Requirement.
           </h6>
         </div>
-      </div>
+      </div> */}
+       <Title
+          src={iconsImgs.batches}
+          title={"Create Upcomming Batches Card"}
+          subTitle={
+            "The Upcomming Batch Card Will Vissible To EveryOne"
+          }
+        />
+
 
       <div
         className="row justify-content-center align-items-center mx-2"

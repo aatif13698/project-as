@@ -4,6 +4,7 @@ import "./Title.css";
 const Title = (props) => {
   const { src, subTitle, title } = props;
 
+
   return (
     <div
       className="row py-3 title-div mb-3 "
@@ -18,9 +19,10 @@ const Title = (props) => {
       <div className="col-12 d-flex ">
         <div className="profile-img-div me-3">
           <img className="profile-icon" src={src} alt="" />
+         
         </div>
         <div>
-          <h4 className="fw-bold text-uppercase ">{title}</h4>
+          <h4 className="fw-bold text-uppercase titile-title ">{title}</h4>
           <h6 className="profile-subtitle">{subTitle}</h6>
         </div>
       </div>

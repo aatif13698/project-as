@@ -4,7 +4,7 @@
   /* height: 100vh; */
   overflow: hidden;
 
-  font-family: "math";
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   
 }
 
@@ -43,29 +43,35 @@
   --background-color-light:rgb(181, 139, 139);
   --background-color-dark:rgb(181, 139, 139);
 
-  --sideBar-bg-light : #caf0f8;
+  --sideBar-bg-light : #F8F9FA;
+
   --sideBar-bg-dark : #343a40;
-  --sidebar-container-bg-light :#90e0ef;
+  --sidebar-container-bg-light :#d5dddf14;
   --sidebar-container-bg-dark :#212529;
- --nav-link-active-color-light : #00b4d8;
+
+ --nav-link-active-color-light : #FFFFFF;
  --nav-link-active-color-dark : #17191b;
+
+ --nav-icon-active-color-light:#17C1E8;
 
  --nav-link-hover-color : #caf0f8;
  --nav-link-hover-dark-color : #575e65;
- --main-content-top-bg-light : #90e0ef;
+ 
+ --main-content-top-bg-light : #d5dddf14;
  --main-content-top-bg-dark :#212529;
 
- --mainContent-bg-light :#caf0f8;
+ /* --mainContent-bg-light :#caf0f8; */
+ --mainContent-bg-light :#F8F9FA;
  --mainContent-bg-dark :#343a40;
 
- --creatProfile-bg-light :#dceef1;
+ --creatProfile-bg-light :#d5dddf14;
  --creatProfile-bg-dark :#363c42;
 
 
- --title-div-bg-light : #90e0ef;
+ --title-div-bg-light : #FFFFFF;
  --title-div-bg-dark : #212529;
 
- --profile-img-div-bg-light:#00b4d8;
+ --profile-img-div-bg-light:#17C1E8;
  --profile-img-div-bg-dark:#17191b;
 
  --dashboard-box-bg-light : #90e0ef;
@@ -77,6 +83,14 @@
 
  --search-btn-bg-light:#deedf554;
  --search-btn-bg-dark:#86898a24;
+
+ --profile-card-side-light: #00b4d8;
+ --profile-card-side-dark: #17191b;
+
+ --btn-hover-light:#caf0f8;
+ --btn-hover-dark:#3c6263;
+
+    --from-headingText-light: #424846;
 
   --primary: #29221d;
   --primar-light: #473b33;
@@ -182,33 +196,33 @@ button {
 }
 
 
-.colors{
 
-  color: #b9f7f9;
-  color: #d4fdfe;
-  color: #3ce2ad;
+/* for theme 1 */
+/* 
+.forThemr1{
+  textColor: #02182C;
+  background-color: #e7f3fe;
+  primaryColor:#4fa6f8;
+  secondaryColor:#bfdffc;
+  AccentColor: #0a7ce6;
+
+}
+
+.forThemr2{
+  textColor: #000503;
+  background-color: #D9FCEB;
+  primaryColor:#9CF6CB;
+  secondaryColor:#C2FADF;
+  AccentColor: #13DD7B;
 
 }
 
 
-.fordark{
-  color: #2a3a35;     /* for  card */
+.forThemr3{
+  textColor: #000000;
+  background-color: #EEF2F2;
+  primaryColor:#B299B2;
+  secondaryColor:#C5D3D3;
+  AccentColor: #747458;
 
- /* for  card buttons */
-  background: #5fb2b5;
-    box-shadow: 2px 6px 21px rgb(34 229 224 / 20%);
-
-/* for input type background */
-    background: #5fb2b5;
-
-
-    /* for sidebar card */
-    background: #4d8272;
-    color: white;
-
-    /* for sidebar and main section */
-
-    background: #0061645e;
-    color: white;
-
-}
+} */

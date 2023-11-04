@@ -41,25 +41,25 @@ export const navigationLinksForMedical = [
 ];
 
 export const navigationLinksForInstitute = [
-  { id: 2, title: "Dashboard", image: iconsImgs.dashboard, to: "homeInstitute" },
+  { id: 1, title: "Dashboard", image: iconsImgs.dashboard, to: "homeInstitute" },
   {
-    id: 3,
+    id: 2,
     title: "Institute",
     image: iconsImgs.institute,
     to: "CreatInstituteDetail",
   },
-  { id: 4, title: "Add Teacher", image: iconsImgs.teacher, to: "addTeacher" },
-  { id: 5, title: "Batches", image: iconsImgs.batches, to: "addBatches" },
+  { id: 3, title: "Add Teacher", image: iconsImgs.teacher, to: "addTeacher" },
+  { id: 4, title: "Batches", image: iconsImgs.batches, to: "addBatches" },
   {
-    id: 6,
+    id: 5,
     title: "Launcg Batch",
     image: iconsImgs.subjects,
     to: "addUpcommingBatch",
   },
-  { id: 7, title: "Future Events", image: iconsImgs.event, to: "home" },
-  { id: 8, title: "Memories", image: iconsImgs.memories, to: "home" },
-  { id: 9, title: "Gallery", image: iconsImgs.gallery, to: "home" },
-  { id: 99, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
+  { id: 6, title: "Future Events", image: iconsImgs.event, to: "home" },
+  { id: 7, title: "Memories", image: iconsImgs.memories, to: "home" },
+  { id: 8, title: "Gallery", image: iconsImgs.gallery, to: "home" },
+  { id: 9, title: "Profile", image: iconsImgs.account, to: "CreatProfile" },
   {
     id: 0,
     title: "Settings",

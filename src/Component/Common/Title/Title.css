@@ -1,6 +1,8 @@
 .profile-icon{
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
+    filter: invert(1);
+
 }
 
 #dark .profile-icon{
@@ -19,11 +21,8 @@
 }
 
 .title-div{
-    background-color: var( --creatProfile-bg-light);
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
-    box-shadow: rgba(50, 50, 93, 0.10) 0px 50px 100px -39px, rgba(0, 0, 0, 0.3) 0px 30px 60px -67px, rgba(10, 37, 64, 0.35) 0px 0px 6px 0px inset;
-    /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+    /* box-shadow: rgba(50, 50, 93, 0.10) 0px 50px 100px -39px, rgba(0, 0, 0, 0.3) 0px 30px 60px -67px, rgba(10, 37, 64, 0.35) 0px 0px 6px 0px inset; */
+    background: var(--title-div-bg-light);
 }
 
 #dark .title-div{
@@ -36,12 +35,20 @@
     /* box-shadow: 2px 2px 4px rgba(0,0,0,0.5); */
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    padding: .50em;
-    border-radius: 12px;
+    padding: .30em .30rem;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #dark .profile-img-div{
     background: var(--profile-img-div-bg-dark);
 
+}
+
+
+.titile-title{
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
