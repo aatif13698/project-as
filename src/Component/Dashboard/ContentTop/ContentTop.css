@@ -47,7 +47,7 @@
   }
 
   .dropdown-style{
-    background:  var(--main-content-top-bg-light) !important
+    background:  var(--profile-dropDown-bg-light) !important
   }
 
   #dark .dropdown-style{
@@ -77,7 +77,7 @@
   }
 
   .topMenu-btn:hover{
-    color: white;
+    color: var(--nav-icon-active-color-light);
   }
  
   #dark .topMenu-btn:hover{
@@ -85,7 +85,7 @@
   }
 
   .navItem-header{
-    color: white;
+    color: var(--nav-icon-active-color-light);
     font-weight: 600;
   }
   

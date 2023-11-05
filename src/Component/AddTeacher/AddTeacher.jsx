@@ -13,6 +13,23 @@ import avatar from "../Assets/Images/profile.png";
 import { iconsImgs } from "../../utils/images";
 import ImgURL from "../Common/imageUrl";
 import Title from "../Common/Title/Title";
+import {
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Row,
+  Col,
+  CardHeader,
+  CardFooter,
+  Card,
+  CardBody,
+  Button,
+  ButtonGroup,
+} from "reactstrap";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import "./AddTeacher.css";
 
 const AddTeacher = () => {
   const [postImage, setPostImage] = useState(null);
@@ -181,33 +198,431 @@ const AddTeacher = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [teachers]);
 
+  const [activeTab, setActiveTab] = useState("1");
+  console.log("activeTab", activeTab);
+
   return (
     <div className="container-fluid " style={{ padding: "0px" }}>
-      <div
-        className="row justify-content-center"
-        data-aos="fade-left"
-        data-aos-duration="500"
-        data-aos-delay={200}
-      >
-        {/* <div className="col-md-10 col-12">
-          <h4 className="text-center">Hello {name}..</h4>
-          <h6 className="text-center">
-            Please Fill The Form To Create Card For Teachers Available In your
-            Institute. You Can Add Any Number Of Teachers And Can Manage To Edit
-            And Delete The Teacher Card As Per The Requirement.
-          </h6>
-        </div> */}
+      <Row>
+        <Col md="12">
+          {" "}
+          <div className="main-card mb-3">
+            <div>
+              <div
+                className="btn-actions-pane-right mb-4 tabsButtonDiv"
+              >
+                <button
+                  // outline
+                  className={`border-0 mx-3 tabButton ${
+                    activeTab == "1" ? "activeTab" : null
+                  } `}
+                  // color="primary"
+                  onClick={() => {
+                    setActiveTab("1");
+                  }}
+                >
+                  Add Teachers
+                </button>
+                <button
+                  // outline
+                  className={`border-0 mx-3 tabButton ${
+                    activeTab === "2" ? "activeTab" : null
+                  } `}
+                  // color="primary"
+                  onClick={() => {
+                    setActiveTab("2");
+                  }}
+                >
+                  View Teachers
+                </button>
 
-        <Title
-          src={iconsImgs.teacher}
-          title={"Create Teacher Card"}
-          subTitle={
-            "Fill The Form To Create Card For Teachers Available In Your Institute"
-          }
-        />
-      </div>
+                <button
+                  // outline
+                  className={`border-0 mx-3 tabButton  ${
+                    activeTab == "3" ? "activeTab" : null
+                  } `}
+                  // color="primary"
+                  onClick={() => {
+                    setActiveTab("3");
+                  }}
+                >
+                  Give Access
+                </button>
+              </div>
+            </div>
+            <div style={{ background: "transparent" }}>
+              <TabContent activeTab={activeTab}>
+                <TabPane tabId="2">
+                  <p>
+                    It was popularised in the 1960s with the release of Letraset
+                    sheets containing Lorem Ipsum passages, and more recently
+                    with desktop publishing software like Aldus PageMaker
+                    including versions of Lorem Ipsum.
+                  </p>
+                </TabPane>
+                <TabPane tabId="1">
+                  <div
+                    className="row justify-content-center"
+                    data-aos="fade-left"
+                    data-aos-duration="500"
+                    data-aos-delay={200}
+                  >
+                    <Title
+                      src={iconsImgs.teacher}
+                      title={"Create Teacher Card"}
+                      subTitle={
+                        "Fill The Form To Create Card For Teachers Available In Your Institute"
+                      }
+                    />
+                  </div>
+                  <div
+                    className="row justify-content-center align-items-center mx-2"
+                    style={{ marginBottom: "40px " }}
+                    id="form"
+                  >
+                    <div
+                      data-aos="fade-left"
+                      data-aos-duration="800"
+                      data-aos-delay={400}
+                      className="col-12   col-md-8"
+                      id="creatProfile"
+                    >
+                      <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        data-aos="fade-left"
+                        data-aos-duration="700"
+                        data-aos-delay={800}
+                      >
+                        <div className="row justify-content-around align-items-center mb-3 mt-4">
+                          <div className="col d-flex flex-column justify-content-center align-items-center">
+                            <label
+                              htmlFor="file-upload"
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                              }}
+                            >
+                              <img
+                                src={`${postImage ? postImage : avatar}`}
+                                alt=""
+                                style={{
+                                  width: "80px",
+                                  height: "80px",
+                                  border: "2px solid white",
+                                  borderRadius: "50%",
+                                }}
+                              />
+                            </label>
 
-      <div
+                            <p style={{ marginTop: "10px" }}>
+                              Select Dr. Image
+                            </p>
+
+                            <input
+                              type="file"
+                              lable="Image"
+                              name="myFile"
+                              id="file-upload"
+                              // multiple   // if want to select multiple file
+                              accept=".jpeg, .png, .jpg"
+                              onChange={(e) => handleFileUpload(e)}
+                            />
+                          </div>
+                          <div className="col d-flex flex-column">
+                            <label htmlFor="about">About Teacher :</label>
+                            <textarea
+                              id="about"
+                              name="about"
+                              placeholder="Enter between 20 to 30 words...."
+                              rows="4"
+                              cols="45"
+                              {...register("aboutTr", {
+                                required: true,
+                              })}
+                            ></textarea>
+                            {errors.aboutTr &&
+                              errors.aboutTr.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                        </div>
+
+                        <h5>Teacher Details</h5>
+
+                        <div
+                          // data-aos="fade-left"
+                          // data-aos-duration="500"
+                          // data-aos-delay={800}
+                          className="row flex-md-row flex-column mb-3"
+                        >
+                          <div className="col">
+                            <label id="login_label" htmlFor="firstName">
+                              Teacher Name
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="Enter Name"
+                              {...register("trName", {
+                                required: true,
+                              })}
+                            />
+                            {errors.TrName &&
+                              errors.TrName.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                          <div className="col">
+                            <label id="login_label" htmlFor="name">
+                              Subject Special
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="Subject Specialist "
+                              {...register("subjectSpecialist", {
+                                required: true,
+                              })}
+                            />
+                            {errors.subjectSpecialist &&
+                              errors.subjectSpecialist.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                        </div>
+
+                        <div
+                          // data-aos="fade-left"
+                          // data-aos-duration="500"
+                          // data-aos-delay={800}
+                          className="row flex-md-row flex-column mb-3"
+                        >
+                          <div className="col">
+                            <label id="login_label" htmlFor="firstName">
+                              Teacher Qualification
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="Teacher Qualification"
+                              {...register("trQualification", {
+                                required: true,
+                              })}
+                            />
+                            {errors.trQualification &&
+                              errors.trQualification.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                          <div className="col">
+                            <label id="login_label" htmlFor="name">
+                              Experience in Year
+                            </label>
+                            <input
+                              type="number"
+                              className="form-control login_input"
+                              placeholder="Total Experience In Year"
+                              {...register("trExperience", {
+                                required: true,
+                              })}
+                            />
+                            {errors.trExperience &&
+                              errors.trExperience.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                        </div>
+
+                        <div
+                          // data-aos="fade-left"
+                          // data-aos-duration="500"
+                          // data-aos-delay={1000}
+                          className="row flex-md-row flex-column mb-3"
+                        >
+                          <div className="col">
+                            <label id="login_label" htmlFor="name">
+                              Contact
+                            </label>
+                            <input
+                              type="number"
+                              className="form-control login_input"
+                              placeholder="Phone Number"
+                              {...register("trPhoneNumber", {
+                                required: true,
+                                pattern: {
+                                  value: /^[0-9]{10}$/i,
+                                  message:
+                                    "Please enter a valid 10-digit phone number",
+                                },
+                              })}
+                            />
+                            {errors.trPhoneNumber &&
+                              errors.trPhoneNumber.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                            {errors.trPhoneNumber &&
+                              errors.trPhoneNumber.type === "pattern" && (
+                                <span className="text-danger">
+                                  {errors.trPhoneNumber.message}
+                                </span>
+                              )}
+                          </div>
+                          <div className="col">
+                            <label id="login_label" htmlFor="email">
+                              Mail
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="Enter Email"
+                              {...register("trEmail", {
+                                required: true,
+                              })}
+                            />
+                            {errors.trEmail &&
+                              errors.trEmail.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                        </div>
+
+                        <h5>Address</h5>
+
+                        <div
+                          // data-aos="fade-left"
+                          // data-aos-duration="500"
+                          // data-aos-delay={1200}
+                          className="row flex-md-row flex-column mb-3"
+                        >
+                          <div className="col">
+                            <label id="login_label" htmlFor="name">
+                              Street
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="Street"
+                              {...register("street", {
+                                required: true,
+                              })}
+                            />
+                            {errors.street &&
+                              errors.street.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                          <div className="col">
+                            <label id="login_label" htmlFor="name">
+                              City
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="City"
+                              {...register("city", {
+                                required: true,
+                              })}
+                            />
+                            {errors.city && errors.city.type === "required" && (
+                              <span className="text-danger">
+                                This field is required
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div
+                          // data-aos="fade-left"
+                          // data-aos-duration="500"
+                          // data-aos-delay={1400}
+                          className="row flex-md-row flex-column mb-3"
+                        >
+                          <div className="col">
+                            <label id="login_label" htmlFor="name">
+                              State
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="State"
+                              {...register("state", {
+                                required: true,
+                              })}
+                            />
+                            {errors.state &&
+                              errors.state.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                          <div className="col">
+                            <label id="login_label" htmlFor="name">
+                              Zip Code
+                            </label>
+                            <input
+                              type="text"
+                              className="form-control login_input"
+                              placeholder="Zip code"
+                              {...register("zipCode", {
+                                required: true,
+                              })}
+                            />
+                            {errors.zipCode &&
+                              errors.zipCode.type === "required" && (
+                                <span className="text-danger">
+                                  This field is required
+                                </span>
+                              )}
+                          </div>
+                        </div>
+
+                        <div className="text-center">
+                          <button
+                            type="submit"
+                            id="profile_btn"
+                            className="btn btn-block "
+                          >
+                            {choseTeacher ? "Edit" : "Creat"}
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </TabPane>
+                <TabPane tabId="3">
+                  <p>
+                    Lorem Ipsum has been the industry's standard dummy text ever
+                    since the 1500s, when an unknown printer took a galley of
+                    type and scrambled it to make a type specimen book. It has
+                    survived not only five centuries, but also the leap into
+                    electronic typesetting, remaining essentially unchanged.{" "}
+                  </p>
+                </TabPane>
+              </TabContent>
+            </div>
+          </div>
+        </Col>
+      </Row>
+
+      {/* <div
         className="row justify-content-center align-items-center mx-2"
         style={{ marginBottom: "40px " }}
         id="form"
@@ -502,32 +917,9 @@ const AddTeacher = () => {
             </div>
           </form>
         </div>
-      </div>
+      </div> */}
 
-      {teachers?.length > 0 ? (
-        // <h3
-        //   className="text-center mb-5"
-        //   style={{
-        //     position: "relative",
-        //     display: "flex",
-        //     justifyContent: "center",
-        //     alignItems: "center",
-        //     flexDirection: "column",
-        //   }}
-        // >
-        //   List Of Teachers You Added.
-        //   <div
-        //     className="docLine"
-        //     style={{
-        //       position: "absolute",
-        //       height: "4px",
-        //       top: "120%",
-        //       background:
-        //         "linear-gradient(36deg, rgba(60,226,173,1) 0%, rgb(12 229 236) 52%)",
-        //     }}
-        //   ></div>
-        // </h3>
-
+      {/* {teachers?.length > 0 ? (
         <Title
           src={iconsImgs.profile}
           title={"List Of Teachers"}
@@ -535,8 +927,8 @@ const AddTeacher = () => {
             "Total Teacher Available In Your System"
           }
         />
-      ) : null}
-
+      ) : null} */}
+      {/* 
       {teachers &&
         teachers.map((val) => {
           return (
@@ -624,7 +1016,7 @@ const AddTeacher = () => {
               </div>
             </div>
           );
-        })}
+        })} */}
     </div>
   );
 };

@@ -362,7 +362,7 @@ const AddBatches = () => {
               </div>
             </div>
 
-            <div className="text-center">
+            <div className="">
               <button type="submit" id="profile_btn" className="btn btn-block ">
                 {choseBatch ? "Edit" : "Creat"}
               </button>

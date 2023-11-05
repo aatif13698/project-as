@@ -64,7 +64,7 @@
  --mainContent-bg-light :#F8F9FA;
  --mainContent-bg-dark :#343a40;
 
- --creatProfile-bg-light :#d5dddf14;
+ --creatProfile-bg-light :#FFFFFF;
  --creatProfile-bg-dark :#363c42;
 
 
@@ -90,7 +90,10 @@
  --btn-hover-light:#caf0f8;
  --btn-hover-dark:#3c6263;
 
-    --from-headingText-light: #424846;
+  --from-headingText-light: #424846;
+
+
+  --profile-dropDown-bg-light: #FFFFFF;
 
   --primary: #29221d;
   --primar-light: #473b33;

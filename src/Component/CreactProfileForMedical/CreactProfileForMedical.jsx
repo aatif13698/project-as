@@ -10,6 +10,7 @@ import { Country, State, City } from "country-state-city";
 import Select from "react-dropdown-select";
 import { iconsImgs } from "../../utils/images";
 import Title from "../Common/Title/Title";
+import { useNavigate } from "react-router-dom";
 
 const CreactProfileForMedical = () => {
   const [postImage, setPostImage] = useState(null);
@@ -17,6 +18,8 @@ const CreactProfileForMedical = () => {
   const [name, setName] = useState("");
   const [profileExist, setProfileExist] = useState(false);
   const [edit, setEdit] = useState(false);
+
+  const navigate = useNavigate()
 
   const email = useSelector(
     (state) => state?.getUserData?.userData?.user?.email
@@ -427,7 +430,7 @@ const CreactProfileForMedical = () => {
 
           <Title src = {iconsImgs.profile} title = {"Create Profile"} subTitle = {"Fill The Details Below"} />
 
-          <div className="row justify-content-center align-items-center  formStyle" style={{position:"relative"}}>
+          <div className="row justify-content-center align-items-center mb-4 formStyle" style={{position:"relative"}}>
             <div
               data-aos="fade-left"
               data-aos-duration="800"
@@ -722,7 +725,14 @@ const CreactProfileForMedical = () => {
                   </div>
                 </div>
 
-                <div className="text-center">
+                <div className="">
+                <span
+                    id="cancel_btn"
+                    className="btn btn-block me-3 "
+                    onClick={() => setProfileExist(true)}
+                  >
+                    Cancel
+                  </span>
                   <button
                     type="submit"
                     id="profile_btn"
@@ -730,6 +740,7 @@ const CreactProfileForMedical = () => {
                   >
                     {edit ? "Edit" : "Create"}
                   </button>
+                  
                 </div>
               </form>
             </div>

@@ -48,7 +48,7 @@ export const navigationLinksForInstitute = [
     image: iconsImgs.institute,
     to: "CreatInstituteDetail",
   },
-  { id: 3, title: "Add Teacher", image: iconsImgs.teacher, to: "addTeacher" },
+  { id: 3, title: "Teacher", image: iconsImgs.teacher, to: "addTeacher" },
   { id: 4, title: "Batches", image: iconsImgs.batches, to: "addBatches" },
   {
     id: 5,

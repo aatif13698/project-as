@@ -1,0 +1,25 @@
+
+
+.activeTab{
+    background: var(--nav-icon-active-color-light) !important;
+    color:  white !important;
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+.tabsButtonDiv{
+    border-bottom: 1px solid black;
+    padding: 12px 0px;
+}
+
+.tabButton{
+    background: transparent ;
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+.tabButton:hover{
+    background: red !important;
+    color: white;
+   
+}
