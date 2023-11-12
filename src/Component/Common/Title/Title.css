@@ -18,6 +18,7 @@
 
 .profile-subtitle{
     color: rgb(150, 153, 153);
+    font-size: 0.60em;
 }
 
 .title-div{
@@ -50,5 +51,6 @@
 
 .titile-title{
     font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1em;
 }
 

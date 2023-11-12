@@ -16,7 +16,7 @@ const Title = (props) => {
         
       </div> */}
 
-      <div className="col-12 d-flex ">
+      <div className="col-12 d-flex align-items-center ">
         <div className="profile-img-div me-3">
           <img className="profile-icon" src={src} alt="" />
          

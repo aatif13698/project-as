@@ -17,6 +17,14 @@
   
 }
 
+#creatProfile input[type="text"]::placeholder{
+    font-size: 12px;
+}
+
+#creatProfile input[type="number"]::placeholder{
+    font-size: 12px;
+}
+
 
 #dark #creatProfile input[type="text"]::placeholder{
     color: white;

@@ -23,3 +23,9 @@
     color: white;
    
 }
+
+
+.jiAnER:hover {
+    background-color: #cbdbed77; /* Change the color to your desired hover color */
+    cursor: pointer; /* Optional: Change the cursor to a pointer on hover for better user feedback */
+  }

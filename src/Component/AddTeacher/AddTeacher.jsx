@@ -30,6 +30,36 @@ import {
 } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./AddTeacher.css";
+import DataTable from 'react-data-table-component';
+
+const columns = [
+  {
+    name: "ID",
+    selector: "id",
+    sortable: true,
+  },
+  {
+    name: "Name",
+    selector: "name",
+    sortable: true,
+  },
+  {
+    name: "Position",
+    selector: "position",
+    sortable: true,
+  },
+  {
+    name: "Salary",
+    selector: "salary",
+    sortable: true,
+  },
+];
+
+const data = [
+  { id: 1, name: "John Doe", position: "Developer", salary: "$70,000" },
+  { id: 2, name: "Jane Smith", position: "Designer", salary: "$60,000" },
+  // Add more employee data as needed
+];
 
 const AddTeacher = () => {
   const [postImage, setPostImage] = useState(null);
@@ -208,9 +238,7 @@ const AddTeacher = () => {
           {" "}
           <div className="main-card mb-3">
             <div>
-              <div
-                className="btn-actions-pane-right mb-4 tabsButtonDiv"
-              >
+              <div className="btn-actions-pane-right mb-4 tabsButtonDiv">
                 <button
                   // outline
                   className={`border-0 mx-3 tabButton ${
@@ -253,12 +281,21 @@ const AddTeacher = () => {
             <div style={{ background: "transparent" }}>
               <TabContent activeTab={activeTab}>
                 <TabPane tabId="2">
-                  <p>
-                    It was popularised in the 1960s with the release of Letraset
-                    sheets containing Lorem Ipsum passages, and more recently
-                    with desktop publishing software like Aldus PageMaker
-                    including versions of Lorem Ipsum.
-                  </p>
+
+                 <Card>
+
+                  <CardBody>
+                  <DataTable
+                    title=""
+                    columns={columns}
+                    data={data}
+                    pagination
+                    customHeader={<CustomHeader />}
+                    subHeaderComponent={<CustomHeader />}
+                  />
+                  </CardBody>
+                  </Card> 
+                  
                 </TabPane>
                 <TabPane tabId="1">
                   <div
@@ -315,9 +352,7 @@ const AddTeacher = () => {
                               />
                             </label>
 
-                            <p style={{ marginTop: "10px" }}>
-                              Select Dr. Image
-                            </p>
+                            <p style={{ marginTop: "10px" }}>Select Image</p>
 
                             <input
                               type="file"
@@ -334,7 +369,7 @@ const AddTeacher = () => {
                             <textarea
                               id="about"
                               name="about"
-                              placeholder="Enter between 20 to 30 words...."
+                              placeholder="Enter Upto 50 words..."
                               rows="4"
                               cols="45"
                               {...register("aboutTr", {
@@ -503,26 +538,21 @@ const AddTeacher = () => {
 
                         <h5>Address</h5>
 
-                        <div
-                          // data-aos="fade-left"
-                          // data-aos-duration="500"
-                          // data-aos-delay={1200}
-                          className="row flex-md-row flex-column mb-3"
-                        >
+                        <div className="row flex-md-row flex-column mb-3">
                           <div className="col">
                             <label id="login_label" htmlFor="name">
-                              Street
+                              State
                             </label>
                             <input
                               type="text"
                               className="form-control login_input"
-                              placeholder="Street"
-                              {...register("street", {
+                              placeholder="State"
+                              {...register("state", {
                                 required: true,
                               })}
                             />
-                            {errors.street &&
-                              errors.street.type === "required" && (
+                            {errors.state &&
+                              errors.state.type === "required" && (
                                 <span className="text-danger">
                                   This field is required
                                 </span>
@@ -548,26 +578,21 @@ const AddTeacher = () => {
                           </div>
                         </div>
 
-                        <div
-                          // data-aos="fade-left"
-                          // data-aos-duration="500"
-                          // data-aos-delay={1400}
-                          className="row flex-md-row flex-column mb-3"
-                        >
+                        <div className="row flex-md-row flex-column mb-3">
                           <div className="col">
                             <label id="login_label" htmlFor="name">
-                              State
+                              Street
                             </label>
                             <input
                               type="text"
                               className="form-control login_input"
-                              placeholder="State"
-                              {...register("state", {
+                              placeholder="Street"
+                              {...register("street", {
                                 required: true,
                               })}
                             />
-                            {errors.state &&
-                              errors.state.type === "required" && (
+                            {errors.street &&
+                              errors.street.type === "required" && (
                                 <span className="text-danger">
                                   This field is required
                                 </span>
@@ -621,303 +646,6 @@ const AddTeacher = () => {
           </div>
         </Col>
       </Row>
-
-      {/* <div
-        className="row justify-content-center align-items-center mx-2"
-        style={{ marginBottom: "40px " }}
-        id="form"
-      >
-        <div
-          data-aos="fade-left"
-          data-aos-duration="800"
-          data-aos-delay={400}
-          className="col-12   col-md-8"
-          id="creatProfile"
-        >
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            data-aos="fade-left"
-            data-aos-duration="700"
-            data-aos-delay={800}
-          >
-            <div className="row justify-content-around align-items-center mb-3 mt-4">
-              <div className="col d-flex flex-column justify-content-center align-items-center">
-                <label
-                  htmlFor="file-upload"
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <img
-                    src={`${postImage ? postImage : avatar}`}
-                    alt=""
-                    style={{
-                      width: "80px",
-                      height: "80px",
-                      border: "2px solid white",
-                      borderRadius: "50%",
-                    }}
-                  />
-                </label>
-
-                <p style={{ marginTop: "10px" }}>Select Dr. Image</p>
-
-                <input
-                  type="file"
-                  lable="Image"
-                  name="myFile"
-                  id="file-upload"
-                  // multiple   // if want to select multiple file
-                  accept=".jpeg, .png, .jpg"
-                  onChange={(e) => handleFileUpload(e)}
-                />
-              </div>
-              <div className="col d-flex flex-column">
-                <label htmlFor="about">About Teacher :</label>
-                <textarea
-                  id="about"
-                  name="about"
-                  placeholder="Enter between 20 to 30 words...."
-                  rows="4"
-                  cols="45"
-                  {...register("aboutTr", {
-                    required: true,
-                  })}
-                ></textarea>
-                {errors.aboutTr && errors.aboutTr.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-            </div>
-
-            <h5>Teacher Details</h5>
-
-            <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={800}
-              className="row flex-md-row flex-column mb-3"
-            >
-              <div className="col">
-                <label id="login_label" htmlFor="firstName">
-                  Teacher Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Enter Name"
-                  {...register("trName", {
-                    required: true,
-                  })}
-                />
-                {errors.TrName && errors.TrName.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  Subject Special
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Subject Specialist "
-                  {...register("subjectSpecialist", {
-                    required: true,
-                  })}
-                />
-                {errors.subjectSpecialist &&
-                  errors.subjectSpecialist.type === "required" && (
-                    <span className="text-danger">This field is required</span>
-                  )}
-              </div>
-            </div>
-
-            <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={800}
-              className="row flex-md-row flex-column mb-3"
-            >
-              <div className="col">
-                <label id="login_label" htmlFor="firstName">
-                  Teacher Qualification
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Teacher Qualification"
-                  {...register("trQualification", {
-                    required: true,
-                  })}
-                />
-                {errors.trQualification &&
-                  errors.trQualification.type === "required" && (
-                    <span className="text-danger">This field is required</span>
-                  )}
-              </div>
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  Experience in Year
-                </label>
-                <input
-                  type="number"
-                  className="form-control login_input"
-                  placeholder="Total Experience In Year"
-                  {...register("trExperience", {
-                    required: true,
-                  })}
-                />
-                {errors.trExperience &&
-                  errors.trExperience.type === "required" && (
-                    <span className="text-danger">This field is required</span>
-                  )}
-              </div>
-            </div>
-
-            <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={1000}
-              className="row flex-md-row flex-column mb-3"
-            >
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  Contact
-                </label>
-                <input
-                  type="number"
-                  className="form-control login_input"
-                  placeholder="Phone Number"
-                  {...register("trPhoneNumber", {
-                    required: true,
-                    pattern: {
-                      value: /^[0-9]{10}$/i,
-                      message: "Please enter a valid 10-digit phone number",
-                    },
-                  })}
-                />
-                {errors.trPhoneNumber &&
-                  errors.trPhoneNumber.type === "required" && (
-                    <span className="text-danger">This field is required</span>
-                  )}
-                {errors.trPhoneNumber &&
-                  errors.trPhoneNumber.type === "pattern" && (
-                    <span className="text-danger">
-                      {errors.trPhoneNumber.message}
-                    </span>
-                  )}
-              </div>
-              <div className="col">
-                <label id="login_label" htmlFor="email">
-                  Mail
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Enter Email"
-                  {...register("trEmail", {
-                    required: true,
-                  })}
-                />
-                {errors.trEmail && errors.trEmail.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-            </div>
-
-            <h5>Address</h5>
-
-            <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={1200}
-              className="row flex-md-row flex-column mb-3"
-            >
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  Street
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Street"
-                  {...register("street", {
-                    required: true,
-                  })}
-                />
-                {errors.street && errors.street.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  City
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="City"
-                  {...register("city", {
-                    required: true,
-                  })}
-                />
-                {errors.city && errors.city.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-            </div>
-
-            <div
-              // data-aos="fade-left"
-              // data-aos-duration="500"
-              // data-aos-delay={1400}
-              className="row flex-md-row flex-column mb-3"
-            >
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  State
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="State"
-                  {...register("state", {
-                    required: true,
-                  })}
-                />
-                {errors.state && errors.state.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-              <div className="col">
-                <label id="login_label" htmlFor="name">
-                  Zip Code
-                </label>
-                <input
-                  type="text"
-                  className="form-control login_input"
-                  placeholder="Zip code"
-                  {...register("zipCode", {
-                    required: true,
-                  })}
-                />
-                {errors.zipCode && errors.zipCode.type === "required" && (
-                  <span className="text-danger">This field is required</span>
-                )}
-              </div>
-            </div>
-
-            <div className="text-center">
-              <button type="submit" id="profile_btn" className="btn btn-block ">
-                {choseTeacher ? "Edit" : "Creat"}
-              </button>
-            </div>
-          </form>
-        </div>
-      </div> */}
 
       {/* {teachers?.length > 0 ? (
         <Title
@@ -1022,3 +750,15 @@ const AddTeacher = () => {
 };
 
 export default AddTeacher;
+
+function CustomHeader () {
+
+  return (
+    
+      <div>
+        <h1>Employee Data</h1>
+      </div>
+  )
+
+} 
+

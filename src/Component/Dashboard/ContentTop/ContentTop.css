@@ -6,12 +6,15 @@
     /* margin-bottom: 5px; */
     padding: 10px 15px;
     height: 7%;
-     background-color: var(--main-content-top-bg-light);
+    background: transparent;
+     /* background-color: var(--main-content-top-bg-light); */
      /* box-shadow: rgba(64, 50, 175, 0.15) 7px 6px 9px -1px, rgba(0, 0, 0, 0.1) 0px 3px 8px -3px; */
-    margin-bottom: 7px;
-    margin-top: 13px;
-    box-shadow: rgba(255, 255, 255, 0.9) 0rem 0rem 0.0625rem 0.0625rem inset, rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-
+    /* margin-bottom: 7px; */
+    /* margin-top: 13px; */
+    /* box-shadow: rgba(255, 255, 255, 0.9) 0rem 0rem 0.0625rem 0.0625rem inset, rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem; */
+    position: relative;
+    backdrop-filter: blur(17px);
+    z-index: 999;
   }
 
 
