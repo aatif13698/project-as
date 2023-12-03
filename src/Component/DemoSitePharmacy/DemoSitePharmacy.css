@@ -1,6 +1,7 @@
 
 .navrow{
-    background:  rgb(60,226,173);
+    /* background:  rgb(18 204 235 / 0%); */
+    background:red;
 
     height: 40px;
 }

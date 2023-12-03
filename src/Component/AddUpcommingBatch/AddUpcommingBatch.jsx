@@ -464,8 +464,10 @@ const AddUpcommingBatch = () => {
               </div>
             </div>
 
-            <div className="text-center">
-              <button type="submit" id="profile_btn" className="btn btn-block ">
+            <div className="">
+              <button type="submit"
+              //  id="profile_btn" 
+               className="button-common ">
                 {choseBatch ? "Edit" : "Creat"}
               </button>
             </div>

@@ -115,8 +115,8 @@ const Democard = () => {
               <div>
                 <button
                   //   onClick={editProfile}
-                  className="btn btn-success"
-                  id="profileEdit"
+                  className="button-common"
+                  // id="profileEdit"
                 >
                   Edit Profile
                 </button>
@@ -457,8 +457,8 @@ const Democard = () => {
                     <div>
                       <button
                         // onClick={editShopProfile}
-                        className="btn btn-success"
-                        id="profileEdit"
+                        className="button-common"
+                        // id="profileEdit"
                       >
                         Edit Shop
                       </button>

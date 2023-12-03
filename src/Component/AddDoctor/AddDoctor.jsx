@@ -699,7 +699,9 @@ const AddDoctor = () => {
             </div>
 
             <div className="text-center">
-              <button type="submit" id="profile_btn" className="btn btn-block ">
+              <button type="submit" 
+              // id="profile_btn"
+               className="button-common ">
                 {choseDoctor ? "Edit" : "Creat"}
               </button>
             </div>

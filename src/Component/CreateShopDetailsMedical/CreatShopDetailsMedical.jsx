@@ -383,8 +383,8 @@ const CreatShopDetailsMedical = () => {
                     <div>
                       <button
                         onClick={editShopProfile}
-                        className="btn btn-success"
-                        id="profileEdit"
+                        className="button-common"
+                        // id="profileEdit"
                       >
                         Edit Shop
                       </button>
@@ -850,8 +850,8 @@ const CreatShopDetailsMedical = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    id="profile_btn"
-                    className="btn btn-block "
+                    // id="profile_btn"
+                    className="button-common  "
                   >
                     {edit ? "Edit " : "Creat"}
                   </button>

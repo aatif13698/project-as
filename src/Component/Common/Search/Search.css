@@ -1,0 +1,19 @@
+.search-searchIcon{
+    width: 15px;
+    height: 15px;
+}
+
+.search-search-text{
+    padding: 8px 15px 8px 15px;
+    /* border: 2px solid black; */
+    border-radius: 15px;
+    background: #81ebf447;
+    border: none;
+    position: relative;
+}
+
+.search-search-btn-icon{
+    position: absolute;
+    right: 33px;
+    top: 31px;
+}

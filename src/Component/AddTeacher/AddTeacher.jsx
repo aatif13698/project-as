@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import activeLinkContext from "../context/activeLinkContext";
 import { useForm } from "react-hook-form";
@@ -30,34 +30,37 @@ import {
 } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./AddTeacher.css";
-import DataTable from 'react-data-table-component';
+import DataTable from "react-data-table-component";
+import Search from "../Common/Search/Search";
+import TeacherTable from "./TeacherTable";
 
-const columns = [
-  {
-    name: "ID",
-    selector: "id",
-    sortable: true,
-  },
-  {
-    name: "Name",
-    selector: "name",
-    sortable: true,
-  },
-  {
-    name: "Position",
-    selector: "position",
-    sortable: true,
-  },
-  {
-    name: "Salary",
-    selector: "salary",
-    sortable: true,
-  },
-];
+// const columns = [
+//   {
+//     name: "ID",
+//     selector: "id",
+//     sortable: true,
+//   },
+//   {
+//     name: "Name",
+//     selector: "name",
+//     sortable: true,
+//   },
+//   {
+//     name: "Position",
+//     selector: "position",
+//     sortable: true,
+//   },
+//   {
+//     name: "Salary",
+//     selector: "salary",
+//     sortable: true,
+//   },
+// ];
+
 
 const data = [
-  { id: 1, name: "John Doe", position: "Developer", salary: "$70,000" },
-  { id: 2, name: "Jane Smith", position: "Designer", salary: "$60,000" },
+  { id: 1, name: "John Doe", email: "Developer", phone: "2222222222" },
+  { id: 2, name: "Jane Smith", email: "Designer", phone: "3333333333" },
   // Add more employee data as needed
 ];
 
@@ -80,6 +83,8 @@ const AddTeacher = () => {
   const teachers = useSelector(
     (state) => state?.getAllTeachersProfile?.teachersList
   );
+
+  console.log("teachers",teachers);
 
   const { setActiveLink } = useContext(activeLinkContext);
 
@@ -148,6 +153,7 @@ const AddTeacher = () => {
     getUser(getData);
     getAllTeachersOfParticularInstitute(getAllTeachersCallback);
     setChoseTeacher(false);
+    setActiveTab("2")
   }
 
   function getData(data) {
@@ -228,8 +234,43 @@ const AddTeacher = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [teachers]);
 
+  
+const columns = useMemo(()=>
+[
+  {
+    name: "ID",
+    selector: (row) => row.userId,
+    sortable: true,
+  },
+  {
+    name: "Name",
+    selector: "trName",
+    sortable: true,
+  },
+  {
+    name: "Email",
+    selector:(row) => row.trEmail,
+    sortable: true,
+  },
+  {
+    name: "Phone",
+    selector:(row) => row.trPhoneNumber ,
+    sortable: true,
+  },
+],[])
+
   const [activeTab, setActiveTab] = useState("1");
   console.log("activeTab", activeTab);
+
+  const [searchText, setSearchText] = useState("");
+  //subheader component of react-data-table
+  const subHeaderComponent = useMemo(() => {
+    return (
+      <div>
+        <input type="text" placeholder="search here" />
+      </div>
+    );
+  }, [searchText]);
 
   return (
     <div className="container-fluid " style={{ padding: "0px" }}>
@@ -241,7 +282,7 @@ const AddTeacher = () => {
               <div className="btn-actions-pane-right mb-4 tabsButtonDiv">
                 <button
                   // outline
-                  className={`border-0 mx-3 tabButton ${
+                  className={`border-0 mx-3 button-common ${
                     activeTab == "1" ? "activeTab" : null
                   } `}
                   // color="primary"
@@ -253,7 +294,7 @@ const AddTeacher = () => {
                 </button>
                 <button
                   // outline
-                  className={`border-0 mx-3 tabButton ${
+                  className={`border-0 mx-3 button-common ${
                     activeTab === "2" ? "activeTab" : null
                   } `}
                   // color="primary"
@@ -266,7 +307,7 @@ const AddTeacher = () => {
 
                 <button
                   // outline
-                  className={`border-0 mx-3 tabButton  ${
+                  className={`border-0 mx-3 button-common  ${
                     activeTab == "3" ? "activeTab" : null
                   } `}
                   // color="primary"
@@ -281,21 +322,7 @@ const AddTeacher = () => {
             <div style={{ background: "transparent" }}>
               <TabContent activeTab={activeTab}>
                 <TabPane tabId="2">
-
-                 <Card>
-
-                  <CardBody>
-                  <DataTable
-                    title=""
-                    columns={columns}
-                    data={data}
-                    pagination
-                    customHeader={<CustomHeader />}
-                    subHeaderComponent={<CustomHeader />}
-                  />
-                  </CardBody>
-                  </Card> 
-                  
+                  <TeacherTable/>
                 </TabPane>
                 <TabPane tabId="1">
                   <div
@@ -619,11 +646,11 @@ const AddTeacher = () => {
                           </div>
                         </div>
 
-                        <div className="text-center">
+                        <div className="">
                           <button
                             type="submit"
-                            id="profile_btn"
-                            className="btn btn-block "
+                            // id="profile_btn"
+                            className="button-common"
                           >
                             {choseTeacher ? "Edit" : "Creat"}
                           </button>
@@ -751,14 +778,10 @@ const AddTeacher = () => {
 
 export default AddTeacher;
 
-function CustomHeader () {
-
+function CustomHeader() {
   return (
-    
-      <div>
-        <h1>Employee Data</h1>
-      </div>
-  )
-
-} 
-
+    <div>
+      <h1>Employee Data</h1>
+    </div>
+  );
+}

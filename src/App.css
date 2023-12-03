@@ -229,3 +229,67 @@ button {
   AccentColor: #747458;
 
 } */
+
+
+/* common button css */
+
+.button-common {
+  color: var(--nav-icon-active-color-light);
+  font-family: inherit;
+  display: inline-block;
+  /* width: 5em; */
+  height: 2em;
+  /* line-height: 0.5em; */
+  overflow: hidden;
+  margin: 8px;
+  font-size: 17px;
+  z-index: 1;
+  color: var(--nav-icon-active-color-light);
+  border: 2px solid var(--nav-icon-active-color-light);
+  border-radius: 6px;
+  position: relative;
+  padding: 0px 15px;
+}
+
+.button-common-active{
+  --color: #5a799d;
+  font-family: inherit;
+  display: inline-block;
+  /* width: 5em; */
+  height: 2em;
+  /* line-height: 0.5em; */
+  overflow: hidden;
+  margin: 8px;
+  font-size: 17px;
+  z-index: 1;
+  color: var(--color);
+  border: 2px solid var(--color);
+  border-radius: 6px;
+  position: relative;
+  padding: 0px 15px;
+}
+
+.button-common::before {
+  position: absolute;
+  content: "";
+  background: var(--nav-icon-active-color-light);
+  width: 150px;
+  height: 200px;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.button-common:hover {
+  color: white;
+}
+
+.button-common:before {
+  top: 100%;
+  left: 100%;
+  transition: .3s all;
+}
+
+.button-common:hover::before {
+  top: -30px;
+  left: -30px;
+}

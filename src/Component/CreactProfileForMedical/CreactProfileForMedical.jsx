@@ -321,8 +321,8 @@ const CreactProfileForMedical = () => {
                   <div>
                     <button
                       onClick={editProfile}
-                      className="btn btn-success"
-                      id="profileEdit"
+                      className="button-common"
+                      // id="profileEdit"
                     >
                       Edit Profile
                     </button>
@@ -735,8 +735,8 @@ const CreactProfileForMedical = () => {
                   </span>
                   <button
                     type="submit"
-                    id="profile_btn"
-                    className="btn btn-block "
+                    // id="profile_btn"
+                    className="button-common "
                   >
                     {edit ? "Edit" : "Create"}
                   </button>

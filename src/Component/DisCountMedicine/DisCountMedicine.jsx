@@ -216,7 +216,9 @@ const DisCountMedicine = () => {
             </div>
 
             <div className="text-center">
-              <button type="submit" id="profile_btn" className="btn btn-block ">
+              <button type="submit" 
+              // id="profile_btn" 
+              className="button-common ">
                 {/* {choseBatch ? "Edit" : "Creat"} */} Create
               </button>
             </div>

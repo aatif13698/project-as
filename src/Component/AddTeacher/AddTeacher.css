@@ -29,3 +29,8 @@
     background-color: #cbdbed77; /* Change the color to your desired hover color */
     cursor: pointer; /* Optional: Change the cursor to a pointer on hover for better user feedback */
   }
+
+
+  .card-body {
+    box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
+  }

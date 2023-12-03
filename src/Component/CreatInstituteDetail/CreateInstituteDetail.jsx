@@ -337,8 +337,8 @@ const CreateInstituteDetail = () => {
                     <div>
                       <button
                         onClick={editShopProfile}
-                        className="btn btn-success"
-                        id="profileEdit"
+                        className="button-common"
+                        // id="profileEdit"
                       >
                         Edit Institute
                       </button>
@@ -801,8 +801,8 @@ const CreateInstituteDetail = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    id="profile_btn"
-                    className="btn btn-block "
+                    // id="profile_btn"
+                    className="button-common "
                   >
                     Create
                   </button>

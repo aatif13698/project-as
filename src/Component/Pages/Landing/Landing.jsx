@@ -5,8 +5,29 @@ import profileImg from "../../Assets/Images/Realistic-Male-Profile-Picture.webp"
 import shopImg from "../../Assets/Images/medicalShopDemo3.png";
 
 import "./Landing.css";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Landing = () => {
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   const [navTogle, setNavTogle] = useState(false);
   const [dropdownMenu, setDropdownMenu] = useState(false);
 
@@ -32,12 +53,35 @@ const Landing = () => {
   function dropdownTogle() {
     setDropdownMenu(true);
   }
+
+  // carousel options
+  const carouselItems = [
+    {
+      title: "Item 1",
+      description: "Description for Item 1",
+      imageUrl: "https://example.com/item1.jpg",
+    },
+    {
+      title: "Item 2",
+      description: "Description for Item 2",
+      imageUrl: "https://example.com/item2.jpg",
+    },
+    {
+      title: "Item 3",
+      description: "Description for Item 3",
+      imageUrl: "https://example.com/item3.jpg",
+    },
+  ];
+
   return (
-    <div className="container-fluid landing" style={{ position: "relative" }}>
+    <div
+      className="container-fluid landing"
+      style={{ position: "relative", padding: "0px" }}
+    >
       {/* nabvar */}
 
       <div className="div1">
-        <div className="row navrow">
+        <div className="row navrow mt-3 border-3">
           <div className="col-12 ">
             <div
               className="row justify-content-center align-items-center "
@@ -172,13 +216,167 @@ const Landing = () => {
         </div>
       </div>
 
-      {/* content */}
+      {/* new section */}
 
+      <div class="area">
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="welcome-area context" id="welcome">
+        <div class="header-text">
+          <div class="container">
+            <div class="row">
+              <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
+                <h1>
+                  We provide the best <strong>strategy</strong>
+                  <br />
+                  to grow up your <strong>business</strong>
+                </h1>
+                <p>
+                  Softy Pinko is a professional Bootstrap 4.0 theme designed by
+                  Template Mo for your company at absolutely free of charge
+                </p>
+                <a href="#features" class="main-button-slider">
+                  Discover More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* service carousel */}
+      <Carousel responsive={responsive}>
+        <div class="item service-item">
+          <div class="icon">
+            <i>
+              <img src="assets/images/service-icon-01.png" alt="" />
+            </i>
+          </div>
+          <h5 class="service-title">First Box Service</h5>
+          <p>
+            Aenean vulputate massa sed neque consectetur, ac fringilla quam
+            aliquet. Sed a enim nec eros tempor cursus at id libero.
+          </p>
+          <a href="#" class="main-button">
+            Read More
+          </a>
+        </div>
+        <div class="item service-item">
+          <div class="icon">
+            <i>
+              <img src="assets/images/service-icon-02.png" alt="" />
+            </i>
+          </div>
+          <h5 class="service-title">Second Box Title</h5>
+          <p>
+            Pellentesque vitae urna ut nisi viverra tristique quis at dolor. In
+            non sodales dolor, id egestas quam. Aliquam erat volutpat.{" "}
+          </p>
+          <a href="#" class="main-button">
+            Discover More
+          </a>
+        </div>
+        <div class="item service-item">
+          <div class="icon">
+            <i>
+              <img src="assets/images/service-icon-03.png" alt="" />
+            </i>
+          </div>
+          <h5 class="service-title">Third Title Box</h5>
+          <p>
+            Quisque finibus libero augue, in ultrices quam dictum id. Aliquam
+            quis tellus sit amet urna tincidunt bibendum.
+          </p>
+          <a href="#" class="main-button">
+            More Detail
+          </a>
+        </div>
+        <div class="item service-item">
+          <div class="icon">
+            <i>
+              <img src="assets/images/service-icon-02.png" alt="" />
+            </i>
+          </div>
+          <h5 class="service-title">Fourth Service Box</h5>
+          <p>
+            Fusce sollicitudin feugiat risus, tempus faucibus arcu blandit nec.
+            Duis auctor dolor eu scelerisque vestibulum.
+          </p>
+          <a href="#" class="main-button">
+            Read More
+          </a>
+        </div>
+        <div class="item service-item">
+          <div class="icon">
+            <i>
+              <img src="assets/images/service-icon-01.png" alt="" />
+            </i>
+          </div>
+          <h5 class="service-title">Fifth Service Title</h5>
+          <p>
+            Curabitur aliquam eget tellus id porta. Proin justo sapien, posuere
+            suscipit tortor in, fermentum mattis elit.
+          </p>
+          <a href="#" class="main-button">
+            Discover
+          </a>
+        </div>
+        <div class="item service-item">
+          <div class="icon">
+            <i>
+              <img src="assets/images/service-icon-03.png" alt="" />
+            </i>
+          </div>
+          <h5 class="service-title">Sixth Box Title</h5>
+          <p>
+            Ut nibh velit, aliquam vitae pellentesque nec, convallis vitae
+            lacus. Aliquam porttitor urna ut pellentesque.
+          </p>
+          <a href="#" class="main-button">
+            Detail
+          </a>
+        </div>
+        <div class="item service-item">
+          <div class="icon">
+            <i>
+              <img src="assets/images/service-icon-01.png" alt="" />
+            </i>
+          </div>
+          <h5 class="service-title">Seventh Title Box</h5>
+          <p>
+            Sed a consequat velit. Morbi lectus sapien, vestibulum et sapien sit
+            amet, ultrices malesuada odio. Donec non quam.
+          </p>
+          <a href="#" class="main-button">
+            Read More
+          </a>
+        </div>
+      </Carousel>
       {/* parallex */}
 
       {/* what we do */}
 
-      <div className="weDo">
+      {/* <div className="weDo">
         <h3 className="text-center weDoText">What We Do</h3>
       </div>
       <section class="section section-dark">
@@ -194,11 +392,11 @@ const Landing = () => {
           </div>
         </div>
         <button className="weDobtn">Explore More</button>
-      </section>
+      </section> */}
 
       {/* about */}
 
-      <div>
+      {/* <div>
         <h3 className="text-center weDoText">About Nearest</h3>
       </div>
 
@@ -214,11 +412,11 @@ const Landing = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* services */}
 
-      <div>
+      {/* <div>
         <h3 className="text-center weDoText">Our Services</h3>
       </div>
       <section class="section section-dark">
@@ -273,7 +471,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* doctors */}
 
@@ -284,7 +482,7 @@ const Landing = () => {
           </div>
         </a>
       </div> */}
-      <div>
+      {/* <div>
         <h3 className="text-center weDoText">Meet Doctors</h3>
       </div>
       <section class="section section-dark">
@@ -358,22 +556,21 @@ const Landing = () => {
         <div className="col-md-8 col-12 text-center ">
           <button className="btn btn-success">View More Doctors</button>
         </div>
-      </div>
+      </div> */}
 
       {/* medical stores */}
 
-      <div class="pimg6">
+      {/* <div class="pimg6">
         <a href="https://en.wikipedia.org/wiki/Colosseum" target="_blank">
           <div class="ptext">
             <span>Pharmacy </span>
           </div>
         </a>
-      </div>
-      
+      </div> */}
 
       {/* pharmacy card */}
 
-      <div className="row justify-content-center py-5">
+      {/* <div className="row justify-content-center py-5">
         <div className="col-10">
           <div className="row  justify-content-around gx-3">
             <div className="col-md-6 col-12  mb-3  ">
@@ -391,7 +588,6 @@ const Landing = () => {
                     }}
                   ></div>
                   <div className="pharmayText ">
-                    {/* <p className="mb-0 teachSub">Chemistry</p> */}
                     <h5 className="mb-0">Azanta Pharmacy</h5>
                     <p className="mb-0 teachSub">Railpar OK Road Asansol</p>
                   </div>
@@ -413,7 +609,6 @@ const Landing = () => {
                     }}
                   ></div>
                   <div className="pharmayText ">
-                    {/* <p className="mb-0 teachSub">Chemistry</p> */}
                     <h5 className="mb-0">Azanta Pharmacy</h5>
                     <p className="mb-0 teachSub">Railpar OK Road Asansol</p>
                   </div>
@@ -438,11 +633,11 @@ const Landing = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Schools/coachings */}
 
-      <div class="pimg7">
+      {/* <div class="pimg7">
         <a href="https://en.wikipedia.org/wiki/Colosseum" target="_blank">
           <div class="ptext">
             <span>Schools And Coachings </span>
@@ -463,11 +658,11 @@ const Landing = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* teachers */}
 
-      <div class="pimg8">
+      {/* <div class="pimg8">
         <a href="https://en.wikipedia.org/wiki/Colosseum" target="_blank">
           <div class="ptext">
             <span>Teachers </span>
@@ -488,11 +683,11 @@ const Landing = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* teachers card */}
 
-      <div className="row justify-content-center py-5">
+      {/* <div className="row justify-content-center py-5">
         <div className="col-10">
           <div className="row  justify-content-around gx-3">
             <div className="col-md-3 col-sm-4 col-12  mb-3  ">
@@ -554,7 +749,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
