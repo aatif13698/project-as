@@ -17,7 +17,7 @@ const Landing = () => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 1,
+      items: 3,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -247,12 +247,12 @@ const Landing = () => {
             <div class="row">
               <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
                 <h1>
-                  We provide the best <strong>strategy</strong>
+                  We provide the best <strong>platform</strong>
                   <br />
-                  to grow up your <strong>business</strong>
+                  to manage your <strong>institute/pharmacy</strong>
                 </h1>
                 <p>
-                  Softy Pinko is a professional Bootstrap 4.0 theme designed by
+                   Pinko is a professional Bootstrap 4.0 theme designed by
                   Template Mo for your company at absolutely free of charge
                 </p>
                 <a href="#features" class="main-button-slider">
@@ -265,118 +265,120 @@ const Landing = () => {
       </div>
 
       {/* service carousel */}
-      <Carousel responsive={responsive}>
-        <div class="item service-item">
-          <div class="icon">
-            <i>
-              <img src="assets/images/service-icon-01.png" alt="" />
-            </i>
+      <div className="carousel-div pattern">
+        <Carousel responsive={responsive}>
+          <div class="item service-item">
+            <div class="icon">
+              <i>
+                <img src="assets/images/service-icon-01.png" alt="" />
+              </i>
+            </div>
+            <h5 class="service-title">First Box Service</h5>
+            <p>
+              Aenean vulputate massa sed neque consectetur, ac fringilla quam
+              aliquet. Sed a enim nec eros tempor cursus at id libero.
+            </p>
+            <a href="#" class="main-button">
+              Read More
+            </a>
           </div>
-          <h5 class="service-title">First Box Service</h5>
-          <p>
-            Aenean vulputate massa sed neque consectetur, ac fringilla quam
-            aliquet. Sed a enim nec eros tempor cursus at id libero.
-          </p>
-          <a href="#" class="main-button">
-            Read More
-          </a>
-        </div>
-        <div class="item service-item">
-          <div class="icon">
-            <i>
-              <img src="assets/images/service-icon-02.png" alt="" />
-            </i>
+          <div class="item service-item">
+            <div class="icon">
+              <i>
+                <img src="assets/images/service-icon-02.png" alt="" />
+              </i>
+            </div>
+            <h5 class="service-title">Second Box Title</h5>
+            <p>
+              Pellentesque vitae urna ut nisi viverra tristique quis at dolor.
+              In non sodales dolor, id egestas quam. Aliquam erat volutpat.{" "}
+            </p>
+            <a href="#" class="main-button">
+              Discover More
+            </a>
           </div>
-          <h5 class="service-title">Second Box Title</h5>
-          <p>
-            Pellentesque vitae urna ut nisi viverra tristique quis at dolor. In
-            non sodales dolor, id egestas quam. Aliquam erat volutpat.{" "}
-          </p>
-          <a href="#" class="main-button">
-            Discover More
-          </a>
-        </div>
-        <div class="item service-item">
-          <div class="icon">
-            <i>
-              <img src="assets/images/service-icon-03.png" alt="" />
-            </i>
+          <div class="item service-item">
+            <div class="icon">
+              <i>
+                <img src="assets/images/service-icon-03.png" alt="" />
+              </i>
+            </div>
+            <h5 class="service-title">Third Title Box</h5>
+            <p>
+              Quisque finibus libero augue, in ultrices quam dictum id. Aliquam
+              quis tellus sit amet urna tincidunt bibendum.
+            </p>
+            <a href="#" class="main-button">
+              More Detail
+            </a>
           </div>
-          <h5 class="service-title">Third Title Box</h5>
-          <p>
-            Quisque finibus libero augue, in ultrices quam dictum id. Aliquam
-            quis tellus sit amet urna tincidunt bibendum.
-          </p>
-          <a href="#" class="main-button">
-            More Detail
-          </a>
-        </div>
-        <div class="item service-item">
-          <div class="icon">
-            <i>
-              <img src="assets/images/service-icon-02.png" alt="" />
-            </i>
+          <div class="item service-item">
+            <div class="icon">
+              <i>
+                <img src="assets/images/service-icon-02.png" alt="" />
+              </i>
+            </div>
+            <h5 class="service-title">Fourth Service Box</h5>
+            <p>
+              Fusce sollicitudin feugiat risus, tempus faucibus arcu blandit
+              nec. Duis auctor dolor eu scelerisque vestibulum.
+            </p>
+            <a href="#" class="main-button">
+              Read More
+            </a>
           </div>
-          <h5 class="service-title">Fourth Service Box</h5>
-          <p>
-            Fusce sollicitudin feugiat risus, tempus faucibus arcu blandit nec.
-            Duis auctor dolor eu scelerisque vestibulum.
-          </p>
-          <a href="#" class="main-button">
-            Read More
-          </a>
-        </div>
-        <div class="item service-item">
-          <div class="icon">
-            <i>
-              <img src="assets/images/service-icon-01.png" alt="" />
-            </i>
+          <div class="item service-item">
+            <div class="icon">
+              <i>
+                <img src="assets/images/service-icon-01.png" alt="" />
+              </i>
+            </div>
+            <h5 class="service-title">Fifth Service Title</h5>
+            <p>
+              Curabitur aliquam eget tellus id porta. Proin justo sapien,
+              posuere suscipit tortor in, fermentum mattis elit.
+            </p>
+            <a href="#" class="main-button">
+              Discover
+            </a>
           </div>
-          <h5 class="service-title">Fifth Service Title</h5>
-          <p>
-            Curabitur aliquam eget tellus id porta. Proin justo sapien, posuere
-            suscipit tortor in, fermentum mattis elit.
-          </p>
-          <a href="#" class="main-button">
-            Discover
-          </a>
-        </div>
-        <div class="item service-item">
-          <div class="icon">
-            <i>
-              <img src="assets/images/service-icon-03.png" alt="" />
-            </i>
+          <div class="item service-item">
+            <div class="icon">
+              <i>
+                <img src="assets/images/service-icon-03.png" alt="" />
+              </i>
+            </div>
+            <h5 class="service-title">Sixth Box Title</h5>
+            <p>
+              Ut nibh velit, aliquam vitae pellentesque nec, convallis vitae
+              lacus. Aliquam porttitor urna ut pellentesque.
+            </p>
+            <a href="#" class="main-button">
+              Detail
+            </a>
           </div>
-          <h5 class="service-title">Sixth Box Title</h5>
-          <p>
-            Ut nibh velit, aliquam vitae pellentesque nec, convallis vitae
-            lacus. Aliquam porttitor urna ut pellentesque.
-          </p>
-          <a href="#" class="main-button">
-            Detail
-          </a>
-        </div>
-        <div class="item service-item">
-          <div class="icon">
-            <i>
-              <img src="assets/images/service-icon-01.png" alt="" />
-            </i>
+          <div class="item service-item">
+            <div class="icon">
+              <i>
+                <img src="assets/images/service-icon-01.png" alt="" />
+              </i>
+            </div>
+            <h5 class="service-title">Seventh Title Box</h5>
+            <p>
+              Sed a consequat velit. Morbi lectus sapien, vestibulum et sapien
+              sit amet, ultrices malesuada odio. Donec non quam.
+            </p>
+            <a href="#" class="main-button">
+              Read More
+            </a>
           </div>
-          <h5 class="service-title">Seventh Title Box</h5>
-          <p>
-            Sed a consequat velit. Morbi lectus sapien, vestibulum et sapien sit
-            amet, ultrices malesuada odio. Donec non quam.
-          </p>
-          <a href="#" class="main-button">
-            Read More
-          </a>
-        </div>
-      </Carousel>
+        </Carousel>
+      </div>
       {/* parallex */}
 
       {/* what we do */}
 
-      {/* <div className="weDo">
+      <div className="weDo">
         <h3 className="text-center weDoText">What We Do</h3>
       </div>
       <section class="section section-dark">
@@ -392,7 +394,7 @@ const Landing = () => {
           </div>
         </div>
         <button className="weDobtn">Explore More</button>
-      </section> */}
+      </section>
 
       {/* about */}
 
@@ -416,7 +418,7 @@ const Landing = () => {
 
       {/* services */}
 
-      {/* <div>
+      <div>
         <h3 className="text-center weDoText">Our Services</h3>
       </div>
       <section class="section section-dark">
@@ -471,7 +473,9 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
+
+      
 
       {/* doctors */}
 
