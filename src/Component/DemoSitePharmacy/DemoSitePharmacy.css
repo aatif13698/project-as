@@ -1,9 +1,9 @@
 
 .navrow{
     /* background:  rgb(18 204 235 / 0%); */
-    background:red;
+    /* background:red; */
 
-    height: 40px;
+    /* height: 40px; */
 }
 
 .demSiteUl{
@@ -17,7 +17,7 @@
 
 .demSiteUl ul li link {
     text-decoration: none;
-    color: white;
+    /* color: white; */
 }
 
 

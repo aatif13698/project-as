@@ -7,6 +7,7 @@ import shopImg from "../../Assets/Images/medicalShopDemo3.png";
 import "./Landing.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { personsImgs } from "../../../utils/images";
 
 const Landing = () => {
   const responsive = {
@@ -73,6 +74,35 @@ const Landing = () => {
     },
   ];
 
+  // navbar csss
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const navbarStyle = {
+    backgroundColor: scrolling ? 'white' : 'transparent',
+    boxShadow: scrolling ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
+    transition: 'background-color 0.3s, box-shadow 0.3s',
+  };
+
+  const textStyle = {
+    color : scrolling ?  "black" : "white"
+  }
+
   return (
     <div
       className="container-fluid landing"
@@ -80,8 +110,8 @@ const Landing = () => {
     >
       {/* nabvar */}
 
-      <div className="div1">
-        <div className="row navrow mt-3 border-3">
+      <div className="div1" style={navbarStyle}>
+        <div className="row navrow  border-3">
           <div className="col-12 ">
             <div
               className="row justify-content-center align-items-center "
@@ -112,7 +142,7 @@ const Landing = () => {
                     alt=""
                   />
                 </div>
-                <ul className={`${navTogle ? "trutogleUl" : "togleUl"}  `}>
+                <ul className={`${navTogle ? "trutogleUl" : "togleUl"}  `} >
                   <li>
                     {" "}
                     <Link style={{ textDecoration: "none" }}>About</Link>{" "}
@@ -152,33 +182,35 @@ const Landing = () => {
                   </li>
                   <li>
                     {" "}
-                    <Link
+                    <button
                       to={"/login"}
-                      className="SignInBtn"
+                      className="contact-btn-signIn"
                       style={{ textDecoration: "none" }}
                     >
                       SignIn
-                    </Link>{" "}
+                    </button>{" "}
                   </li>
                 </ul>
               </div>
 
               <div className="col-5 justify-content-center align-items-center ">
-                <h5 style={{ margin: "0px" }}>Nearest</h5>
+                <h5 style={{ margin: "0px 55px" }}>Nearest</h5>
               </div>
               <div className="col-7 d-flex ">
-                <ul className="demSiteUl">
-                  <li>
+                <ul className="demSiteUl" >
+                  <li className="li-hover">
                     {" "}
-                    <Link>About</Link>{" "}
+                    <Link style={textStyle}>About</Link>{" "}
                   </li>
-                  <li
+                  <li 
                     // type="button"
-                    className=" dropdown_toggle"
-                    onClick={dropdownTogle}
+                    style={textStyle}
+                    className=" dropdown_toggle li-hover"
+                    onMouseOver={dropdownTogle}
                   >
                     Services
                     <ul
+                    
                       ref={dropdownRef}
                       className={`${
                         dropdownMenu
@@ -201,13 +233,13 @@ const Landing = () => {
                     </ul>
                   </li>
 
-                  <li>
+                  <li className="li-hover">
                     {" "}
-                    <Link>contact</Link>{" "}
+                    <Link style={textStyle}>contact</Link>{" "}
                   </li>
                   <li>
                     {" "}
-                    <Link to={"/login"}>SignIn</Link>{" "}
+                    <button className="contact-btn-signIn" to={"/login"}>SignIn</button>{" "}
                   </li>
                 </ul>
               </div>
@@ -241,28 +273,172 @@ const Landing = () => {
           <li></li>
         </ul>
       </div>
-      <div class="welcome-area context" id="welcome">
+      <div class="welcome-area context" id="welcome" 
+      data-aos="fade-left"
+      data-aos-duration="1000"
+      data-aos-delay={600}
+      >
         <div class="header-text">
           <div class="container">
             <div class="row">
-              <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
+              <div class=" col-xl-6 col-lg-8 col-md-12 col-sm-12">
                 <h1>
-                  We provide the best <strong>platform</strong>
+                  Streamline Your School/Pharmacy Operations with{" "}
+                  <strong className="text-container">ONE STEP</strong>
                   <br />
-                  to manage your <strong>institute/pharmacy</strong>
+                  Effortless School Management Solutions for{" "}
+                  <strong className="text-container">
+                    Institutions/Pharmacy
+                  </strong>
                 </h1>
-                <p>
-                   Pinko is a professional Bootstrap 4.0 theme designed by
-                  Template Mo for your company at absolutely free of charge
-                </p>
-                <a href="#features" class="main-button-slider">
+                <button  class="contact-btn">
                   Discover More
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* introductipon  */}
+
+      <div class="row py-4 px-3">
+        <div class="col-lg-7 col-md-12 col-sm-12"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        data-aos-delay={100}>
+          <img
+            src={personsImgs.introImg}
+            class="rounded img-fluid d-block mx-auto my-auto"
+            alt="App"
+          />
+        </div>
+        <div className="col-lg-5 col-md-12 col-sm-12 intro_div">
+          <div className="main-intro-heading"
+           data-aos="fade-left"
+           data-aos-duration="1000"
+           data-aos-delay={100}>
+            <h2>ONE STEP'S VISION & MISSION</h2>
+          </div>
+          <div class="  intro_div ">
+            <div class="left-heading"
+             data-aos="fade-left"
+             data-aos-duration="1000"
+             data-aos-delay={200}
+            >
+              <h5>
+                Welcome to <strong className="text-container">ONE STEP</strong>,
+                where we revolutionize school management for private
+                institutions. Say goodbye to the complexities of traditional
+                administrative tasks and embrace a seamless, efficient, and
+                organized approach to running your school.
+              </h5>
+            </div>
+            <div className="mt-2"
+             data-aos="fade-left"
+             data-aos-duration="1000"
+             data-aos-delay={400}
+            >
+              <h5>
+                At <strong className="text-container">ONE STEP</strong>, we
+                understand the unique challenges faced by private schools in
+                managing teachers, classes, batches, and students. Our platform
+                is designed to simplify these tasks, empowering you to focus on
+                what truly matters – providing an exceptional education to your
+                students.
+              </h5>
+              <div className="mt-3"
+               data-aos="fade-left"
+               data-aos-duration="1000"
+               data-aos-delay={600}
+              >
+                <button className="contact-btn">Contact Us</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* how it works */}
+      <section class="section section-dark demo">
+        {/* <h2 className="sectionText">What We Provide You</h2>
+        <div className="row justify-content-center">
+          <div className="col-md-8 col-12 ">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
+              illum adipisci soluta natus quidem, possimus necessitatibus
+              blanditiis voluptatum incidunt harum, maiores voluptas repellat
+              minus sed optio facere. Quidem, voluptas veritatis.
+            </p>
+          </div>
+        </div> */}
+        <section class="section section-dark">
+          <h2 className="sectionText">
+            You can Get All information About Appointment
+          </h2>
+          <div className="row justify-content-center py-3">
+            <div className="col-md-8 col-12 text-center ">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
+                illum adipisci soluta natus quidem, possimus necessitatibus
+                blanditiis voluptatum incidunt harum, maiores voluptas repellat
+                minus sed optio facere. Quidem, voluptas veritatis.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className="row justify-content-center py-5">
+          <div className="col-10">
+            <div className="row  justify-content-around gx-3">
+              <div className="col-md-3 col-sm-4 col-12 mb-3 ">
+                <div className="docMainDiv">
+                  <div className=" docCard p-3 ">
+                    <div className="docImageDiv">
+                      <img className="docImage" src={profileImg} alt="" />
+                      <img className="docIncon" src={iconsImgs.bell1} alt="" />
+                    </div>
+                    <div className="doctTitle ">Dr.Preshan</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3 col-sm-4 col-12 mb-3 ">
+                <div className="docMainDiv">
+                  <div className=" docCard p-3 ">
+                    <div className="docImageDiv">
+                      <img className="docImage" src={profileImg} alt="" />
+                      <img className="docIncon" src={iconsImgs.bell1} alt="" />
+                    </div>
+                    <div className="doctTitle ">Dr.Preshan</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3 col-sm-4 col-12 mb-3 ">
+                <div className="docMainDiv">
+                  <div className=" docCard p-3 ">
+                    <div className="docImageDiv">
+                      <img className="docImage" src={profileImg} alt="" />
+                      <img className="docIncon" src={iconsImgs.bell1} alt="" />
+                    </div>
+                    <div className="doctTitle ">Dr.Preshan</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3 col-sm-4 col-12 mb-3 ">
+                <div className="docMainDiv">
+                  <div className=" docCard p-3 ">
+                    <div className="docImageDiv">
+                      <img className="docImage" src={profileImg} alt="" />
+                      <img className="docIncon" src={iconsImgs.bell1} alt="" />
+                    </div>
+                    <div className="doctTitle ">Dr.Preshan</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* service carousel */}
       <div className="carousel-div pattern">
@@ -421,19 +597,6 @@ const Landing = () => {
       <div>
         <h3 className="text-center weDoText">Our Services</h3>
       </div>
-      <section class="section section-dark">
-        <h2 className="sectionText">What We Provide You</h2>
-        <div className="row justify-content-center">
-          <div className="col-md-8 col-12 ">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
-              illum adipisci soluta natus quidem, possimus necessitatibus
-              blanditiis voluptatum incidunt harum, maiores voluptas repellat
-              minus sed optio facere. Quidem, voluptas veritatis.
-            </p>
-          </div>
-        </div>
-      </section>
 
       <div className="row" style={{ margin: "12px 0px" }}>
         <div className="col-12">
@@ -475,8 +638,6 @@ const Landing = () => {
         </div>
       </div>
 
-      
-
       {/* doctors */}
 
       {/* <div class="pimg5">
@@ -485,11 +646,11 @@ const Landing = () => {
             <span>Meet Doctors</span>
           </div>
         </a>
-      </div> */}
-      {/* <div>
-        <h3 className="text-center weDoText">Meet Doctors</h3>
       </div>
-      <section class="section section-dark">
+      <div>
+        <h3 className="text-center weDoText">Meet Doctors</h3>
+      </div> */}
+      {/* <section class="section section-dark">
         <h2 className="sectionText">
           You can Get All information About Appointment
         </h2>
@@ -554,9 +715,9 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="row justify-content-center py-3">
+      {/* <div className="row justify-content-center py-3">
         <div className="col-md-8 col-12 text-center ">
           <button className="btn btn-success">View More Doctors</button>
         </div>

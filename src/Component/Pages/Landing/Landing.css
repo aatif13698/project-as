@@ -10,43 +10,49 @@
     position: fixed;
     top: 0px;
     z-index: 1;
-    width: 94%;
-    left: 3%;
+    width: 100%;
+    /* left: 3%; */
 }
 
 
 .navrow{
-    background:  rgb(18 204 235 / 59%);
-    height: 40px;
-    box-shadow: 2px 2px 9px rgba(0,0,0,0.2 );
-    border-radius: 16px;
+    /* background:  rgb(18 204 235 / 59%); */
+    /* height: 40px; */
+    /* box-shadow: 2px 2px 9px rgba(0,0,0,0.2 ); */
+    /* border-radius: 16px; */
 
 }
 
 .dropdown_menu_visble{
     display: block;
-    background: #3bdea8 !important;
+    background: linear-gradient(154deg, #01BBCD, #0eebff87) !important;
     padding: 12px 50px 12px 12px !important;
     position: absolute;
-    top: 167%;
+    top: 124%;
+    left: 37%;
+    /* height: 100%; */
+
     
 }
 
 .dropdown_menu1_visble{
 
     display: block;
-    background: #3bdea8 !important;
+    background: linear-gradient(154deg, #01BBCD, #0eebff87) !important;
     padding: 7px 30px 7px 14px !important;
     position: absolute;
     left: 31%;
     bottom: 24%;
     border-radius: 6px;
+
 }
 
 .dropdown_menu_hide{
     display: none;
-    background: #3bdea8 !important; 
+    height: 0px;
+    background: linear-gradient(154deg, #01BBCD, #0eebff87) !important; 
     padding: 12px !important;
+    transition: all .3s ease-in-out;
 }
 
 .dropdown_menu_visble  li a{
@@ -68,7 +74,7 @@
 }
 
 .dropdown_toggle{
-    color: white !important;
+    /* color: white !important; */
 }
 .dropdown_toggle1{
     color: black;
@@ -80,7 +86,7 @@
 
 .demSiteUl li a{
     text-decoration: none !important;
-    color: white !important;
+    /* color: white !important; */
     transition: all 0.3s ease-in;
 }
 
@@ -89,18 +95,18 @@
 }
 
 
-.demSiteUl li::after{
+.demSiteUl .li-hover:after{
     content: "";
     width: 0%;
     height: 2px;
-    background: rgb(13, 246, 40);
+    background: linear-gradient(154deg, #01BBCD, #0eebff87);
     position: absolute;
     bottom: 0;
     left: -3px;
     transition: all 0.3s ease-in-out;
 }
 
-.demSiteUl li:hover::after {
+.demSiteUl .li-hover:hover::after {
     width: 110%; 
   }
 
@@ -380,9 +386,10 @@ body{
 
 .area{
     background: #00b4c6;  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+    /* background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);   */
+    background:  linear-gradient(154deg, #01BBCD, #0eebff87);;
     width: 100%;
-    height:70vh;
+    height:90vh;
     position: relative;
     padding: 0px
     
@@ -509,9 +516,17 @@ body{
 
 .welcome-area{
     position: absolute;
-    top: 8%;
+    top: 6%;
     width: 100%;
     
+}
+
+@media screen and (max-width: 768px) {
+ 
+.welcome-area{
+  top: 3%;
+  
+}
 }
 
 
@@ -745,4 +760,80 @@ services
     /* Rotate by 45 degrees */
     /* transform: rotate(45deg); */
   }
+
+
+  /* intro */
+
+  .intro_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  .intro_div h2{
+    font-weight: 700;
+    font-size: 1.99rem;
+    margin-bottom: 12px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .intro_div h5{
+    font-family: "Poppins", sans-serif;
+  }
+
+  .contact-btn{
+    padding: .50rem .90rem;
+    border-radius: 6px;
+    background: linear-gradient(154deg, #01BBCD, #0eebff87);
+    color: white;
+    box-shadow: 0 3px 12px 0 rgb(151 181 181 / 50%);
+}
+
+.contact-btn-signIn{
+  padding: .50rem .90rem;
+  border-radius: 6px;
+  background: linear-gradient(154deg, #01BBCD, #0eebff87);
+  color: white;
+  /* box-shadow: 0 3px 12px 0 rgb(44 148 148 / 50%); */
+}
+
+
+  .contact-btn:hover{
+    background: linear-gradient(154deg, #3fe0ef, #02a4b387);
+    color: black;
+  }
+  .contact-btn-signIn:hover{
+    background: linear-gradient(154deg, #3fe0ef, #02a4b387);
+    color: black;
+  }
+
+
+
+  .text-container {
+   
+    /* background-image: linear-gradient( 110deg, hsl(194deg 100% 20%) 0%, hsl(193deg 100% 24%) 14%, hsl(191deg 9.01% 90.47%) 30%, hsl(189deg 69.32% 45.02%) 47%, hsl(187deg 100% 34%) 60%, hsl(185deg 15.28% 93.35% / 94%) 71%, hsl(183deg 100% 40%) 81%, hsl(180deg 12.89% 94.1%) 88%, hsl(178deg 9.3% 86%) 94%, hsl(175deg 13.13% 92.34%) 100% ); */
+    /* background: linear-gradient(154deg, #01BBCD, #0eebff87); */
+    background: linear-gradient( 110deg, hsl(225.64deg 100% 20%) 0%, hsl(234.5deg 63.87% 63.91%) 14%, hsl(239.82deg 59.48% 61.59%) 30%, hsl(189deg 31.62% 9.4%) 47%, hsl(220.98deg 100% 50.51%) 60%, hsl(213.9deg 62.44% 57.21% / 94%) 71%, hsl(216.78deg 74.83% 76.23%) 81%, hsl(238.04deg 90.93% 50.7% / 70%) 88%, #08205b 94%, hsl(224.53deg 72.06% 62.35%) 100% );;
+
+    background-size: cover;
+    background-clip: text;
+    color: transparent;
+    /* padding: 20px; */
+    /* max-width: 600px; Adjust the maximum width of the text container */
+    text-align: center;
+    font-size: 1.09em;
+}
+
+
+
+/* demo */
+.demo{
+ /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=01bbcd&c2=91c0fc&gt=l&gd=dcl
+*/
+background: #01BBCD;
+background: linear-gradient(154deg, #01BBCD, #0eebff87);
+}
   

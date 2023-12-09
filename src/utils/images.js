@@ -35,6 +35,8 @@ import person_two from "../assets/images/person_two.jpg";
 import person_three from "../assets/images/person_three.jpg";
 import person_four from "../assets/images/person_four.jpg";
 import avatar from "../assets/images/avtar.jpg";
+import introImg from "../assets/images/left-image.png"
+
 import gallery from '../assets/icons/gallery.svg'
 import dashboard from '../assets/icons/dashboard.svg'
 import time from '../assets/icons/time.svg'
@@ -50,6 +52,6 @@ export const iconsImgs = {
 }
 
 export const personsImgs = {
-    person_one, person_two, person_three, person_four, avatar
+    person_one, person_two, person_three, person_four, avatar, introImg
 };
 
