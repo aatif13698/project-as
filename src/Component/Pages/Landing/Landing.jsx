@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { iconsImgs } from "../../../utils/images";
 import profileImg from "../../Assets/Images/Realistic-Male-Profile-Picture.webp";
 import shopImg from "../../Assets/Images/medicalShopDemo3.png";
@@ -10,6 +10,8 @@ import "react-multi-carousel/lib/styles.css";
 import { personsImgs } from "../../../utils/images";
 
 const Landing = () => {
+
+  const navigate = useNavigate()
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -239,7 +241,7 @@ const Landing = () => {
                   </li>
                   <li>
                     {" "}
-                    <button className="contact-btn-signIn" to={"/login"}>SignIn</button>{" "}
+                    <button className="contact-btn-signIn" onClick={() =>  navigate("/login")} to={"/login"}>SignIn</button>{" "}
                   </li>
                 </ul>
               </div>
