@@ -221,6 +221,7 @@ button {
 }
 
 
+
 .forThemr3{
   textColor: #000000;
   background-color: #EEF2F2;
@@ -292,4 +293,8 @@ button {
 .button-common:hover::before {
   top: -30px;
   left: -30px;
+}
+
+.test{
+  padding: 12px;
 }
